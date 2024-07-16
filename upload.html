@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./src/index.css" />
+    <link rel="stylesheet" href="./src/App.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detect</title>
+  </head>
+  <body>
+    <form enctype="multipart/form-data" method="post">
+      <div
+        onclick="document.getElementById('fileInput').click()"
+        id="root"
+      ></div>
+      <input
+        type="file"
+        id="fileInput"
+        name="image"
+        accept="image/*"
+        required
+        style="display: none"
+      />
+      <input type="submit" value="Upload" />
+    </form>
+
+    <script type="module" src="./src/upload.jsx"></script>
+  </body>
+</html>
