@@ -6,7 +6,7 @@ import Upload from "./svg/upload";
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-2/3 mx-auto gap-10 mt-22 h-screen">
+    <div className="flex flex-col items-center justify-center w-2/3 mx-auto gap-10 h-screen">
       <a href="index.html" className="cursor-pointer">
         <ShinyText />
       </a>

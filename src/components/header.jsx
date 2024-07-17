@@ -38,7 +38,7 @@ const Header = () => {
         )}
       </AnimatePresence>
       <motion.div
-        className="flex flex-col w-4/5 mx-auto border border-solid m-3 rounded-3xl fixed"
+        className="flex flex-col w-4/5 mx-auto border border-solid m-3 rounded-2xl fixed"
         onMouseEnter={() => isHovered && setIsHovered(true)}
         onMouseLeave={() => isHovered && setIsHovered(false)}
         style={{
@@ -54,8 +54,8 @@ const Header = () => {
               ? "rgba(12, 12, 12, 1)"
               : "rgba(9, 9, 9, 0.9)",
             borderRadius: isHovered
-              ? "1.5rem 1.5rem 0px 0px"
-              : "1.5rem 1.5rem 1.5rem 1.5rem",
+              ? "1rem 1rem 0px 0px"
+              : "1rem 1rem 1rem 1rem",
             transition: "all 0.3s ease-in-out",
           }}
         >

@@ -7,6 +7,7 @@ import {
 
 const AccordionDemo = () => {
   return (
+    <div className="px-10 w-1/2 h-full rounded-2xl border-[#202225] border border-solid py-2">
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1" style={{ borderColor: "#232323" }}>
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -29,6 +30,7 @@ const AccordionDemo = () => {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
+    </div>
   );
 };
 
