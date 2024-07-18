@@ -1,7 +1,7 @@
 import React from "react";
 import ShinyText from "./ShinyText";
 import ChevronRight from "./svg/chevronright";
-import { Cpu, ShieldPlus, Sword } from "lucide-react";
+import { Cpu, ShieldPlus } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -34,10 +34,7 @@ const HeroSection = () => {
           <Cpu color="#ffffff" className="size-4 stroke-blue-400" />
         </span>
         . Detect
-        <strong> weapons </strong>{" "}
-        <span className="inline-block align-middle">
-          <Sword color="#ffffff" className="size-4 stroke-red-400" />
-        </span>{" "}
+        <strong> weapons </strong>
         in real-time through security camera footage, ensuring a
         <strong> safer environment for everyone.</strong>
       </h3>

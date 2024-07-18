@@ -39,6 +39,25 @@ const Demo = () => {
               </p>
             </div>
           </CardRevealedPointer>
+          <CardRevealedPointer className="h-full">
+            <div className="space-y-2 flex flex-col items-center gap-4">
+              <div className="w-full flex flex-col gap-2">
+              <video autoPlay  src="../../../public/uploadanim.mp4"       loop
+      muted
+      playsInline>  
+          </video>
+                <h3 className="text-xl font-semibold text-neutral-200">
+                  Tools Used
+                </h3>
+              </div>
+              <p className="text-sm leading-[1.5] text-neutral-400">
+                Explore the new website that simplifies the creation of
+                sophisticated dark mode components.
+              </p>
+            </div>
+          </CardRevealedPointer>
+
+
         </div>
       </div>
     </div>
