@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Card from "./luxe/CardRevealedPointer";
 import CardCopy from "./luxe/test";
 import HeaderItem from "./headeritem";
+import Logo from "./svg/logo";
+import { Rocket, Info } from "lucide-react";
 
 const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -59,9 +61,21 @@ const Header = () => {
             transition: "all 0.3s ease-in-out",
           }}
         >
-          <a className="w-min text-white medium" href="index.html">
-            detect
-          </a>
+          <div>
+            <a
+              className="w-min medium text-transparent flex flex-row justify-center gap-2"
+              style={{
+                background:
+                  "linear-gradient(180deg, hsla(0, 0%, 90%, 1) 0%, hsla(0, 0%, 80%, 1) 80%, hsla(0, 0%, 25%, 1) 100%)",
+                backgroundClip: "text",
+              }}
+              href="index.html"
+            >
+              <Logo />
+              detcetdsadaso
+            </a>
+          </div>
+
           <ul className="header__list text-white flex gap-10">
             <motion.li className="header__item">
               <motion.a
@@ -128,17 +142,38 @@ const Header = () => {
               >
                 <li>
                   <HeaderItem>
-                    {["./career.html", "career", "description"]}
+                    {[
+                      "./Mission.html",
+                      "Mission",
+                      "Why we created x",
+                      <span className="inline-flex align-middle">
+                        <Rocket className="size-4 " />
+                      </span>,
+                    ]}
                   </HeaderItem>
                 </li>
                 <li>
                   <HeaderItem>
-                    {["./changelog.html", "changelog", "description"]}
+                    {[
+                      "./info",
+                      "Information",
+                      "description",
+                      <span className="inline-flex align-middle">
+                        <Info className="size-4 " />
+                      </span>,
+                    ]}
                   </HeaderItem>
                 </li>
                 <li>
                   <HeaderItem>
-                    {["./enterprise.html", "enterprise", "description"]}
+                    {[
+                      "./enterprise.html",
+                      "enterprise",
+                      "description",
+                      <span className="inline-flex align-middle">
+                        <Rocket className="size-4 " />
+                      </span>,
+                    ]}
                   </HeaderItem>
                 </li>
               </ul>

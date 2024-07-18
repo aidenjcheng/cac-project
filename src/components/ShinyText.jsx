@@ -8,7 +8,7 @@ const ShinyText = () => {
     <div className="z-10 flex min-h-[5rem] items-center justify-center">
       <div
         className={cn(
-          "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-white/10 bg-neutral-800 hover:border-white/15"
+          "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-white/10 bg-neutral-900 hover:border-white/15"
         )}
       >
         <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">

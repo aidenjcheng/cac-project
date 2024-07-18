@@ -3,20 +3,20 @@ import { createRoot } from "react-dom/client";
 import Header from "./components/header.jsx";
 import HeroSection from "./components/hero.jsx";
 import Demo from "./components/demo/demo.jsx";
-import Accordion from "./components/accordion.jsx";
-import { ThemeProvider } from "./components/themeprovider"
-
+import Faq from "./components/faq.jsx";
+import { ThemeProvider } from "./components/themeprovider";
 
 const App = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-
-    <div className="flex flex-col items-center">
-      <Header />
-      <HeroSection />
-      <Accordion />
-      <Demo />
-    </div>
+      <div className="flex flex-col items-center">
+        <Header />
+        <HeroSection />
+        <div className="mt-52">
+          <Demo />
+        </div>
+        <Faq />
+      </div>
     </ThemeProvider>
   );
 };

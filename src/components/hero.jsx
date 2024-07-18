@@ -2,7 +2,6 @@ import React from "react";
 import ShinyText from "./ShinyText";
 import ChevronRight from "./svg/chevronright";
 import { Cpu, ShieldPlus, Sword } from "lucide-react";
-import Upload from "./svg/upload";
 
 const HeroSection = () => {
   return (
@@ -11,8 +10,14 @@ const HeroSection = () => {
         <ShinyText />
       </a>
       <h1
-        className="bold text-center"
-        style={{ fontSize: "6rem", lineHeight: "6.4rem" }}
+        className="bold text-center text-transparent"
+        style={{
+          fontSize: "6rem",
+          lineHeight: "6.4rem",
+          background:
+            "linear-gradient(180deg, hsla(0, 0%, 90%, 1) 0%, hsla(0, 0%, 80%, 1) 80%, hsla(0, 0%, 25%, 1) 100%)",
+          backgroundClip: "text",
+        }}
       >
         Ensure protection in <br />
         your community.
@@ -43,7 +48,7 @@ const HeroSection = () => {
         <div className="group">
           <a href="signin.html" className="btn-secondary-big ">
             how it works
-            <ChevronRight />
+            <ChevronRight color="#aaafb5" />
           </a>
         </div>
       </div>
