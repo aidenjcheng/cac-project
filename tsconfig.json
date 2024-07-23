@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
+    "types": ["@vidstack/react/globals"],
     "allowJs": true,
     "esModuleInterop": true,
     "baseUrl": ".",

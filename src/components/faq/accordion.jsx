@@ -11,7 +11,7 @@ const AccordionDemo = () => {
       <Accordion
         type="single"
         collapsible
-        className="w-full flex flex-col gap-2"
+        className="w-full flex flex-col gap-1"
       >
         <AccordionItem value="item-1" style={{ borderColor: "#232323" }}>
           <AccordionTrigger>Is it accessible?</AccordionTrigger>

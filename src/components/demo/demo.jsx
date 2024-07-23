@@ -42,12 +42,16 @@ const Demo = () => {
           <CardRevealedPointer className="h-full">
             <div className="space-y-2 flex flex-col items-center gap-4">
               <div className="w-full flex flex-col gap-2">
-              <video autoPlay  src="../../../public/uploadanim.mp4"       loop
-      muted
-      playsInline>  
-          </video>
+                <video
+                  autoPlay
+                  src="../../../public/uploadanim.mp4"
+                  loop
+                  muted
+                  playsInline
+                  className="rounded-xl"
+                ></video>
                 <h3 className="text-xl font-semibold text-neutral-200">
-                  Tools Used
+                  We accept photo and video uploads.
                 </h3>
               </div>
               <p className="text-sm leading-[1.5] text-neutral-400">
@@ -56,8 +60,6 @@ const Demo = () => {
               </p>
             </div>
           </CardRevealedPointer>
-
-
         </div>
       </div>
     </div>

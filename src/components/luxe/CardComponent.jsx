@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 
 export function CardRevealedPointer({ children, className = "" }) {
@@ -19,7 +19,7 @@ export function CardRevealedPointer({ children, className = "" }) {
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
-            radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(38, 38, 38, 0.8), transparent 80%)
+            radial-gradient(200px circle at ${mouseX}px ${mouseY}px, rgba(38, 38, 38, 0.5), transparent 80%)
           `,
         }}
       />

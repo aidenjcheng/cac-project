@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UploadSvg from "./uploadnew.jsx";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
-const Upload = () => {
+const Upload = ({ handleUploadClick, handleClickOutside }) => {
+  const uploadVariants = {
+    animate: {
+      scale: [1, 1.01, 1],
+      boxShadow: [
+        "rgba(255, 255, 255, 0.35) 0px 5px 15px",
+        "rgba(255, 255, 255, 0.35) 0px 5px 30px",
+        "rgba(255, 255, 255, 0.35) 0px 5px 15px",
+      ],
+      transition: {
+        duration: 1,
+        repeat: Infinity,
+        repeatDelay: 3,
+        ease: "easeInOut",
+      },
+    },
+  };
   return (
     <motion.div
-      className="ripple-container cursor-pointer rounded-full"
-      initial={{ scale: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      className="cursor-pointer rounded-full upload-svg"
+      variants={uploadVariants}
+      animate="animate"
+      onClick={() => handleUploadClick(true)}
+      transition={{ type: "spring", stiffness: 500, damping: 20 }}
     >
       <UploadSvg />
-      <div className="ripple"></div>
-      <div className="ripple" style={{ animationDelay: "1s" }}></div>
-      <div className="ripple" style={{ animationDelay: "2s" }}></div>
-      <div className="ripple" style={{ animationDelay: "3s" }}></div>
     </motion.div>
   );
 };

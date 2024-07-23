@@ -1,0 +1,22 @@
+strong {
+  font-family: "Supreme Medium";
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+a {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
+a:hover {
+  color: #3b82f6;
+}

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import Chevron from "./svg/chevron";
+import Chevron from "../svg/chevron";
 import { motion, AnimatePresence } from "framer-motion";
-import Card from "./luxe/CardRevealedPointer";
-import CardCopy from "./luxe/test";
+import KnifeCard from "../luxe/KnifeCard";
+import GunCard from "../luxe/GunCard";
+import BigCard from "../luxe/test";
 import HeaderItem from "./headeritem";
-import Logo from "./svg/logo";
+import Logo from "../svg/logod";
+import Logo1 from "../svg/logo";
+import { Phone } from "lucide-react";
+
 import { Rocket, Info } from "lucide-react";
 
 const Header = () => {
@@ -34,8 +38,9 @@ const Header = () => {
               bottom: 0,
               backdropFilter: "blur(15px)",
               backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 10,
+              zIndex: 20,
             }}
+            className="w-full h-full"
           ></motion.div>
         )}
       </AnimatePresence>
@@ -45,7 +50,7 @@ const Header = () => {
         onMouseLeave={() => isHovered && setIsHovered(false)}
         style={{
           borderColor: isHovered ? "#202225" : "transparent",
-          zIndex: isHovered ? 20 : 10,
+          zIndex: isHovered ? 30 : 20,
         }}
       >
         <motion.div
@@ -63,16 +68,11 @@ const Header = () => {
         >
           <div>
             <a
-              className="w-min medium text-transparent flex flex-row justify-center gap-2"
-              style={{
-                background:
-                  "linear-gradient(180deg, hsla(0, 0%, 90%, 1) 0%, hsla(0, 0%, 80%, 1) 80%, hsla(0, 0%, 25%, 1) 100%)",
-                backgroundClip: "text",
-              }}
+              className=" flex flex-row justify-center gap-1 items-center"
               href="index.html"
             >
-              <Logo />
-              detcetdsadaso
+              <Logo1 />
+              <span className="text-white sans text-lg">aegis</span>
             </a>
           </div>
 
@@ -84,17 +84,17 @@ const Header = () => {
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 href="about.html"
               >
-                about
+                About
               </motion.a>
             </motion.li>
             <motion.li className="header__item text-secondary">
               <motion.a
-                href="help.html"
+                href="contact.html"
                 initial={{ color: "#aaafb5" }}
                 whileHover={{ color: "#fff" }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                help
+                Contact
               </motion.a>
             </motion.li>
             <motion.li className="header__item text-secondary">
@@ -105,17 +105,17 @@ const Header = () => {
                 onHoverStart={() => HandleChevronHover(true)}
                 style={{ color: isHovered ? "#fff" : "#aaafb5" }}
               >
-                resources
+                Resources
                 <Chevron isHovered={isHovered} />
               </motion.a>
             </motion.li>
           </ul>
           <motion.div className="flex flex-row gap-2">
-            <a className="btn-secondary" href="index.html">
-              get started
+            <a className="btn-secondary" href="howitworks.html">
+              How it works
             </a>
-            <a className="btn" href="index.html">
-              sign in
+            <a className="btn" href="upload.html">
+              Start now
             </a>
           </motion.div>
         </motion.div>
@@ -145,9 +145,9 @@ const Header = () => {
                     {[
                       "./Mission.html",
                       "Mission",
-                      "Why we created x",
-                      <span className="inline-flex align-middle">
-                        <Rocket className="size-4 " />
+                      "Why we created Aegis.",
+                      <span className="inline-flex align-middle ">
+                        <Rocket className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>
@@ -155,11 +155,11 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "./info",
-                      "Information",
-                      "description",
+                      "./crisisnumbers.html",
+                      "Crisis Numbers",
+                      "Information on crisis numbers.",
                       <span className="inline-flex align-middle">
-                        <Info className="size-4 " />
+                        <Phone className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>
@@ -167,11 +167,11 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "./enterprise.html",
-                      "enterprise",
-                      "description",
+                      "./knifesafety.html",
+                      "Knife Safety",
+                      "Information on knife safety.",
                       <span className="inline-flex align-middle">
-                        <Rocket className="size-4 " />
+                        <Info className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>
@@ -179,17 +179,19 @@ const Header = () => {
               </ul>
               <div
                 style={{ width: "70%" }}
-                className="flex flex-wrap flex-row gap-2"
+                className="flex flex-row justify-end gap-2 pr-2"
               >
-                <a href="howitworks.html">
-                  <CardCopy />
-                </a>
-                <div className="flex flex-col gap-2">
-                  <a href="test.html">
-                    <Card />
+                <div className="w-1/2 h-full">
+                  <a href="howitworks.html" className="w-full h-full">
+                    <BigCard />
                   </a>
-                  <a href="test.html">
-                    <Card />
+                </div>
+                <div className="flex flex-col gap-2 w-1/2 h-full">
+                  <a href="gunsafety.html" className="h-1/2">
+                    <GunCard />
+                  </a>
+                  <a href="knifesafety.html" className="h-1/2">
+                    <KnifeCard />
                   </a>
                 </div>
               </div>

@@ -10,7 +10,7 @@ function Icon({ isHovered }) {
       fill="none"
       viewBox="0 0 21 20"
       style={{
-        top: "2px",
+        top: "0.5px",
         position: "relative",
         scale: "0.9",
         rotate: isHovered ? "180deg" : "0deg",

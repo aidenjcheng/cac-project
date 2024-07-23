@@ -28,3 +28,11 @@
     opacity: 0;
   }
 }
+
+.art-volume-inner {
+  border-radius: 15px;
+}
+
+.art-state {
+  transition: 0s none !important;
+}

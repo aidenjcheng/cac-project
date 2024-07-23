@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "./accordion";
-import AnimatedShinyText from "./magicui/animated-shiny-text";
+import AnimatedShinyText from "../magicui/animated-shiny-text";
 import { cn } from "@/lib/utils";
 
 const FAQ = () => {
@@ -26,14 +26,7 @@ const FAQ = () => {
             </AnimatedShinyText>
           </div>
         </div>
-        <h1
-          className="text-7xl w-full text-wrap bold text-transparent"
-          style={{
-            background:
-              "linear-gradient(180deg, hsla(0, 0%, 90%, 1) 0%, hsla(0, 0%, 80%, 1) 80%, hsla(0, 0%, 25%, 1) 100%)",
-            backgroundClip: "text",
-          }}
-        >
+        <h1 className="text-7xl w-full text-wrap bold text-white">
           Have any questions?
         </h1>
       </div>
