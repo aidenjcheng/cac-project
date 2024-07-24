@@ -3,38 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cerebria</title>
+    <title>Atla AI</title>
     <link rel="stylesheet" href="./src/index.css" />
     <link rel="stylesheet" href="./src/app.css" />
   </head>
   <body>
     <section
-      class="aboutus__section h-full w-full flex flex-col items-center gap-24"
+      class="aboutus__section h-full w-full flex flex-col items-center gap-24 mt-[5rem]"
       style="gap: 250px"
     >
-      <div class="aiden__section mx-auto flex flex-col">
-        <span class="aboutus__title bold"> ABOUT ME </span>
-        <span class="aboutus__aiden">
-          Hi, I'm Aiden. I'm a fifteen year old highschool student living on the
-          east coast 🏖️.<br /><br />
-          I worked primarily on the front-end development of this project. You
-          can contact me at aidenjcheng12@gmail.com, or click the button.
-        </span>
-        <a class="btn-big w-min mt-10" href="mailto:aidenjcheng12@gmail.com"
-          >Contact me :3</a
-        >
+      <div class="aiden__section mx-auto flex flex-row">
+        <div class="flex flex-row w-[100%] justify-center items-center gap-[5%]">
+          <div class="flex flex-col w-[60%]">
+          <span class="aboutus__title bold"> ABOUT ME </span>
+          <span class="aboutus__aiden">
+            Hi, I'm Aiden. I'm a fifteen year old highschool student living on
+            the east coast 🏖️.<br /><br />
+            I worked primarily on the front-end development of this project. You
+            can contact me at aidenjcheng12@gmail.com, or click the button.
+          </span>
+          <a class="btn-big w-min mt-10" href="mailto:aidenjcheng12@gmail.com"
+            >Contact me</a
+          >
+          </div>  
+          <a href="https://github.com/aidenjcheng">
+          <div class="box-content rounded-2xl hover:scale-[1.05] ease-[cubic-bezier(0.29, 1.28, 0.47, 0.99)] transition-all duration-200 border-2 border-solid border-white/20 bg-black">
+            <img src="./github.svg" class="scale-[0.7]"></img>
+        </div>
+      </a>
+        </div>
+
       </div>
-      <div class="aiden__section mx-auto flex flex-col">
-        <span class="aboutus__title bold"> ABOUT ME </span>
-        <span class="aboutus__aiden">
-          Hi, I'm Kevin. I'm a fifteen year old highschool student living on the
-          east coast 🏖️.<br /><br />
-          I worked primarily on the back-end development of this project. You
-          can contact me at kevinx8017@gmail.com, or click the button.
-        </span>
-        <a class="btn-big w-min mt-10" href="mailto:kevinx8017@gmail.com"
-          >Contact me :3</a
-        >
+      <div class="aiden__section mx-auto flex flex-row">
+        <div class="flex flex-row w-[100%] justify-center items-center gap-[5%]">
+          <div class="flex flex-col w-[60%]">
+          <span class="aboutus__title bold"> ABOUT ME </span>
+          <span class="aboutus__aiden">
+            Hi, I'm Kevin. I'm a fifteen year old highschool student living on
+            the east coast 🏖️.<br /><br />
+            I worked primarily on the back-end development of this project. You
+            can contact me at kevinx8017@gmail.com, or click the button.
+          </span>
+          <a class="btn-big w-min mt-10" href="mailto:kevinx8017@gmail.com.com"
+            >Contact me</a
+          >
+          </div>  
+          <a href="https://github.com/aidenjcheng">
+            <div class="box-content rounded-2xl hover:scale-[1.05] ease-[cubic-bezier(0.29, 1.28, 0.47, 0.99)] transition-all duration-200 border-2 border-solid border-white/20 bg-black">
+              <img src="./github.svg" class="scale-[0.7]"></img>
+          </div>
+      </a>
+        </div>
+
       </div>
     </section>
   </body>
@@ -48,7 +68,7 @@
       height: 200vh;
     }
     .aiden__section {
-      width: 50%;
+      width: 100%;
     }
     .aboutus__title {
       font-style: capitalize;
