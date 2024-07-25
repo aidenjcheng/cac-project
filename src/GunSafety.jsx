@@ -6,11 +6,13 @@ import Chart from "./components/blog/chart.tsx";
 import { ThemeProvider } from "./components/themeprovider";
 import NumberTicker from "./components/magicui/number-ticker";
 import Quote from "./components/blog/blockquote.jsx";
+import Logo from "./components/svg/borderlogo.jsx";
+import Logo1 from "./components/svg/logo.jsx";
 
 const Mission = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="w-screen">
+      <div>
         <div className="fixed w-full flex justify-center">
           <Header />
         </div>
@@ -191,7 +193,7 @@ const Mission = () => {
             </div>,
           ]}
         </Blog>
-      </div>
+      </div>   
     </ThemeProvider>
   );
 };

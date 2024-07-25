@@ -5,11 +5,13 @@ import Header from "./components/header/header.jsx";
 import Chart from "./components/blog/chart.tsx";
 import { ThemeProvider } from "./components/themeprovider.tsx";
 import NumberTicker from "./components/magicui/number-ticker.tsx";
+import Logo from "./components/svg/borderlogo.jsx";
+import Logo1 from "./components/svg/logo.jsx";
 
 const Mission = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="w-screen">
+      <div>
         <div className="fixed w-full flex justify-center">
           <Header />
         </div>
@@ -23,7 +25,7 @@ const Mission = () => {
               <p className="pt-10 text-[rgb(190,190,190)]">
                 <br />
                 <br />
-                <strong className="med text-xl">
+                <strong className="med">
                   The Alarming Rise of Knife Attacks in High Schools
                 </strong>
                 <br />

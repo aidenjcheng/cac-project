@@ -1,10 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Rocket } from "lucide-react";
+import Logo from "../svg/borderlogo.jsx";
+import Logo1 from "../svg/logo.jsx";
+
 
 const Blog = ({ children }) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="flex flex-col items-center w-[60%] mx-auto h-full gap-4 mt-52 border-b border-neutral-800 pb-20">
         <div className="p-5 bg-neutral-900 rounded-xl">{children[0]}</div>
         <h3
@@ -35,6 +38,86 @@ const Blog = ({ children }) => {
       <div className="flex justify-center mt-10 w-3/5 mx-auto text-lg">
         {children[4]}
       </div>
+      <footer className="flex items-center justify-center w-full h-[calc(100vh-5rem)] flex-col overflow-hidden mt-[10rem] border-t-[1px] border-t-white/10 border-solid pt-[2rem] relative z-0">
+        <div className="h-[calc(100%-20px)] w-full overflow-hidden relative">
+          <div className="flex flex-row mx-10 gap-[80px]">
+            <div className="flex flex-col gap-5 mt-10">
+              <div className="flex items-center gap-1 sans text-lg">
+                <Logo1 />
+                aegis
+              </div>
+              <p className="text-secondary">Ensuring a more safe environment</p>
+              <a className="btn-big w-min" href="./upload.html">
+                Start now
+              </a>
+            </div>
+            <div className=" mt-10">
+              <ul className="flex-col flex gap-5">
+                <li className="text-white med">Navigation</li>
+                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                  <a href="./aboutus.html">About</a>
+                </li>
+                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                  <a href="contact.html">Contact</a>
+                </li>
+                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                  <a href="howitworks.html">How it works</a>
+                </li>
+              </ul>
+            </div>
+            <div className=" mt-10">
+              <ul className="flex-col flex gap-5">
+                <li className="text-white med">Resources</li>
+                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                  <a href="./Mission.html">Mission</a>
+                </li>
+                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                  <a href="gunsafety.html">Gun Safety</a>
+                </li>
+                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                  <a href="knifesafety.html">Knife Safety</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            className="absolute bottom-0 left-0 w-full overflow-hidden"
+            style={{ height: "50%" }}
+          >
+            <div className="absolute bottom-0 w-screen transform -translate-x-1/2 left-1/2">
+              <span
+                className="flex items-center justify-center gap-1 sans text-transparent text-[20rem] w-full max-w-[80vw] mx-auto"
+                style={{
+                  WebkitTextStrokeColor: "#202123",
+                  WebkitTextStrokeWidth: "1.5px",
+                  transform: "translateY(40%)",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                <Logo />
+                aegis
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="h-[60px] w-full border-t border-b-white/10 border-solid box-border p-5 flex items-center">
+          <p className="text-secondary">
+            Made by{" "}
+            <a
+              href="mailto:aidenjcheng12@gmail.com"
+              className="hover:underline"
+            >
+              {" "}
+              Aiden
+            </a>{" "}
+            and{" "}
+            <a href="mailto:kevinx8017@gmail.com" className="hover:underline">
+              Kevin{" "}
+            </a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

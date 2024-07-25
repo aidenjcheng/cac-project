@@ -10,7 +10,7 @@ function Icon() {
       viewBox="0 0 400 400"
       className="size-[30rem]"
       stroke="rgba(255, 255, 255, 0.01)"
-      stroke-opacity="0.6"
+      strokeOpacity="0.6"
       strokeWidth="2"
     >
       <path
