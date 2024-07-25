@@ -7,9 +7,11 @@ import BigCard from "../luxe/test";
 import HeaderItem from "./headeritem";
 import Logo from "../svg/logod";
 import Logo1 from "../svg/logo";
+import Support from "../svg/support";
+
 import { Phone } from "lucide-react";
 
-import { Rocket, Info } from "lucide-react";
+import { Rocket } from "lucide-react";
 
 const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -171,7 +173,7 @@ const Header = () => {
                       "What You Can Do",
                       "How you can help your community.",
                       <span className="inline-flex align-middle">
-                        <Info className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
+                        <Support className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>
