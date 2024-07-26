@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ArtPlayer from "./result/artplayer.jsx";
 import KnifeRadialChart from "./result/knifechart.tsx";
 import GunRadialChart from "./result/gunchart.tsx";
@@ -7,9 +7,11 @@ import { LayoutDashboard } from "lucide-react";
 import SidebarItem from "./result/sidebar.jsx";
 import SearchBox from "./result/searchbox.tsx";
 import { ThemeProvider } from "./themeprovider.tsx";
-import Pfp from "./svg/pfp.jsx";
+import Pfp from "./svg/pfp";
+import User from "./result/user.tsx";
 
 function App() {
+  const [isActive, setIsActive] = useState(false);
   return (
     // <div className="flex flex-col p-5 gap-5">
     //   <div className="flex gap-5">
@@ -32,26 +34,26 @@ function App() {
     //     <KnifeGunChart />
     //   </div>
     // </div>
-    <div className="flex w-full h-full p-5 gap-[3%]">
-      <div className="flex flex-col w-[20%] min-w-[250px] max-w-[40vw] gap-5 bg-[#121212] p-2 rounded-3xl justify-between">
+    <div className="flex w-full h-full gap-[10px] box-border pt-5 pl-5">
+      <div className="flex flex-col w-[15%] min-w-[250px] max-w-[400px] gap-5 bg-[#181818] p-2 rounded-3xl justify-between">
         <div className="flex flex-col w-full h-full gap-5">
-          <div className="w-full border-b border-white/10 pb-3">
-            <div className="flex items-center gap-3 bg-[#1d1d1d] p-3 rounded-xl cursor-pointer">
-              <Pfp />
-              <div className="flex flex-col">
-                <div>Aiden Cheng</div>
-                <div className="text-secondary text-sm">
-                  aidenjcheng12@gmail.com
-                </div>
-              </div>
-            </div>
-          </div>
+          <User />
           <div className="flex flex-col gap-5 h-[80%]">
             <SearchBox />
             <div className="h-full w-full rounded-xl">
-              <ul className="w-full h-full text-[1rem] flex flex-col gap-2 bg-[#121212] rounded-xl">
-                <SidebarItem>
-                  <LayoutDashboard className="size-5 group-hover:stroke-white/85 transition-colors duration-300 ease-in-out stroke-white/50" />{" "}
+              <ul className="w-full h-full text-[1rem] flex flex-col gap-2 rounded-xl">
+                <SidebarItem variant="active">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="Layer_1"
+                    data-name="Layer 1"
+                    viewBox="0 0 24 24"
+                    width="512"
+                    height="512"
+                    className="size-5 group-hover:fill-white/65 transition-colors duration-300 ease-in-out fill-white/50"
+                  >
+                    <path d="M22,5.644V2.5c0-.828-.672-1.5-1.5-1.5s-1.5,.672-1.5,1.5v1.089L15.077,.941c-1.869-1.262-4.286-1.262-6.153,0L2.424,5.327C.906,6.352,0,8.056,0,9.886v8.614c0,3.032,2.468,5.5,5.5,5.5h13c3.032,0,5.5-2.468,5.5-5.5V9.886c0-1.653-.739-3.202-2-4.242Zm-1,12.856c0,1.379-1.121,2.5-2.5,2.5H5.5c-1.379,0-2.5-1.121-2.5-2.5V9.886c0-.832,.412-1.606,1.102-2.072L10.603,3.428c.424-.287,.911-.431,1.397-.431s.974,.144,1.398,.431l6.5,4.386c.689,.466,1.102,1.24,1.102,2.072v8.614Z" />
+                  </svg>
                   Dashboard
                 </SidebarItem>
 
@@ -62,7 +64,7 @@ function App() {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg "
-                    className="size-5 group-hover:stroke-white/85 transition-colors duration-300 ease-in-out stroke-white/50"
+                    className="size-5 group-hover:stroke-white/65 transition-colors duration-300 ease-in-out stroke-white/50"
                   >
                     <path
                       d="M8 16L12 12M12 12L16 16M12 12V21M20 16.7428C21.2215 15.734 22 14.2079 22 12.5C22 9.46243 19.5376 7 16.5 7C16.2815 7 16.0771 6.886 15.9661 6.69774C14.6621 4.48484 12.2544 3 9.5 3C5.35786 3 2 6.35786 2 10.5C2 12.5661 2.83545 14.4371 4.18695 15.7935"
@@ -122,7 +124,7 @@ function App() {
           </SidebarItem>
         </div>
       </div>
-      <div className="flex w-[77%] bg-[#1d1d1d] rounded-3xl box-border flex-col gap-5">
+      <div className="flex w-[85%] bg-[#1d1d1d] rounded-3xl box-border flex-col gap-5">
         <div className="border-b border-white/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3">
           <p>Hey, Aiden!</p>
           <p className="text-sm text-secondary">

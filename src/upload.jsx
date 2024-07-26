@@ -161,7 +161,7 @@ const App = () => {
                     <UploadFile />
                     <div className="flex flex-col justify-center items-center">
                       <h3 className="text-center text-secondary text-[14px]">
-                        <strong>Click to upload</strong> or drag and drop
+                        <span className="text-white">Click to upload </span>or drag and drop
                       </h3>
                       <p className="text-[#7B7B7B] text-center mx-auto text-[14px]">
                         MP4, PNG, WEBP, or JPG
