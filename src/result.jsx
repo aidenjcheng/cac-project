@@ -8,7 +8,7 @@ const Result = () => {
 
   return (
     <ThemeProvider>
-      <div>
+      <div className="h-full w-full">
         <Player />
       </div>
     </ThemeProvider>
