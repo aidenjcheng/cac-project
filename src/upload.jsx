@@ -8,6 +8,7 @@ import X from "./components/svg/x.jsx";
 import { Progress } from "./components/ui/progress";
 import { ThemeProvider } from "./components/themeprovider";
 import { Video } from "lucide-react";
+import { handleFileUpload, handleUploadClick, processVideo } from "./script.js";
 import {
   Tooltip,
   TooltipContent,
@@ -44,8 +45,10 @@ const App = () => {
     fileInputRef.current.click();
   };
 
-  const handleUploadClick = (visible) => {
-    setIsUploadVisible(visible);
+  const handleUploadClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
   };
 
   const handleClickOutside = (event) => {
@@ -74,6 +77,13 @@ const App = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (uploadedFile && !showProgress) {
+      processVideo(uploadedFile);
+    }
+  };
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -105,37 +115,38 @@ const App = () => {
         </div>
         <div className="flex flex-col items-center w-full h-full justify-center z-[60]">
           <AnimatePresence>
-            {isUploadVisible && (
-              <motion.div
-                className="w-[550px] h-[583px] fixed top-1/2 left-1/2 z-40 bg-[#141518] flex flex-col gap-4 items-center rounded-2xl border-[1px] justify-center border-white/10"
-                style={{
-                  transform: "translate(-50%, -50%)",
-                }}
-                ref={ref}
-                initial={{
-                  opacity: 0,
-                  y: "-50%",
-                  x: "-50%",
-                  scale: 0.5,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: "-50%",
-                  x: "-50%",
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: "-50%",
-                  x: "-50%",
-                  scale: 0.5,
-                }}
-                transition={{
-                  duration: 0.3,
-                  ease: [0.29, 1.48, 0.47, 0.99],
-                }}
-              >
-                <div className="w-[calc(100%-10px)] h-[calc(100%-10px)] mx-auto bg-[#181818] rounded-xl border-[1px] border-solid border-white/5">
+            {/* {isUploadVisible && ( */}
+            <motion.div
+              className="w-[550px] h-[583px] fixed top-1/2 left-1/2 z-40 bg-[#141518] flex flex-col gap-4 items-center rounded-2xl border-[1px] justify-center border-white/10"
+              style={{
+                transform: "translate(-50%, -50%)",
+              }}
+              ref={ref}
+              initial={{
+                opacity: 0,
+                y: "-50%",
+                x: "-50%",
+                scale: 0.5,
+              }}
+              animate={{
+                opacity: 1,
+                y: "-50%",
+                x: "-50%",
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                y: "-50%",
+                x: "-50%",
+                scale: 0.5,
+              }}
+              transition={{
+                duration: 0.3,
+                ease: [0.29, 1.48, 0.47, 0.99],
+              }}
+            >
+              <div className="w-[calc(100%-10px)] h-[calc(100%-10px)] mx-auto bg-[#181818] rounded-xl border-[1px] border-solid border-white/5">
+                <form onSubmit={handleFormSubmit}>
                   <X setIsUploadVisible={setIsUploadVisible} />
                   <motion.div className="p-5 mt-5 flex flex-col gap-2">
                     <h1 className="text-xl text-center">Upload a video</h1>
@@ -145,14 +156,14 @@ const App = () => {
                     </p>
                   </motion.div>
                   <motion.div
-                    onClick={handleDivClick}
+                    onClick={() => handleUploadClick(fileInputRef)}
                     className="w-[512px] h-[256px] mx-auto flex items-center justify-center flex-col gap-2 rounded-[20px] border-[1px] border-solid border-white/15 bg-[#1c1c1c]"
                   >
                     <input
                       type="file"
                       id="fileInput"
-                      name="image"
-                      accept="image/*"
+                      name="video"
+                      accept="video/*"
                       required
                       hidden
                       ref={fileInputRef}
@@ -161,7 +172,8 @@ const App = () => {
                     <UploadFile />
                     <div className="flex flex-col justify-center items-center">
                       <h3 className="text-center text-secondary text-[14px]">
-                        <span className="text-white">Click to upload </span>or drag and drop
+                        <span className="text-white">Click to upload </span>or
+                        drag and drop
                       </h3>
                       <p className="text-[#7B7B7B] text-center mx-auto text-[14px]">
                         MP4, PNG, WEBP, or JPG
@@ -233,7 +245,7 @@ const App = () => {
                           </div>
                         ) : null}
                         <div className="w-[80%] h-full flex flex-col gap-[1px] ">
-                          <p>{uploadedFile.name}</p>
+                          <p className="truncate">{uploadedFile.name}</p>
                           <p className="text-sm text-secondary">
                             {formatFileSize(uploadedFile.size)}
                           </p>
@@ -275,17 +287,18 @@ const App = () => {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <motion.p
+                        <input
                           className="btn absolute bottom-5 right-5 cursor-pointer"
+                          id="upload"
+                          type="submit"
+                          value="Upload"
                           style={{
                             backgroundColor: showProgress
                               ? "rgba(255, 255, 255, 0.6)"
                               : "rgba(255, 255, 255, 1)",
                             cursor: showProgress ? "not-allowed" : "pointer",
                           }}
-                        >
-                          Upload
-                        </motion.p>
+                        />
                       </TooltipTrigger>
                       {showProgress && (
                         <TooltipContent>
@@ -294,9 +307,10 @@ const App = () => {
                       )}
                     </Tooltip>
                   </TooltipProvider>
-                </div>
-              </motion.div>
-            )}
+                </form>
+              </div>
+            </motion.div>
+            {/* )} */}
           </AnimatePresence>
 
           <Upload

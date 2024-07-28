@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import Pfp from "../svg/pfp";
 import { motion, stagger, useAnimate } from "framer-motion";
 import {
-  LayoutGridIcon,
   UserCircleIcon,
   ChevronRightIcon,
   ChevronDownIcon,
@@ -37,7 +36,7 @@ function useMenuAnimation(isOpen: boolean) {
         },
         {
           ease: "easeInOut",
-          duration: 0.3,
+          duration: 0.2,
         }
       );
     }
@@ -175,7 +174,7 @@ export function DropdownMenu({
               </span>
             </div>
             <ChevronDownIcon
-              size={22}
+              size={28}
               className="text-white/50"
               style={{
                 transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",

@@ -17,8 +17,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "../../components/ui/command";
 
 export function CommandDialogDemo() {

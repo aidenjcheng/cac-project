@@ -72,7 +72,7 @@ const Footer = () => {
               <span
                 className="flex items-center justify-center gap-1 sans text-transparent text-[20rem] w-full max-w-[80vw] mx-auto"
                 style={{
-                  WebkitTextStrokeColor: "#202123",
+                  WebkitTextStrokeColor: "#27282a",
                   WebkitTextStrokeWidth: "1.5px",
                   transform: "translateY(40%)",
                   whiteSpace: "nowrap",
