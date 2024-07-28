@@ -40,7 +40,7 @@ export function CommandDialogDemo() {
         className="group flex gap-2 w-full justify-between p-2 pl-5 bg-[#242424] rounded-xl items-center cursor-pointer"
         onClick={() => setOpen(true)}
       >
-        <div className="flex text-[#454545] items-center gap-3 group-hover:text-white/70 transition-colors duration-300 ease-in-out">
+        <div className="flex text-[#545454] items-center gap-3 group-hover:text-white/70 transition-colors duration-300 ease-in-out">
           <svg
             width="100%"
             height="100%"
@@ -64,7 +64,7 @@ export function CommandDialogDemo() {
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="size-4 group-hover:stroke-white transition-colors duration-300 ease-in-out stroke-white/70 bg-white/10 rounded-md p-1 box-content"
+          className="size-4 stroke-white/70 bg-white/10 rounded-md p-1 box-content"
         >
           <path
             d="M7 22L17 2"

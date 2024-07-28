@@ -36,3 +36,7 @@
 .art-state {
   transition: 0s none !important;
 }
+
+.bg-visible {
+  background-color: #2c2c2c !important;
+}

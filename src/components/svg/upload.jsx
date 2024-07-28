@@ -1,34 +1,16 @@
-import React, { useEffect } from "react";
-import UploadSvg from "./uploadnew.jsx";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Plus } from "lucide-react";
 
-const Upload = ({ handleUploadClick, handleClickOutside }) => {
-  const uploadVariants = {
-    animate: {
-      scale: [1, 1.01, 1],
-      boxShadow: [
-        "rgba(255, 255, 255, 0.35) 0px 5px 15px",
-        "rgba(255, 255, 255, 0.35) 0px 5px 30px",
-        "rgba(255, 255, 255, 0.35) 0px 5px 15px",
-      ],
-      transition: {
-        duration: 1,
-        repeat: Infinity,
-        repeatDelay: 3,
-        ease: "easeInOut",
-      },
-    },
-  };
+const Upload = ({ handleUploadButtonClick, handleClickOutside }) => {
+  const uploadVariants = {};
   return (
     <motion.div
-      className="cursor-pointer rounded-full upload-svg"
-      variants={uploadVariants}
-      animate="animate"
-      onClick={() => handleUploadClick(true)}
-      transition={{ type: "spring", stiffness: 500, damping: 20 }}
+      onClick={() => handleUploadButtonClick(true)}
+      className="w-[25rem] h-[18rem] flex items-center justify-center border-dashed border-white/10 border rounded-3xl flex-col gap-2"
     >
-      <UploadSvg />
+      <p>upload a video</p>
+      <Plus />
     </motion.div>
   );
 };
