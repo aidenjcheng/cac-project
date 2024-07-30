@@ -1,12 +1,12 @@
-import Blog from "./components/blog/blog.jsx";
+import Blog from "../components/blog/blog.jsx";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Header from "./components/header/header.jsx";
-import Chart from "./components/blog/chart.tsx";
-import { ThemeProvider } from "./components/themeprovider.tsx";
-import NumberTicker from "./components/magicui/number-ticker.tsx";
-import Logo from "./components/svg/borderlogo.jsx";
-import Logo1 from "./components/svg/logowithbg.jsx";
+import Header from "../components/header/header.jsx";
+import Chart from "../components/blog/chart.tsx";
+import { ThemeProvider } from "../components/themeprovider.tsx";
+import NumberTicker from "../components/magicui/number-ticker.tsx";
+import Logo from "../components/svg/borderlogo.jsx";
+import Logo1 from "../components/svg/logowithbg.jsx";
 
 const Mission = () => {
   return (
