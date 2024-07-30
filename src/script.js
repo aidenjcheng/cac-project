@@ -1,5 +1,5 @@
 export async function processVideo(videoFile) {
-  const apiUrl = "https://0c1a-173-79-221-112.ngrok-free.app/process_video"; // Update this to your actual API URL
+  const apiUrl = "https://8247-173-79-221-112.ngrok-free.app/process_video";
   const formData = new FormData();
   formData.append("video", videoFile, videoFile.name);
 
@@ -19,16 +19,54 @@ export async function processVideo(videoFile) {
         const blob = await response.blob();
         const parts = await splitMultipart(blob, contentType);
 
+        let videoUrl;
         for (const part of parts) {
           const filename = getFilenameFromContentDisposition(
             part.headers["content-disposition"]
           );
           if (filename) {
+            console.log("Processing file:", filename);
+            if (filename.endsWith(".mp4") && !videoUrl) {
+              videoUrl = URL.createObjectURL(part.content);
+              console.log("Video URL created:", videoUrl);
+              try {
+                // Check if localStorage is available
+                if (typeof localStorage !== "undefined") {
+                  localStorage.setItem("processedVideoUrl", videoUrl);
+                  console.log("Video URL stored in localStorage");
+                } else {
+                  console.error("localStorage is not available");
+                }
+              } catch (error) {
+                console.error("Error storing video URL:", error);
+              }
+            }
             downloadFile(URL.createObjectURL(part.content), filename);
           }
         }
 
         console.log("Processing complete. Results saved as separate files.");
+
+        // Check if the URL was actually stored
+        if (typeof localStorage !== "undefined") {
+          const storedUrl = localStorage.getItem("processedVideoUrl");
+          if (storedUrl) {
+            console.log("Video URL confirmed in localStorage:", storedUrl);
+
+            // Redirect to result.html
+            setTimeout(() => {
+              console.log("Redirecting to result.html...");
+              window.location.href = "result.html";
+            }, 2000); // Increased delay to 2 seconds
+          } else {
+            console.error("Failed to store video URL in localStorage");
+            if (!videoUrl) {
+              console.error("No video URL was created");
+            }
+          }
+        } else {
+          console.error("localStorage is not available for verification");
+        }
       } else {
         console.log("Unexpected response format. Saving as single file.");
         const blob = await response.blob();
@@ -45,6 +83,8 @@ export async function processVideo(videoFile) {
 
   console.log("Process complete.");
 }
+
+// The rest of your code remains the same
 
 async function splitMultipart(blob, contentType) {
   const boundary = contentType.split("boundary=")[1];

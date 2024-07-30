@@ -165,13 +165,15 @@ export function DropdownMenu({
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
         <motion.div className="w-full" whileTap={{ scale: 0.97 }}>
-          <div className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-white/10">
-            <Pfp />
-            <div className="flex flex-col justify-start">
-              <span className="text-left">Aiden Cheng</span>
-              <span className="text-secondary text-sm">
-                aidenjcheng12@gmail.com
-              </span>
+          <div className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-white/10 justify-between">
+            <div className="flex items-center gap-2">
+              <Pfp />
+              <div className="flex flex-col justify-start">
+                <span className="text-left">Aiden Cheng</span>
+                <span className="text-secondary text-sm">
+                  aidenjcheng12@gmail.com
+                </span>
+              </div>
             </div>
             <ChevronDownIcon
               size={28}

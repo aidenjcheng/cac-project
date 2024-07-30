@@ -17,6 +17,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { Result } from "postcss";
 
 const App = () => {
   const [isUploadVisible, setIsUploadVisible] = useState(false);
@@ -298,6 +299,7 @@ const App = () => {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
+                            {/* <a href="./result.html"> */}
                             <input
                               className="btn"
                               id="upload"
@@ -312,6 +314,7 @@ const App = () => {
                                   : "pointer",
                               }}
                             />
+                            {/* </a> */}
                           </TooltipTrigger>
                           {showProgress && (
                             <TooltipContent>
