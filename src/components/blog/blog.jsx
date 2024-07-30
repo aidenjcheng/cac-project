@@ -4,12 +4,11 @@ import { Rocket } from "lucide-react";
 import Logo from "../svg/borderlogo.jsx";
 import Logo1 from "../svg/logo.jsx";
 
-
 const Blog = ({ children }) => {
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-col items-center w-[60%] mx-auto h-full gap-4 mt-52 border-b border-neutral-800 pb-20">
-        <div className="p-5 bg-neutral-900 rounded-xl">{children[0]}</div>
+        <div>{children[0]}</div>
         <h3
           className="sf"
           style={{

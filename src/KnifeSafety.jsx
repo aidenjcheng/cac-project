@@ -6,7 +6,7 @@ import Chart from "./components/blog/chart.tsx";
 import { ThemeProvider } from "./components/themeprovider.tsx";
 import NumberTicker from "./components/magicui/number-ticker.tsx";
 import Logo from "./components/svg/borderlogo.jsx";
-import Logo1 from "./components/svg/logo.jsx";
+import Logo1 from "./components/svg/logowithbg.jsx";
 
 const Mission = () => {
   return (
@@ -17,7 +17,7 @@ const Mission = () => {
         </div>
         <Blog>
           {[
-            "dsaodj",
+            <Logo1 />,
             "KNIFE SAFETY",
             "The Impact of Knives in Schools",
             "An examination of knife-related incidents in U.S. secondary schools, including statistical data, regional trends, and current prevention strategies. ",

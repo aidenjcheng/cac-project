@@ -1,7 +1,5 @@
-import JSZip from "jszip";
-
 export async function processVideo(videoFile) {
-  const apiUrl = "https://655e-173-79-221-112.ngrok-free.app/process_video";
+  const apiUrl = "https://0c1a-173-79-221-112.ngrok-free.app/process_video"; // Update this to your actual API URL
   const formData = new FormData();
   formData.append("video", videoFile, videoFile.name);
 
@@ -15,27 +13,27 @@ export async function processVideo(videoFile) {
 
     if (response.ok) {
       console.log("Request successful!");
+      const contentType = response.headers.get("Content-Type");
 
-      // Get the zip file as an ArrayBuffer
-      const zipArrayBuffer = await response.arrayBuffer();
+      if (contentType && contentType.includes("multipart/mixed")) {
+        const blob = await response.blob();
+        const parts = await splitMultipart(blob, contentType);
 
-      // Use JSZip to unzip the file
-      const zip = await JSZip.loadAsync(zipArrayBuffer);
+        for (const part of parts) {
+          const filename = getFilenameFromContentDisposition(
+            part.headers["content-disposition"]
+          );
+          if (filename) {
+            downloadFile(URL.createObjectURL(part.content), filename);
+          }
+        }
 
-      // Extract and save the video file
-      const videoBlob = await zip.file("processed_video.mp4").async("blob");
-      const videoUrl = URL.createObjectURL(videoBlob);
-      downloadFile(videoUrl, "processed_video.mp4");
-
-      // Extract and save the JSON file
-      const jsonText = await zip.file("knife_detections.json").async("text");
-      const jsonBlob = new Blob([jsonText], { type: "application/json" });
-      const jsonUrl = URL.createObjectURL(jsonBlob);
-      downloadFile(jsonUrl, "knife_detections.json");
-
-      console.log(
-        "Processed video and detection data extracted and downloaded."
-      );
+        console.log("Processing complete. Results saved as separate files.");
+      } else {
+        console.log("Unexpected response format. Saving as single file.");
+        const blob = await response.blob();
+        downloadFile(URL.createObjectURL(blob), "processed_results");
+      }
     } else {
       console.error(`Error: Received status code ${response.status}`);
       const errorText = await response.text();
@@ -46,6 +44,34 @@ export async function processVideo(videoFile) {
   }
 
   console.log("Process complete.");
+}
+
+async function splitMultipart(blob, contentType) {
+  const boundary = contentType.split("boundary=")[1];
+  const text = await blob.text();
+  const parts = text.split(`--${boundary}`).slice(1, -1);
+
+  return parts.map((part) => {
+    const [headers, ...contentArray] = part.trim().split("\r\n\r\n");
+    const content = contentArray.join("\r\n\r\n");
+
+    const headerObj = {};
+    headers.split("\r\n").forEach((header) => {
+      const [key, value] = header.split(": ");
+      headerObj[key.toLowerCase()] = value;
+    });
+
+    return {
+      headers: headerObj,
+      content: new Blob([content], { type: headerObj["content-type"] }),
+    };
+  });
+}
+
+function getFilenameFromContentDisposition(contentDisposition) {
+  if (!contentDisposition) return null;
+  const filenameMatch = contentDisposition.match(/filename="?(.+)"?/i);
+  return filenameMatch ? filenameMatch[1] : null;
 }
 
 function downloadFile(url, filename) {

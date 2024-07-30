@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col items-center gap-8 w-full">
           <div className="w-full">
             <h1 className="text-[4rem] medium text-center med w-[80%] mx-auto">
-              Call to Action
+              Enhance your security with Aegis.
             </h1>
             <p className="text-secondary text-center w-3/5 mx-auto">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,

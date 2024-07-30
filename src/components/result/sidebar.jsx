@@ -18,26 +18,28 @@ const SidebarItem = ({ children, variant = "default" }) => {
     active: "text-white",
   };
   return (
-    <motion.li
-      // className="flex w-full p-2 rounded-xl pl-4 group hover:bg-white/5 transition-colors duration-300 ease-in-out cursor-pointer"
-      className={`${baseClasses} ${variantClasses[variant]}`}
-      initial={{
-        boxShadow:
-          variant === "active"
-            ? "rgba(255, 255, 255, 0.3) 0px 0px 2px"
-            : "rgba(255, 255, 255, 0.0) 0px 0px 2px",
-      }}
-      whileHover={{
-        boxShadow:
-          variant === "active"
-            ? "rgba(255, 255, 255, 0.3) 0px 0px 2px"
-            : "rgba(255, 255, 255, 0.3) 0px 0px 2px",
-      }}
-    >
-      <div className={`${baseClassesInner} ${variantClassesInner[variant]}`}>
-        {children}
-      </div>
-    </motion.li>
+    <a href={children[0]}>
+      <motion.li
+        className={`${baseClasses} ${variantClasses[variant]}`}
+        initial={{
+          boxShadow:
+            variant === "active"
+              ? "rgba(255, 255, 255, 0.3) 0px 0px 2px"
+              : "rgba(255, 255, 255, 0.0) 0px 0px 2px",
+        }}
+        whileHover={{
+          boxShadow:
+            variant === "active"
+              ? "rgba(255, 255, 255, 0.3) 0px 0px 2px"
+              : "rgba(255, 255, 255, 0.3) 0px 0px 2px",
+        }}
+      >
+        <div className={`${baseClassesInner} ${variantClassesInner[variant]}`}>
+          {children[1]}
+          {children[2]}
+        </div>
+      </motion.li>
+    </a>
   );
 };
 

@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import Header from "./components/header/header.jsx";
 import Chart from "./components/blog/chart.tsx";
 import { ThemeProvider } from "./components/themeprovider.tsx";
+import Logo1 from "./components/svg/logowithbg.jsx";
 
 const Mission = () => {
   return (
@@ -14,7 +15,7 @@ const Mission = () => {
         </div>
         <Blog>
           {[
-            "dsaodj",
+            <Logo1 />,
             "CRISIS NUMBERS",
             "List of Crisis Numbers",
             "Crisis Numbers are a list of phone numbers and websites that can be called in an emergency situation. These numbers are designed to provide immediate help and support to those in need, whether they are in a crisis or not.",

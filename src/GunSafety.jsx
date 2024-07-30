@@ -7,7 +7,7 @@ import { ThemeProvider } from "./components/themeprovider";
 import NumberTicker from "./components/magicui/number-ticker";
 import Quote from "./components/blog/blockquote.jsx";
 import Logo from "./components/svg/borderlogo.jsx";
-import Logo1 from "./components/svg/logo.jsx";
+import Logo1 from "./components/svg/logowithbg.jsx";
 
 const Mission = () => {
   return (
@@ -18,7 +18,7 @@ const Mission = () => {
         </div>
         <Blog>
           {[
-            "dsaodj",
+            <Logo1 />,
             "GUN SAFETY",
             "The Impact of Guns in Schools ",
             "Examining the devastating effects of firearms in educational settings, including rising incidents, psychological trauma, and the broader societal impact.",
@@ -193,7 +193,7 @@ const Mission = () => {
             </div>,
           ]}
         </Blog>
-      </div>   
+      </div>
     </ThemeProvider>
   );
 };
