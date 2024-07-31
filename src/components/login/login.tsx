@@ -115,7 +115,7 @@ const Login = () => {
                       />
                     </div>
                     //button
-                    <button type="submit" className=" btn-big">
+                    <button type="submit" className=" btn-big w-full">
                       Login
                     </button>
                   </form>
@@ -123,7 +123,7 @@ const Login = () => {
               )}
               {
                 //END OF LOGIN PAGE // SIGN UP PAGE
-              }{" "}
+              }
               {activeTab === "signup" && (
                 <motion.div
                   className="grid gap-6 animate-stagger"
@@ -166,8 +166,8 @@ const Login = () => {
                         </Label>
                       </div>
                     </div>
-                    //button
-                    <button type="submit" className="btn-big">
+                    {/* //button */}
+                    <button type="submit" className="btn-big w-full">
                       Sign up
                     </button>
                   </form>
