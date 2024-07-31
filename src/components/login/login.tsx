@@ -83,6 +83,9 @@ const Login = () => {
                 </motion.div>
               )}
               <AnimatedTabs activeTab={activeTab} onTabChange={setActiveTab} />
+              {
+                // LOGIN PAGE
+              }{" "}
               {activeTab === "login" && (
                 <motion.div
                   className="grid gap-6 animate-stagger"
@@ -90,31 +93,37 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="johndoe@xyz.com"
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="flex items-center">
-                      <Label htmlFor="password">Password</Label>
+                  <form>
+                    <div className="grid gap-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="johndoe@xyz.com"
+                        required
+                      />
                     </div>
-                    <Input
-                      id="password"
-                      type="password"
-                      required
-                      placeholder="aidenawsum12!"
-                    />
-                  </div>
-                  <button type="submit" className=" btn-big">
-                    Login
-                  </button>
+                    <div className="grid gap-2">
+                      <div className="flex items-center">
+                        <Label htmlFor="password">Password</Label>
+                      </div>
+                      <Input
+                        id="password"
+                        type="password"
+                        required
+                        placeholder="aidenawsum12!"
+                      />
+                    </div>
+                    //button
+                    <button type="submit" className=" btn-big">
+                      Login
+                    </button>
+                  </form>
                 </motion.div>
               )}
+              {
+                //END OF LOGIN PAGE // SIGN UP PAGE
+              }{" "}
               {activeTab === "signup" && (
                 <motion.div
                   className="grid gap-6 animate-stagger"
@@ -122,46 +131,51 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="johndoe@xyz.com"
-                      required
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <div className="flex items-center">
-                      <Label htmlFor="password">Password</Label>
+                  <form>
+                    <div className="grid gap-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="johndoe@xyz.com"
+                        required
+                      />
                     </div>
-                    <Input
-                      id="password"
-                      type="password"
-                      required
-                      placeholder="aidenawsum12!"
-                    />
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="terms" />
-                      <Label htmlFor="terms" className="group">
-                        Accept{" "}
-                        <a
-                          href="./public/terms&conditions.pages"
-                          className="group-hover:underline "
-                        >
-                          terms and conditions
-                        </a>
-                      </Label>
+                    <div className="grid gap-2">
+                      <div className="flex items-center">
+                        <Label htmlFor="password">Password</Label>
+                      </div>
+                      <Input
+                        id="password"
+                        type="password"
+                        required
+                        placeholder="aidenawsum12!"
+                      />
                     </div>
-                  </div>
-
-                  <button type="submit" className="btn-big">
-                    Sign up
-                  </button>
+                    <div>
+                      <div className="flex items-center space-x-2">
+                        <Checkbox id="terms" />
+                        <Label htmlFor="terms" className="group">
+                          Accept{" "}
+                          <a
+                            href="./public/terms&conditions.pages"
+                            className="group-hover:underline "
+                          >
+                            terms and conditions
+                          </a>
+                        </Label>
+                      </div>
+                    </div>
+                    //button
+                    <button type="submit" className="btn-big">
+                      Sign up
+                    </button>
+                  </form>
                 </motion.div>
               )}
+              {
+                //END OF SIGN UP PAGe
+              }{" "}
             </motion.div>
           </div>
           <div className="hidden bg-muted lg:block">
