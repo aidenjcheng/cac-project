@@ -22,7 +22,7 @@ const HeroSection = () => {
           filter: "blur(10px)",
           transform: "translateY(10px)",
         }}
-        href="index.html"
+        href=""
         className="cursor-pointer hero-item"
       >
         <ShinyText />
@@ -71,7 +71,7 @@ const HeroSection = () => {
             filter: "blur(10px)",
             transform: "translateY(10px)",
           }}
-          href="getstarted.html"
+          href="signin"
           className="btn-big hero-item"
         >
           enhance your security now

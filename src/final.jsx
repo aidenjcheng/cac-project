@@ -18,20 +18,6 @@ const StatsPage = () => {
     }
   }, []);
 
-  const [videoUrl, setVideoUrl] = useState("../../public/blackscreen.mp4");
-
-  useEffect(() => {
-    console.log("Checking for stored video URL...");
-    const storedUrl = localStorage.getItem("processedVideoUrl");
-    if (storedUrl) {
-      console.log("Found stored video URL:", storedUrl);
-      setVideoUrl(storedUrl);
-      localStorage.removeItem("processedVideoUrl");
-    } else {
-      console.log("No stored video URL found");
-    }
-  }, []);
-
   return (
     <Dashboard>
       {[
@@ -49,10 +35,6 @@ const StatsPage = () => {
             width: "calc(700px*1.2)",
             height: "calc(400px*1.2)",
             borderRadius: "var(--art-border-radius)",
-          }}
-          getInstance={(art) => {
-            console.log("ArtPlayer instance:", art);
-            console.log("Current video URL:", art.option.url);
           }}
           getInstance={(art) => {
             console.log("ArtPlayer instance:", art);

@@ -116,7 +116,7 @@ const Header = () => {
             <a className="btn-secondary" href="howitworks.html">
               How it works
             </a>
-            <a className="btn" href="upload.html">
+            <a className="btn" href="signin">
               Start now
             </a>
           </motion.div>
