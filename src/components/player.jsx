@@ -7,7 +7,7 @@ function App({ children }) {
   const [isActive, setIsActive] = useState(false);
   return (
     <div className="flex w-full h-full gap-[10px] box-border pt-5 pl-5">
-      <div className="flex flex-col w-[20%] min-w-[250px] max-w-[350px] gap-5 bg-[#181818] p-2 rounded-3xl justify-between">
+      <div className="flex flex-col w-[20%] min-w-[250px] max-w-[15vw] gap-5 bg-[#181818] p-2 rounded-3xl justify-between">
         <div className="flex flex-col w-full h-full gap-5">
           <User />
           <div className="flex flex-col gap-5 h-[80%]">
@@ -105,20 +105,9 @@ function App({ children }) {
             })}
           </p>
         </div>
-        <div>{children[3]}</div>
+        <div className="w-full h-full p-5 box-border">{children[3]}</div>
       </div>
     </div>
-    //    <ArtPlayer
-    //    option={{
-    //      url: "../../public/blackscreen.mp4",
-    //    }}
-    //    style={{
-    //      width: "calc(700px*1.2)",
-    //      height: "calc(400px*1.2)",
-    //      borderRadius: "var(--art-border-radius)",
-    //    }}
-    //    getInstance={(art) => console.info(art)}
-    //  />
   );
 }
 

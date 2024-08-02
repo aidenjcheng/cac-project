@@ -27,12 +27,7 @@ const StatsPage = () => {
         <ArtPlayer
           option={{
             url: videoUrl,
-            autoplay: true,
-          }}
-          style={{
-            width: "calc(700px*1.2)",
-            height: "calc(400px*1.2)",
-            borderRadius: "var(--art-border-radius)",
+            autoplay: false,
           }}
           getInstance={(art) => {
             console.log("ArtPlayer instance:", art);

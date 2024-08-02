@@ -1,8 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Artplayer from "artplayer";
 
 export default function Player({ option, getInstance, ...rest }) {
   const artRef = useRef();
+  const [art, setArt] = useState(null);
+  const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
     const speeds = [1.0, 1.25, 1.5, 1.75, 2.0];
@@ -52,12 +54,7 @@ export default function Player({ option, getInstance, ...rest }) {
           },
         },
       ],
-      highlight: [
-        {
-          time: 5,
-          text: "gunth deteceth 🤓🤓",
-        },
-      ],
+      highlight: markers,
       ...option,
       container: artRef.current,
     });
@@ -72,6 +69,54 @@ export default function Player({ option, getInstance, ...rest }) {
       }
     };
   }, []);
+  const handleUpload = () => {
+    const videoInput = document.getElementById("video-upload");
+    const jsonInput = document.getElementById("json-upload");
+    const videoFile = videoInput.files[0];
+    const jsonFile = jsonInput.files[0];
 
-  return <div ref={artRef} {...rest}></div>;
+    if (videoFile) {
+      const videoUrl = URL.createObjectURL(videoFile);
+
+      if (jsonFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          try {
+            const newMarkers = JSON.parse(e.target.result);
+            setMarkers(newMarkers);
+            initArtPlayer(videoUrl);
+          } catch (error) {
+            console.error("Error parsing JSON file:", error);
+            alert(
+              "Error parsing JSON file. Please make sure it's a valid JSON format."
+            );
+            initArtPlayer(videoUrl);
+          }
+        };
+        reader.readAsText(jsonFile);
+      } else {
+        setMarkers([]);
+        initArtPlayer(videoUrl);
+      }
+    } else {
+      alert("Please select a video file first.");
+    }
+  };
+
+  return (
+    <div className="">
+      <div className="rounded-[20px] overflow-hidden">
+        <div
+          ref={artRef}
+          {...rest}
+          className="h-[calc(1.1*500px)] w-[calc(1.1*930px)]"
+        ></div>
+      </div>
+      <div className="upload-container">
+        <input type="file" id="video-upload" accept="video/*" />
+        <input type="file" id="json-upload" accept="application/json" />
+        <button onClick={handleUpload}>Upload and Play</button>
+      </div>
+    </div>
+  );
 }
