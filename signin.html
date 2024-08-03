@@ -9,16 +9,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./src/components/svg/logo.svg"
+    />
     <link rel="stylesheet" href="./src/index.css" />
     <link rel="stylesheet" href="./src/App.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aegis AI - Upload</title>
+    <title>Aegis AI</title>
+    <style>
+      ::placeholder {
+        color: #7b7b7b !important;
+      }
+    </style>
   </head>
   <body>
-    <div id="root" class="w-full h-screen overflow-hidden"></div>
-
-    <script type="module" src="./src/upload.jsx"></script>
-    <script type="module" src="./src/script.js"></script>
+    <div id="root" class="h-screen"></div>
+    <script src="./src/components/login/login.tsx" type="module"></script>
   </body>
 </html>

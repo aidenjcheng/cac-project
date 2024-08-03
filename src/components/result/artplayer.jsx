@@ -139,13 +139,9 @@ export default function Player({ option, getInstance, ...rest }) {
   }, [videoUrl, markers]);
 
   return (
-    <div>
-      <div className="rounded-[20px] overflow-hidden">
-        <div
-          ref={artRef}
-          {...rest}
-          className="h-[calc(1.1*500px)] w-[calc(1.1*930px)]"
-        ></div>
+    <div className="h-full w-full">
+      <div className="rounded-[20px] overflow-hidden h-[70%]">
+        <div ref={artRef} {...rest} className="w-[60%] h-[100%]"></div>
       </div>
       <div className="upload-container flex gap-4" onClick={handleUploadClick}>
         <motion.div className="w-[25rem] h-[18rem] flex items-center justify-center border-dashed border-white/10 border rounded-3xl flex-col gap-2 bg-black/[0.10]">
