@@ -15,7 +15,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center w-3/4 mx-auto gap-10 h-screen">
+    <div className="flex flex-col justify-center w-3/4 mx-auto gap-7 h-[85vh] items-center text-center">
       <motion.a
         initial={{
           opacity: 0,

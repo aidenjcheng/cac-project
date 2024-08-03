@@ -5,7 +5,6 @@ import UploadFile from "../svg/uploadfile.jsx";
 import { Progress } from "../ui/progress";
 import { ThemeProvider } from "../themeprovider";
 import { Video } from "lucide-react";
-import { processVideo } from "../../script.js";
 import {
   Tooltip,
   TooltipContent,
@@ -13,7 +12,7 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 
-const App = () => {
+const App = ({ children }) => {
   const [isUploadVisible, setIsUploadVisible] = useState(false);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [progress, setProgress] = React.useState(13);
@@ -60,7 +59,7 @@ const App = () => {
       const timer2 = setTimeout(() => {
         setProgress(100);
         setTimeout(() => setShowProgress(false), 1000);
-      }, 5000);
+      }, 0);
       return () => {
         clearTimeout(timer1);
         clearTimeout(timer2);
@@ -75,16 +74,9 @@ const App = () => {
     };
   }, []);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    if (uploadedFile && !showProgress) {
-      processVideo(uploadedFile);
-    }
-  };
-
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className=" h-screen">
+      <div>
         <div>
           {isUploadVisible && (
             <motion.div
@@ -106,7 +98,7 @@ const App = () => {
             ></motion.div>
           )}
         </div>
-        <div className="flex flex-col w-full h-full z-[60] m-5">
+        <div className="flex flex-col z-[60] m-5">
           <AnimatePresence>
             {isUploadVisible && (
               <motion.div
@@ -139,10 +131,7 @@ const App = () => {
                 }}
               >
                 <div className="w-[calc(100%-10px)] h-[calc(100%-10px)] mx-auto bg-[#181818] rounded-xl border-[1px] border-solid border-white/5">
-                  <form
-                    onSubmit={handleFormSubmit}
-                    className="flex flex-col justify-between w-full h-full pb-2"
-                  >
+                  <form className="flex flex-col justify-between w-full h-full pb-2">
                     <div>
                       <motion.div className="p-5 mt-5 flex flex-col gap-2">
                         <h1 className="text-xl text-center">Upload a video</h1>
@@ -158,9 +147,10 @@ const App = () => {
                       >
                         <input
                           type="file"
-                          id="fileInput"
+                          id={children[0]}
                           name="video"
-                          accept="video/*"
+                          accept="video/*,.json"
+                          multiple
                           required
                           hidden
                           ref={fileInputRef}
@@ -293,12 +283,9 @@ const App = () => {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            {/* <a href="./result.html"> */}
-                            <input
+                            <p
                               className="btn"
                               id="upload"
-                              type="submit"
-                              value="Upload"
                               style={{
                                 backgroundColor: showProgress
                                   ? "rgba(255, 255, 255, 0.6)"
@@ -307,8 +294,9 @@ const App = () => {
                                   ? "not-allowed"
                                   : "pointer",
                               }}
-                            />
-                            {/* </a> */}
+                            >
+                              Upload
+                            </p>
                           </TooltipTrigger>
                           {showProgress && (
                             <TooltipContent>

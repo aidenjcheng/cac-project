@@ -23,6 +23,8 @@ const App = () => {
   );
 };
 
+//z300 x50
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(<App />);
