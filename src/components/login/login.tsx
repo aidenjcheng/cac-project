@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { ThemeProvider } from "../themeprovider";
+import { ThemeProvider } from "../../components/themeprovider";
 import AnimatedTabs from "./animatedtabs";
 import { AnimatePresence, motion, animate, stagger } from "framer-motion";
 
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
+import { Checkbox } from "../../components/ui/checkbox";
 
 const Login = () => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
@@ -30,39 +30,39 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: formData.get("email"),
-          password: formData.get("password"),
+          email: formData.get('email'),
+          password: formData.get('password'),
         }),
-        credentials: "include", // This is crucial for setting the session cookie
+        credentials: 'include'  // This is crucial for setting the session cookie
       });
       const data = await response.json();
       if (data.success) {
         window.location.href = data.redirect;
       } else {
-        console.error("Login failed:", data.message);
+        console.error('Login failed:', data.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   };
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:5000/signup", {
-        method: "POST",
+      const response = await fetch('http://localhost:5000/signup', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: formData.get("email"),
-          password: formData.get("password"),
+          email: formData.get('email'),
+          password: formData.get('password'),
         }),
       });
       if (!response.ok) {
@@ -70,13 +70,13 @@ const Login = () => {
       }
       const data = await response.json();
       if (data.success) {
-        console.log("Signup successful:", data.message);
-        setActiveTab("login");
+        console.log('Signup successful:', data.message);
+        setActiveTab('login');
       } else {
-        console.error("Signup failed:", data.message);
+        console.error('Signup failed:', data.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   };
 
@@ -146,11 +146,7 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <form
-                    id="loginFormElement"
-                    onSubmit={handleLogin}
-                    className="grid gap-6"
-                  >
+                  <form id="loginFormElement" onSubmit={handleLogin}>
                     <div className="grid gap-2">
                       <Label htmlFor="email">Email</Label>
                       <Input
@@ -173,7 +169,8 @@ const Login = () => {
                         placeholder="aidenawsum12!"
                       />
                     </div>
-                    <button type="submit" className="btn-xxl">
+                    //button
+                    <button type="submit" className=" btn-big w-full">
                       Login
                     </button>
                   </form>
@@ -189,29 +186,8 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <form
-                    id="signupFormElement"
-                    onSubmit={handleSignup}
-                    className="grid gap-6"
-                  >
+                  <form id="signupFormElement" onSubmit={handleSignup}>
                     <div className="grid gap-2">
-                      <div className="flex flex-col gap-2">
-                        <Label htmlFor="firstname">First and Last Name</Label>
-                        <div className="flex gap-2">
-                          <Input
-                            id="firstname"
-                            type="firstname"
-                            placeholder="John"
-                            required
-                          />
-                          <Input
-                            id="lastname"
-                            type="lastname"
-                            placeholder="Doe"
-                            required
-                          />
-                        </div>
-                      </div>
                       <Label htmlFor="email">Email</Label>
                       <Input
                         id="email"
@@ -247,7 +223,8 @@ const Login = () => {
                         </Label>
                       </div>
                     </div>
-                    <button type="submit" className="btn-xxl">
+                    {/* //button */}
+                    <button type="submit" className="btn-big w-full">
                       Sign up
                     </button>
                   </form>

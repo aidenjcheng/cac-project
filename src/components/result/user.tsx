@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 
+
 import Pfp from "../svg/pfp";
 import { motion, stagger, useAnimate } from "framer-motion";
 import {
@@ -17,11 +18,12 @@ function useMenuAnimation(isOpen: boolean) {
   const [scope, animate] = useAnimate();
 
   const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
-
+  
   useEffect(() => {
     const menuIcon = document.querySelector("#menu-icon");
     const ul = scope.current?.querySelector("ul");
     const lis = scope.current?.querySelectorAll("li");
+    
 
     if (menuIcon) {
       animate(menuIcon, { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
@@ -69,7 +71,36 @@ export function DropdownMenu({
 }: DropdownMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const scope = useMenuAnimation(isOpen);
-
+  const [user, setUser] = useState({ email: '', displayName: '' });
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        console.log('Fetching user data...');
+        const response = await fetch('http://localhost:5000/api/current_user', {
+          credentials: 'include'  // This is crucial for sending cookies
+        });
+        console.log('Response status:', response.status);
+        const text = await response.text();
+        console.log('Response text:', text);
+        
+        if (response.ok) {
+          try {
+            const userData = JSON.parse(text);
+            console.log('User data received:', userData);
+            setUser(userData);
+          } catch (e) {
+            console.error('Error parsing JSON:', e);
+          }
+        } else {
+          console.log('Failed to fetch user data');
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUser();
+  }, []);
   const items = [
     {
       icon: (
@@ -169,9 +200,9 @@ export function DropdownMenu({
             <div className="flex items-center gap-2">
               <Pfp />
               <div className="flex flex-col justify-start">
-                <span className="text-left">Aiden Cheng</span>
+                <span className="text-left">{user.displayName}</span>
                 <span className="text-secondary text-sm">
-                  aidenjcheng12@gmail.com
+                  {user.email}
                 </span>
               </div>
             </div>

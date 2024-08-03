@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<script type="module">
-  import RefreshRuntime from "http://localhost:5173/@react-refresh";
-  RefreshRuntime.injectIntoGlobalHook(window);
-  window.$RefreshReg$ = () => {};
-  window.$RefreshSig$ = () => (type) => type;
-  window.vite_plugin_react_preamble_installed = true;
-</script>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,6 +16,13 @@
         color: #7b7b7b !important;
       }
     </style>
+    <script type="module">
+      import RefreshRuntime from "http://localhost:5173/@react-refresh";
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      window.vite_plugin_react_preamble_installed = true;
+    </script>
   </head>
   <body>
     <div id="root" class="h-screen"></div>
