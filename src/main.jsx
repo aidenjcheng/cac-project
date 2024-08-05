@@ -6,6 +6,7 @@ import Demo from "./components/demo/demo.jsx";
 import Faq from "./components/faq/faq.jsx";
 import Footer from "./components/footer/footer.jsx";
 import { ThemeProvider } from "./components/themeprovider";
+import HeroDemo from "./HeroDemo.jsx";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
       <div className="flex flex-col items-center">
         <Header />
         <HeroSection />
-        <div className="mt-52">
+        <div>
           <Demo />
         </div>
         <Faq />

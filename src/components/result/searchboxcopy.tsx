@@ -10,7 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "../../components/ui/command";
+} from "../ui/command";
 
 export function CommandDialogDemo() {
   const [open, setOpen] = React.useState(false);
@@ -28,7 +28,14 @@ export function CommandDialogDemo() {
   }, []);
 
   return (
-    <motion.div>
+    <motion.div
+      className="hero-item"
+      initial={{
+        opacity: 0,
+        filter: "blur(10px)",
+        transform: "translate3d(50px,0,300px)",
+      }}
+    >
       <div
         className="group flex gap-2 w-full justify-between p-2 pl-5 bg-[#242424] rounded-xl items-center cursor-pointer"
         onClick={() => setOpen(true)}

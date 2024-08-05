@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Artplayer from "artplayer";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 
-export default function Player({ option, getInstance, ...rest }) {
+const ArtPlayerComponent = () => {
   const artRef = useRef();
   const [art, setArt] = useState(null);
   const [videoUrl, setVideoUrl] = useState(
@@ -20,128 +20,94 @@ export default function Player({ option, getInstance, ...rest }) {
   };
 
   useEffect(() => {
-    const initArtPlayer = () => {
-      if (!artRef.current) return;
-
-      const speeds = [1.0, 1.25, 1.5, 1.75, 2.0];
-      let currentSpeedIndex = 0;
-
-      const newArt = new Artplayer({
-        container: artRef.current,
-        url: videoUrl,
-        theme: "#fff",
-        cssVar: {
-          "--art-border-radius": "50px",
-        },
-        icons: {
-          state:
-            "<img width='60px' height='60px' src='../../public/pause.svg' />",
-          fullscreenWebOn:
-            "<img width='25px' height='25px' src='../../public/d.svg' />",
-          fullscreenWebOff:
-            "<img width='25px' height='25px' src='../../public/fullscreen.svg' />",
-        },
-        fullscreenWeb: true,
-        controls: [
-          {
-            position: "right",
-            index: 1,
-            html: "<img width='25px' height='25px' src='../../public/speedup.svg' />",
-            click: function () {
-              currentSpeedIndex = (currentSpeedIndex + 1) % speeds.length;
-              const newSpeed = speeds[currentSpeedIndex];
-              newArt.playbackRate = newSpeed;
-              this.innerHTML = newSpeed.toFixed(2) + "x";
-            },
+    const speeds = [1.0, 1.25, 1.5, 1.75, 2.0];
+    let currentSpeedIndex = 0;
+    const art = new Artplayer({
+      container: artRef.current,
+      url: videoUrl,
+      theme: "#fff",
+      cssVar: {
+        "--art-border-radius": "50px",
+      },
+      icons: {
+        state:
+          "<img width='60px' height='60px' src='../../public/pause.svg' />",
+        fullscreenWebOn:
+          "<img width='25px' height='25px' src='../../public/d.svg' />",
+        fullscreenWebOff:
+          "<img width='25px' height='25px' src='../../public/fullscreen.svg' />",
+      },
+      fullscreenWeb: true,
+      controls: [
+        {
+          position: "right",
+          index: 1,
+          html: "<img width='25px' height='25px' src='../../public/speedup.svg' />",
+          click: function () {
+            currentSpeedIndex = (currentSpeedIndex + 1) % speeds.length;
+            const newSpeed = speeds[currentSpeedIndex];
+            newArt.playbackRate = newSpeed;
+            this.innerHTML = newSpeed.toFixed(2) + "x";
           },
-        ],
-        settings: [
-          {
-            html: "Speed",
-            selector: speeds.map((speed) => ({
-              html: `${speed.toFixed(2)}x`,
-              value: speed,
-            })),
-            onSelect: function (item) {
-              newArt.playbackRate = item.value;
-              const speedButton = newArt.controls.querySelector(
-                ".art-control-playbackRate"
-              );
-              if (speedButton) {
-                speedButton.innerHTML = item.html;
-              }
-            },
+        },
+      ],
+      settings: [
+        {
+          html: "Speed",
+          selector: speeds.map((speed) => ({
+            html: `${speed.toFixed(2)}x`,
+            value: speed,
+          })),
+          onSelect: function (item) {
+            newArt.playbackRate = item.value;
+            const speedButton = newArt.controls.querySelector(
+              ".art-control-playbackRate"
+            );
+            if (speedButton) {
+              speedButton.innerHTML = item.html;
+            }
           },
-        ],
-        highlight: markers,
-        ...option,
-      });
-
-      setArt(newArt);
-
-      if (getInstance && typeof getInstance === "function") {
-        getInstance(newArt);
-      }
-    };
-
-    initArtPlayer();
+        },
+      ],
+      highlight: markers,
+    });
 
     return () => {
       if (art && art.destroy) {
         art.destroy(false);
       }
     };
-  }, []); // Empty dependency array to initialize only once
+  }, [videoUrl, markers]);
 
   const handleFileUpload = (event) => {
-    const files = Array.from(event.target.files);
+    const files = event.target.files;
 
-    const videoFile = files.find((file) => file.type.startsWith("video/"));
-    const jsonFile = files.find((file) => file.type === "application/json");
-
-    if (videoFile) {
-      const newVideoUrl = URL.createObjectURL(videoFile);
-      setVideoUrl(newVideoUrl);
-      setDidUpload(true);
-      console.log("Video URL updated:", newVideoUrl);
-    }
-
-    if (jsonFile) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        try {
-          const newMarkers = JSON.parse(e.target.result);
-          setMarkers(newMarkers);
-          console.log("Markers updated:", newMarkers);
-        } catch (error) {
-          console.error("Error parsing JSON file:", error);
-          alert(
-            "Error parsing JSON file. Please make sure it's a valid JSON format."
-          );
-        }
-      };
-      reader.readAsText(jsonFile);
-    }
-
-    if (!videoFile && !jsonFile) {
-      alert(
-        "Please select a video file (.mp4, .webm, etc.) and/or a JSON file for markers."
-      );
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.type.startsWith("video/")) {
+        setVideoUrl(URL.createObjectURL(file));
+      } else if (file.type === "application/json") {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const json = JSON.parse(e.target.result);
+            setMarkers(json.detections || []);
+          } catch (error) {
+            console.error("Error parsing JSON file:", error);
+            alert(
+              "Error parsing JSON file. Please make sure it's a valid JSON format."
+            );
+          }
+        };
+        reader.readAsText(file);
+      }
     }
   };
-
-  useEffect(() => {
-    if (art) {
-      art.highlight = markers;
-
-      art.switchUrl(videoUrl);
-    }
-  }, [videoUrl, markers]);
 
   return (
     <div className="h-full w-full">
       <div className="rounded-[20px] overflow-hidden h-[70%]">
-        <div ref={artRef} {...rest} className="w-[60%] h-[100%]"></div>
+        <div ref={artRef} className="w-[60%] h-[100%]"></div>
       </div>
       <div className="upload-container flex gap-4" onClick={handleUploadClick}>
         <motion.div className="w-[25rem] h-[18rem] flex items-center justify-center border-dashed border-white/10 border rounded-3xl flex-col gap-2 bg-black/[0.10]">
@@ -159,4 +125,5 @@ export default function Player({ option, getInstance, ...rest }) {
       />
     </div>
   );
-}
+};
+export default ArtPlayerComponent;

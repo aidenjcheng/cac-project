@@ -18,7 +18,15 @@ const SidebarItem = ({ children, variant = "default" }) => {
     active: "text-white",
   };
   return (
-    <motion.a href={children[0]}>
+    <motion.a
+      href={children[0]}
+      className="hero-item "
+      initial={{
+        opacity: 0,
+        filter: "blur(10px)",
+        transform: "translate3d(50px,0,300px)",
+      }}
+    >
       <motion.li
         className={`${baseClasses} ${variantClasses[variant]}`}
         initial={{

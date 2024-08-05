@@ -146,7 +146,7 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <form id="loginFormElement" onSubmit={handleLogin}>
+                  <form id="loginFormElement" onSubmit={handleLogin} className="grid gap-6">
                     <div className="grid gap-2">
                       <Label htmlFor="email">Email</Label>
                       <Input
@@ -169,7 +169,6 @@ const Login = () => {
                         placeholder="aidenawsum12!"
                       />
                     </div>
-                    //button
                     <button type="submit" className=" btn-big w-full">
                       Login
                     </button>
@@ -186,7 +185,7 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <form id="signupFormElement" onSubmit={handleSignup}>
+                  <form id="signupFormElement" onSubmit={handleSignup} className="grid gap-6">
                     <div className="grid gap-2">
                       <Label htmlFor="email">Email</Label>
                       <Input

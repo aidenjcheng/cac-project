@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import SidebarItem from "./result/sidebar.jsx";
-import SearchBox from "./result/searchbox.tsx";
-import User from "./result/user.tsx";
+import SidebarItem from "./result/sidebarcopy.jsx";
+import SearchBox from "./result/searchboxcopy.tsx";
+import User from "./result/usercopy.tsx";
 import { motion } from "framer-motion";
 
 function App({ children }) {
   return (
     <div className="flex w-full h-full gap-[10px] box-border pt-5 pl-5">
       <div className="flex flex-col w-[20%] min-w-[250px] max-w-[15vw] gap-5 bg-[#181818] p-2 rounded-3xl justify-between border border-solid border-white/5">
-        <motion.div className="flex flex-col w-full h-full">
+        <motion.div
+          className="flex flex-col w-full h-full gap-5 hero-item"
+          initial={{
+            opacity: 0,
+            filter: "blur(10px)",
+          }}
+        >
           <User />
           <div className="flex flex-col gap-5 h-[80%]">
             <SearchBox />
@@ -58,7 +64,7 @@ function App({ children }) {
         <div className="flex flex-col gap-2">
           <SidebarItem>
             {[
-              "./Settings.html",
+              "./Settings",
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -97,8 +103,15 @@ function App({ children }) {
           </SidebarItem>
         </div>
       </div>
-      <div className="flex w-[85%] bg-[#1d1d1d] rounded-3xl box-border flex-col gap-5 border border-solid border-white/5">
-        <div className="border-b border-white/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3">
+      <motion.div
+        className="flex w-[85%] bg-[#1d1d1d] rounded-3xl box-border flex-col gap-5 border border-solid border-white/5 hero-item"
+        initial={{
+          opacity: 0,
+          filter: "blur(10px)",
+          transform: "translate3d(50px,0,300px)",
+        }}
+      >
+        <div className="border-b border-white/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3 text-left">
           <p>Hey, Aiden!</p>
           <p className="text-sm text-secondary">
             {new Date().toLocaleDateString("en-US", {
@@ -110,7 +123,7 @@ function App({ children }) {
           </p>
         </div>
         <div className="w-full h-full p-5 box-border">{children[3]}</div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -184,7 +184,14 @@ export function DropdownMenu({
   ];
 
   return (
-    <motion.div className="w-full">
+    <motion.div
+      className="w-full hero-item"
+      initial={{
+        opacity: 0,
+        filter: "blur(10px)",
+        transform: "translate3d(50px,0,300px)",
+      }}
+    >
       <nav
         className={cn(containerClassName)}
         ref={scope}

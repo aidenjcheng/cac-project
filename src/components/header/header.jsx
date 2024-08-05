@@ -40,7 +40,7 @@ const Header = () => {
               bottom: 0,
               backdropFilter: "blur(15px)",
               backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 20,
+              zIndex: 42,
             }}
             className="w-full h-full"
           ></motion.div>
@@ -52,7 +52,7 @@ const Header = () => {
         onMouseLeave={() => isHovered && setIsHovered(false)}
         style={{
           borderColor: isHovered ? "#202225" : "transparent",
-          zIndex: isHovered ? 30 : 20,
+          zIndex: isHovered ? 60 : 50,
         }}
       >
         <motion.div
@@ -116,7 +116,7 @@ const Header = () => {
             <a className="btn-secondary" href="howitworks.html">
               How it works
             </a>
-            <a className="btn" href="upload.html">
+            <a className="btn" href="signin">
               Start now
             </a>
           </motion.div>
