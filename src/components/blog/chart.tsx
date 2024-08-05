@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import {
@@ -39,7 +38,7 @@ const chartData = [
   { date: "2016-01-01", school_shootings: "56" },
   { date: "2017-01-01", school_shootings: "79" },
   { date: "2018-01-01", school_shootings: "96" },
-  { date: "2019-01-01", school_shootings: "118"},
+  { date: "2019-01-01", school_shootings: "118" },
   { date: "2020-01-01", school_shootings: "76" },
   { date: "2021-01-01", school_shootings: "93" },
   { date: "2022-01-01", school_shootings: "35" },

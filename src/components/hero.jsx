@@ -21,7 +21,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="flex flex-col justify-start mx-[12.5%] items-center text-center z-40 h-[calc(136vh+1600px)] bg-[#0F1012]
+      className="flex flex-col justify-start px-[12.5%] items-center text-center z-40 h-[calc(136vh+1600px)] bg-[#0F1012]
 "
     >
       <div
