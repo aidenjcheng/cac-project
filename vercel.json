@@ -1,0 +1,15 @@
+{
+  "routes": [
+    { "src": "/index.html", "dest": "/index.html" },
+    { "src": "/about.html", "dest": "/about.html" },
+    { "src": "/contact.html", "dest": "/contact.html" },
+    { "src": "/Mission.html", "dest": "/Mission.html" },
+    { "src": "/knifesafety.html", "dest": "/knifesafety.html" },
+    { "src": "/gunsafety.html", "dest": "/gunsafety.html" },
+    { "src": "/crisisnumbers.html", "dest": "/crisisnumbers.html" },
+    { "src": "/result.html", "dest": "/result.html" },
+    { "src": "/signin.html", "dest": "/signin.html" },
+    { "src": "/upload.html", "dest": "/upload.html" },
+    { "src": "/whatyoucando.html", "dest": "/whatyoucando.html" }
+  ]
+}
