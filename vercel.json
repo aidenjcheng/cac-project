@@ -1,13 +1,23 @@
 {
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/contact.html", "destination": "/contact.html" },
     { "source": "/crisisnumbers", "destination": "/crisisnumbers.html" },
+    { "source": "/crisisnumbers.html", "destination": "/crisisnumbers.html" },
     { "source": "/gunsafety", "destination": "/gunsafety.html" },
+    { "source": "/gunsafety.html", "destination": "/gunsafety.html" },
     { "source": "/knifesafety", "destination": "/knifesafety.html" },
+    { "source": "/knifesafety.html", "destination": "/knifesafety.html" },
     { "source": "/mission", "destination": "/mission.html" },
+    { "source": "/mission.html", "destination": "/mission.html" },
     { "source": "/result", "destination": "/result.html" },
+    { "source": "/result.html", "destination": "/result.html" },
     { "source": "/signin", "destination": "/signin.html" },
+    { "source": "/signin.html", "destination": "/signin.html" },
     { "source": "/upload", "destination": "/upload.html" },
-    { "source": "/whatyoucando", "destination": "/whatyoucando.html" }
+    { "source": "/upload.html", "destination": "/upload.html" },
+    { "source": "/whatyoucando", "destination": "/whatyoucando.html" },
+    { "source": "/whatyoucando.html", "destination": "/whatyoucando.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
