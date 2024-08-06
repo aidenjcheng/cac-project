@@ -8,7 +8,6 @@
     { "source": "/result", "destination": "/result.html" },
     { "source": "/signin", "destination": "/signin.html" },
     { "source": "/upload", "destination": "/upload.html" },
-    { "source": "/whatyoucando", "destination": "/whatyoucando.html" },
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/whatyoucando", "destination": "/whatyoucando.html" }
   ]
 }
