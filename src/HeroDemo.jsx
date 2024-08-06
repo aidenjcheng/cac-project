@@ -7,7 +7,7 @@ import ArtPlayer from "./components/result/artplayer.jsx";
 const HeroDemo = () => {
   return (
     <div
-      className=" w-screen h-[1600px] absolute top-[60%]"
+      className=" w-screen h-[1600px] absolute top-[60%] pointer-events-none"
       style={{
         contain: "strict",
         perspective: "4000px",

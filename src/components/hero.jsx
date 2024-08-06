@@ -38,7 +38,7 @@ const HeroSection = () => {
             filter: "blur(10px)",
             transform: "translateY(10px)",
           }}
-          href="index.html"
+          href="index"
           className="cursor-pointer hero-item"
         >
           <ShinyText />
@@ -87,7 +87,7 @@ const HeroSection = () => {
               filter: "blur(10px)",
               transform: "translateY(10px)",
             }}
-            href="getstarted.html"
+            href="getstarted"
             className="btn-big hero-item"
           >
             enhance your security now
@@ -100,7 +100,7 @@ const HeroSection = () => {
             }}
             className="group hero-item"
           >
-            <a href="signin.html" className="btn-secondary-big">
+            <a href="signin" className="btn-secondary-big">
               how it works
               <ChevronRight color="#aaafb5" />
             </a>

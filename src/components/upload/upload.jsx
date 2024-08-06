@@ -293,7 +293,6 @@ const App = () => {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            {/* <a href="./result.html"> */}
                             <input
                               className="btn"
                               id="upload"

@@ -71,7 +71,7 @@ const Header = () => {
           <div>
             <a
               className=" flex flex-row justify-center gap-1 items-center"
-              href="index.html"
+              href="index"
             >
               <Logo1 />
               <span className="text-white sans text-lg">aegis</span>
@@ -84,14 +84,14 @@ const Header = () => {
                 initial={{ color: "#aaafb5" }}
                 whileHover={{ color: "#fff" }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                href="about.html"
+                href="about"
               >
                 About
               </motion.a>
             </motion.li>
             <motion.li className="header__item text-secondary">
               <motion.a
-                href="contact.html"
+                href="contact"
                 initial={{ color: "#aaafb5" }}
                 whileHover={{ color: "#fff" }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -101,7 +101,7 @@ const Header = () => {
             </motion.li>
             <motion.li className="header__item text-secondary">
               <motion.a
-                href="resources.html"
+                href="resources"
                 className="flex flex-row items-center"
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 onHoverStart={() => HandleChevronHover(true)}
@@ -113,7 +113,7 @@ const Header = () => {
             </motion.li>
           </ul>
           <motion.div className="flex flex-row gap-2">
-            <a className="btn-secondary" href="howitworks.html">
+            <a className="btn-secondary" href="howitworks">
               How it works
             </a>
             <a className="btn" href="signin">
@@ -184,15 +184,15 @@ const Header = () => {
                 className="flex flex-row justify-end gap-2 pr-2"
               >
                 <div className="w-1/2 h-full">
-                  <a href="howitworks.html" className="w-full h-full">
+                  <a href="howitworks" className="w-full h-full">
                     <BigCard />
                   </a>
                 </div>
                 <div className="flex flex-col gap-2 w-1/2 h-full">
-                  <a href="gunsafety.html" className="h-1/2">
+                  <a href="gunsafety" className="h-1/2">
                     <GunCard />
                   </a>
-                  <a href="knifesafety.html" className="h-1/2">
+                  <a href="knifesafety" className="h-1/2">
                     <KnifeCard />
                   </a>
                 </div>

@@ -31,7 +31,7 @@ const Footer = () => {
                 aegis
               </div>
               <p className="text-secondary">Ensuring a more safe environment</p>
-              <a className="btn-big w-min" href="./upload.html">
+              <a className="btn-big w-min" href="./upload">
                 Start now
               </a>
             </div>
@@ -39,13 +39,13 @@ const Footer = () => {
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Navigation</li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="./aboutus.html">About</a>
+                  <a href="./aboutus">About</a>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="contact.html">Contact</a>
+                  <a href="contact">Contact</a>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="howitworks.html">How it works</a>
+                  <a href="howitworks">How it works</a>
                 </li>
               </ul>
             </div>
@@ -53,13 +53,13 @@ const Footer = () => {
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Resources</li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="./Mission.html">Mission</a>
+                  <a href="./mission">Mission</a>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="gunsafety.html">Gun Safety</a>
+                  <a href="gunsafety">Gun Safety</a>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="knifesafety.html">Knife Safety</a>
+                  <a href="knifesafety">Knife Safety</a>
                 </li>
               </ul>
             </div>

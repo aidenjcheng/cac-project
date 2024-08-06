@@ -30,39 +30,39 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch('http://localhost:5000/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: formData.get('email'),
-          password: formData.get('password'),
+          email: formData.get("email"),
+          password: formData.get("password"),
         }),
-        credentials: 'include'  // This is crucial for setting the session cookie
+        credentials: "include", // This is crucial for setting the session cookie
       });
       const data = await response.json();
       if (data.success) {
         window.location.href = data.redirect;
       } else {
-        console.error('Login failed:', data.message);
+        console.error("Login failed:", data.message);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch('http://localhost:5000/signup', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: formData.get('email'),
-          password: formData.get('password'),
+          email: formData.get("email"),
+          password: formData.get("password"),
         }),
       });
       if (!response.ok) {
@@ -70,13 +70,13 @@ const Login = () => {
       }
       const data = await response.json();
       if (data.success) {
-        console.log('Signup successful:', data.message);
-        setActiveTab('login');
+        console.log("Signup successful:", data.message);
+        setActiveTab("login");
       } else {
-        console.error('Signup failed:', data.message);
+        console.error("Signup failed:", data.message);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -88,7 +88,7 @@ const Login = () => {
             <motion.div className="absolute top-[30px] animate-stagger">
               <a
                 className=" flex flex-row justify-center gap-1 items-center"
-                href="index.html"
+                href="index"
               >
                 <svg
                   width="42"
@@ -146,7 +146,11 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <form id="loginFormElement" onSubmit={handleLogin} className="grid gap-6">
+                  <form
+                    id="loginFormElement"
+                    onSubmit={handleLogin}
+                    className="grid gap-6"
+                  >
                     <div className="grid gap-2">
                       <Label htmlFor="email">Email</Label>
                       <Input
@@ -185,7 +189,11 @@ const Login = () => {
                   animate={{ opacity: 1, filter: "blur(0px)", y: "0px" }}
                   transition={{ duration: 0.6, ease: [0.5, 0, 0, 1] }}
                 >
-                  <form id="signupFormElement" onSubmit={handleSignup} className="grid gap-6">
+                  <form
+                    id="signupFormElement"
+                    onSubmit={handleSignup}
+                    className="grid gap-6"
+                  >
                     <div className="grid gap-2">
                       <Label htmlFor="email">Email</Label>
                       <Input
