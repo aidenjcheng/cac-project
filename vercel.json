@@ -1,3 +1,14 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/crisisnumbers", "destination": "/crisisnumbers.html" },
+    { "source": "/gunsafety", "destination": "/gunsafety.html" },
+    { "source": "/knifesafety", "destination": "/knifesafety.html" },
+    { "source": "/mission", "destination": "/mission.html" },
+    { "source": "/result", "destination": "/result.html" },
+    { "source": "/signin", "destination": "/signin.html" },
+    { "source": "/upload", "destination": "/upload.html" },
+    { "source": "/whatyoucando", "destination": "/whatyoucando.html" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
