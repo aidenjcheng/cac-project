@@ -28,6 +28,8 @@ const Mission = () => {
   );
 };
 
-const missionRootElement = document.getElementById("mission");
-const missionRoot = createRoot(missionRootElement);
-missionRoot.render(<Mission />);
+// const missionRootElement = document.getElementById("mission");
+// const missionRoot = createRoot(missionRootElement);
+// missionRoot.render(<Mission />);
+
+export default Mission;

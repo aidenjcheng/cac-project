@@ -2,12 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import pyrebase
 from flask_cors import CORS
 from functools import wraps
+from google.cloud.exceptions import NotFound
 from datetime import timedelta
 import os
 from flask import jsonify
 from flask import send_from_directory
 import firebase_admin
 from firebase_admin import credentials, firestore
+from flask import make_response
+
+from firebase_admin import firestore
+from google.cloud.firestore_v1.base_query import FieldFilter
 #START INITIALIZE FIRESTORE DB
 current_dir = os.path.dirname(os.path.abspath(__file__))
 service_account_path = os.path.join(current_dir, 'serviceAccKey.json')
@@ -18,7 +23,9 @@ db = firestore.client()
 
 #END OF INITIALIZING FIRESTORE DB
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+#CORS(app, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+
 config = {
     "apiKey": "AIzaSyA60oTvdLN48Bp5RV2fZHsaivB2h24xspQ",
     "authDomain": "aegisauthenticatebare.firebaseapp.com",
@@ -127,7 +134,49 @@ def get_current_user():
         # Log the error on the server side
         app.logger.error(f"Error in get_current_user: {str(e)}")
         return jsonify({'error': 'An unexpected error occurred'}), 500
+@app.route('/api/update_stats', methods=['POST'])
+def update_stats():
+    data = request.json
+    user_email = data.get('email')
+    stats = data.get('statistics')
 
+    if not user_email or not stats:
+        return jsonify({"success": False, "message": "Email and statistics are required"}), 400
+
+    db = firestore.client()
+    user_ref = db.collection('users').document(user_email)
+
+    try:
+        user_doc = user_ref.get()
+        if user_doc.exists:
+            current_stats = user_doc.to_dict()
+        else:
+            current_stats = {}
+
+        stat_fields = [
+            'total_gun_occurrences',
+            'total_knife_occurrences',
+            'total_seconds_gun_detected',
+            'total_seconds_knife_detected',
+            'total_seconds_nothing_detected'
+        ]
+
+        updates = {}
+        for field in stat_fields:
+            if field not in current_stats:
+                updates[field] = stats.get(field, 0)
+            else:
+                updates[field] = current_stats.get(field, 0) + stats.get(field, 0)
+
+        user_ref.set(updates, merge=True)
+
+        return jsonify({'success': True})
+
+    except Exception as e:
+        print(f"Error updating stats: {str(e)}")
+        return jsonify({"success": False, "message": "An error occurred while updating stats"}), 500
+
+# Keep the existing /api/current_user route to fetch the user's email
 @app.route("/signup", methods=['POST'])
 def signup():
     print("signup route accessed")
@@ -160,8 +209,6 @@ def signup():
 def logout():
     session.pop('user')
     return redirect('/')
-
-
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

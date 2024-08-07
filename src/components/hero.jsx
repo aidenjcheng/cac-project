@@ -4,6 +4,7 @@ import { Cpu, ShieldPlus } from "lucide-react";
 import { animate, stagger, motion } from "framer-motion";
 import React, { useEffect } from "react";
 import HeroDemo from "../HeroDemo";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   useEffect(() => {
@@ -81,17 +82,16 @@ const HeroSection = () => {
           <strong> safer environment for everyone.</strong>
         </motion.h3>
         <div className="flex flex-row gap-2 ">
-          <motion.a
+          <motion.div
             initial={{
               opacity: 0,
               filter: "blur(10px)",
               transform: "translateY(10px)",
             }}
-            href="getstarted"
             className="btn-big hero-item"
           >
-            enhance your security now
-          </motion.a>
+            <Link to="getstarted">enhance your security now</Link>
+          </motion.div>
           <motion.div
             initial={{
               opacity: 0,
@@ -100,10 +100,10 @@ const HeroSection = () => {
             }}
             className="group hero-item"
           >
-            <a href="signin" className="btn-secondary-big">
-              how it works
+            <Link to="/signin" className="btn-secondary-big">
+              How it Works
               <ChevronRight color="#aaafb5" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

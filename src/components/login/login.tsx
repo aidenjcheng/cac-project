@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "../../components/themeprovider";
 import AnimatedTabs from "./animatedtabs";
 import { AnimatePresence, motion, animate, stagger } from "framer-motion";
@@ -80,10 +79,11 @@ const Login = () => {
     }
   };
 
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <AnimatePresence>
-        <div className="w-full lg:grid  lg:grid-cols-2 h-full">
+        <div className="w-full lg:grid lg:grid-cols-2 h-[100vh]">
           <div className="flex items-center justify-center py-12 flex-col gap-[20px]">
             <motion.div className="absolute top-[30px] animate-stagger">
               <a
@@ -257,6 +257,8 @@ const Login = () => {
   );
 };
 
-const loginElement = document.getElementById("root");
-const LoginRoot = createRoot(loginElement!);
-LoginRoot.render(<Login />);
+// const loginElement = document.getElementById("root");
+// const LoginRoot = createRoot(loginElement!);
+// LoginRoot.render(<Login />);
+
+export default Login;

@@ -5,10 +5,9 @@ import KnifeCard from "../luxe/KnifeCard";
 import GunCard from "../luxe/GunCard";
 import BigCard from "../luxe/test";
 import HeaderItem from "./headeritem";
-import Logo from "../svg/logod";
 import Logo1 from "../svg/logo";
 import Support from "../svg/support";
-
+import { Link } from "react-router-dom";
 import { Phone } from "lucide-react";
 
 import { Rocket } from "lucide-react";
@@ -70,7 +69,7 @@ const Header = () => {
         >
           <div>
             <a
-              className=" flex flex-row justify-center gap-1 items-center"
+              className="flex flex-row justify-center gap-1 items-center"
               href="index"
             >
               <Logo1 />
@@ -113,12 +112,12 @@ const Header = () => {
             </motion.li>
           </ul>
           <motion.div className="flex flex-row gap-2">
-            <a className="btn-secondary" href="howitworks">
+            <Link className="btn-secondary" to="/howitworks">
               How it works
-            </a>
-            <a className="btn" href="signin">
+            </Link>
+            <Link className="btn" to="/signin">
               Start now
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
         <AnimatePresence onExitComplete={() => setIsAnimating(false)}>
@@ -145,7 +144,7 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "./Mission.html",
+                      "/Mission.html",
                       "Mission",
                       "Why we created Aegis.",
                       <span className="inline-flex align-middle ">
@@ -157,7 +156,7 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "./crisisnumbers.html",
+                      "/crisisnumbers.html",
                       "Crisis Numbers",
                       "Information on crisis numbers.",
                       <span className="inline-flex align-middle">
@@ -169,7 +168,7 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "./whatyoucando.html",
+                      "/whatyoucando.html",
                       "What You Can Do",
                       "How you can help your community.",
                       <span className="inline-flex align-middle">
@@ -184,17 +183,17 @@ const Header = () => {
                 className="flex flex-row justify-end gap-2 pr-2"
               >
                 <div className="w-1/2 h-full">
-                  <a href="howitworks" className="w-full h-full">
+                  <Link to="/howitworks" className="w-full h-full">
                     <BigCard />
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex flex-col gap-2 w-1/2 h-full">
-                  <a href="gunsafety" className="h-1/2">
+                  <Link to="/gunsafety" className="h-1/2">
                     <GunCard />
-                  </a>
-                  <a href="knifesafety" className="h-1/2">
+                  </Link>
+                  <Link to="/knifesafety" className="h-1/2">
                     <KnifeCard />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

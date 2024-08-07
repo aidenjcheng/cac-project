@@ -117,6 +117,7 @@ const Mission = () => {
   );
 };
 
-const wycdthRootElement = document.getElementById("wycdth");
-const wycdthRoot = createRoot(wycdthRootElement);
-wycdthRoot.render(<Mission />);
+// const wycdthRootElement = document.getElementById("wycdth");
+// const wycdthRoot = createRoot(wycdthRootElement);
+// wycdthRoot.render(<Mission />);
+export default Mission;

@@ -7,6 +7,7 @@ const UploadPage = () => {
   return <Dashboard>{["default", "active", null, <Upload />]}</Dashboard>;
 };
 
-const realuploadRoot = document.getElementById("root");
-const upload1 = createRoot(realuploadRoot);
-upload1.render(<UploadPage />);
+// const realuploadRoot = document.getElementById("root");
+// const upload1 = createRoot(realuploadRoot);
+// upload1.render(<UploadPage />);
+export default UploadPage;

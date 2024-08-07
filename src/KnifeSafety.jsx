@@ -168,6 +168,7 @@ const Mission = () => {
   );
 };
 
-const knifeSafetyRootElement = document.getElementById("knifesafety");
-const knifeSafetyRoot = createRoot(knifeSafetyRootElement);
-knifeSafetyRoot.render(<Mission />);
+// const knifeSafetyRootElement = document.getElementById("knifesafety");
+// const knifeSafetyRoot = createRoot(knifeSafetyRootElement);
+// knifeSafetyRoot.render(<Mission />);
+export default Mission;

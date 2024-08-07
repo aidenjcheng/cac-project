@@ -46,21 +46,21 @@ const Blog = ({ children }) => {
                 aegis
               </div>
               <p className="text-secondary">Ensuring a more safe environment</p>
-              <a className="btn-big w-min" href="./upload">
+              <Link className="btn-big w-min" to="/upload">
                 Start now
-              </a>
+              </Link>
             </div>
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Navigation</li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="./aboutus">About</a>
+                  <Link to="/aboutus">About</Link>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="contact">Contact</a>
+                  <Link to="/contact">Contact</Link>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="howitworks">How it works</a>
+                  <Link to="/howitworks">How it works</Link>
                 </li>
               </ul>
             </div>
@@ -68,13 +68,13 @@ const Blog = ({ children }) => {
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Resources</li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="./Mission">Mission</a>
+                  <Link to="/mission">Mission</Link>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="gunsafety">Gun Safety</a>
+                  <Link to="/gunsafety">Gun Safety</Link>
                 </li>
                 <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <a href="knifesafety">Knife Safety</a>
+                  <Link to="/knifesafety">Knife Safety</Link>
                 </li>
               </ul>
             </div>

@@ -5,9 +5,8 @@ import Header from "./components/header/header.jsx";
 import Chart from "./components/blog/chart.tsx";
 import { ThemeProvider } from "./components/themeprovider";
 import NumberTicker from "./components/magicui/number-ticker";
-import Quote from "./components/blog/blockquote.jsx";
-import Logo from "./components/svg/borderlogo.jsx";
 import Logo1 from "./components/svg/logowithbg.jsx";
+import { Link } from "react-router-dom";
 
 const Mission = () => {
   return (
@@ -64,7 +63,7 @@ const Mission = () => {
                 settings have gotten to all times high levels, increasing over
                 the past few years significantly (
                 <a
-                  href="https://www.pewresearch.org/short-reads/2023/04/26/what-the-data-says-about-gun-deaths-in-the-u-s/"
+                  to="https://www.pewresearch.org/short-reads/2023/04/26/what-the-data-says-about-gun-deaths-in-the-u-s/"
                   className="text-blue-400 hover:text-blue-500 ease-in-out duration-200 transition-colors"
                 >
                   Pew Research Center
@@ -198,6 +197,4 @@ const Mission = () => {
   );
 };
 
-const gunSafetyRootElement = document.getElementById("gunsafety");
-const gunSafetyRoot = createRoot(gunSafetyRootElement);
-gunSafetyRoot.render(<Mission />);
+export default Mission;
