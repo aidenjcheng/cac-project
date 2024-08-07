@@ -1,11 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header.jsx";
 import HeroSection from "./components/hero.jsx";
 import Demo from "./components/demo/demo.jsx";
@@ -17,7 +12,6 @@ import KnifeSafety from "./KnifeSafety.jsx";
 import Mission from "./mission.jsx";
 import WhatYouCanDo from "./wycdth.jsx";
 import LogIn from "./components/login/login.tsx"; // Add this line
-import Upload from "./upload.jsx"; // Add this line
 
 const App = () => {
   return (
@@ -35,18 +29,13 @@ const App = () => {
   );
 };
 
-// Private route component to protect routes that require authentication
-const PrivateRoute = ({ children }) => {
-  const isAuthenticated = !!localStorage.getItem("user"); // Check if the user is authenticated
-  return isAuthenticated ? children : <Navigate to="/signin" replace />;
-};
-
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(
   <Router>
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/index" element={<App />} />
       <Route path="/gunsafety" element={<GunSafety />} />
       <Route path="/knifesafety" element={<KnifeSafety />} />
       <Route path="/mission" element={<Mission />} />
