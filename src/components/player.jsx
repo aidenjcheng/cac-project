@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SidebarItem from "./result/sidebar.jsx";
 import SearchBox from "./result/searchbox.tsx";
 import User from "./result/user.tsx";
 import { motion } from "framer-motion";
 
+import ArtPlayerComponent from "./result/artplayer.jsx"; // Importing the ArtPlayer component
+
 function App({ children }) {
+  const [userEmail, setUserEmail] = useState(null);
+  const [activePage, setActivePage] = useState("dashboard");
+  const isDashboardPage = children[0]?.props?.children?.[0] === "./result";
+
+  useEffect(() => {
+    // Fetch user data when the component mounts
+    fetch("http://localhost:5000/api/current_user", {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.email) {
+          setUserEmail(data.email);
+        }
+      })
+      .catch((error) => console.error("Error fetching user data:", error));
+  }, []);
   return (
     <div className="flex w-full h-full gap-[10px] box-border pt-5 pl-5">
       <div className="flex flex-col w-[20%] min-w-[250px] max-w-[15vw] gap-5 bg-[#181818] p-2 rounded-3xl justify-between border border-solid border-white/5">
@@ -14,7 +33,10 @@ function App({ children }) {
             <SearchBox />
             <div className="h-full w-full rounded-xl">
               <ul className="w-full h-full text-[1rem] flex flex-col gap-2 rounded-xl">
-                <SidebarItem variant={children[0]}>
+                <SidebarItem
+                  variant={children[0]}
+                  onClick={() => setActivePage("dashboard")}
+                >
                   {[
                     "./result",
                     <svg
@@ -34,7 +56,10 @@ function App({ children }) {
                   ]}
                 </SidebarItem>
 
-                <SidebarItem variant={children[1]}>
+                <SidebarItem
+                  variant={children[1]}
+                  onClick={() => setActivePage("upload")}
+                >
                   {[
                     "./upload",
                     <svg
@@ -88,8 +113,8 @@ function App({ children }) {
                 <path
                   d="M9.96701 10.75C10.967 9.75 11.967 9.35457 11.967 8.25C11.967 7.14543 11.0716 6.25 9.96699 6.25C9.03507 6.25 8.25202 6.88739 8.03 7.75M9.96701 13.75H9.97701M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z"
                   stroke="currentcolor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
+                  stroke-width="2"
+                  stroke-linecap="round"
                 />
               </svg>,
               "Help",
@@ -109,7 +134,12 @@ function App({ children }) {
             })}
           </p>
         </div>
-        <div className="w-full h-full p-5 box-border">{children[3]}</div>
+        <div className="w-full h-full p-5 box-border">
+          {isDashboardPage ? (
+            <ArtPlayerComponent userEmail={userEmail} />
+          ) : null}
+          {children[3]}
+        </div>
       </div>
     </div>
   );

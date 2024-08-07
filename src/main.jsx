@@ -1,6 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/header/header.jsx";
 import HeroSection from "./components/hero.jsx";
 import Demo from "./components/demo/demo.jsx";
@@ -12,6 +17,7 @@ import KnifeSafety from "./KnifeSafety.jsx";
 import Mission from "./mission.jsx";
 import WhatYouCanDo from "./wycdth.jsx";
 import LogIn from "./components/login/login.tsx"; // Add this line
+import Upload from "./upload.jsx"; // Add this line
 
 const App = () => {
   return (
@@ -29,7 +35,11 @@ const App = () => {
   );
 };
 
-//z300 x50
+// Private route component to protect routes that require authentication
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = !!localStorage.getItem("user"); // Check if the user is authenticated
+  return isAuthenticated ? children : <Navigate to="/signin" replace />;
+};
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
@@ -42,6 +52,15 @@ root.render(
       <Route path="/mission" element={<Mission />} />
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />
       <Route path="/signin" element={<LogIn />} />
+      <Route
+        path="/upload"
+        element={
+          <PrivateRoute>
+            <Upload />
+          </PrivateRoute>
+        }
+      />{" "}
+      {/* Protect this route */}
     </Routes>
   </Router>
 );
