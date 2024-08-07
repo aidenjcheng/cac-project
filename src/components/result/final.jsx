@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import Dashboard from "../player.jsx";
 import ArtPlayer from "../result/artplayer";
+import GunChart from '../result/gunchart.tsx';
+
 
 const StatsPage = () => {
   const [videoUrl, setVideoUrl] = useState("../../public/blackscreen.mp4");
@@ -24,6 +26,7 @@ const StatsPage = () => {
         "active",
         "default",
         null,
+        
         <ArtPlayer
           option={{
             url: videoUrl,

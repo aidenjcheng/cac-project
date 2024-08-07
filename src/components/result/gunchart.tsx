@@ -18,9 +18,11 @@ import {
   CardTitle,
 } from "../ui/card"
 import { ChartConfig, ChartContainer } from "../ui/chart"
-const chartData = [
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-]
+
+interface GunChartProps {
+  totalDetections: number;
+  title?:string;
+}
 
 const chartConfig = {
   visitors: {
@@ -32,11 +34,15 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function Component() {
+export function Component({ totalDetections, title="Number of firearms detected" }: GunChartProps) {
+  const chartData = [
+    { browser: "safari", visitors: totalDetections, fill: "var(--color-safari)" },
+  ]
+
   return (
     <Card className="flex flex-col w-[17.5%] rounded-[1.5rem]">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Number of Firearms detected</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
@@ -75,7 +81,7 @@ export function Component() {
                           y={viewBox.cy}
                           className="fill-foreground text-4xl font-bold"
                         >
-                          {chartData[0].visitors.toLocaleString()}
+                          {totalDetections.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
@@ -95,7 +101,7 @@ export function Component() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="leading-none text-muted-foreground">
-          Showing total firearm detections <span className="inline-flex align-middle">
+          Showing firearm detections <span className="inline-flex align-middle">
             <Crosshair  className="size-4"/>
           </span>.
         </div>

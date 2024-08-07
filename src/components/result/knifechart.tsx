@@ -22,7 +22,7 @@ import { Crosshair } from "lucide-react"
 
 const chartData = [
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-]
+]//CHANGE VISITORS TO CHANGE NUMBER
 
 const chartConfig = {
   visitors: {

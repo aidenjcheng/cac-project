@@ -2,12 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import pyrebase
 from flask_cors import CORS
 from functools import wraps
+from google.cloud.exceptions import NotFound
 from datetime import timedelta
 import os
 from flask import jsonify
 from flask import send_from_directory
 import firebase_admin
 from firebase_admin import credentials, firestore
+from flask import make_response
+
+from firebase_admin import firestore
+from google.cloud.firestore_v1.base_query import FieldFilter
 #START INITIALIZE FIRESTORE DB
 current_dir = os.path.dirname(os.path.abspath(__file__))
 service_account_path = os.path.join(current_dir, 'serviceAccKey.json')
@@ -18,7 +23,9 @@ db = firestore.client()
 
 #END OF INITIALIZING FIRESTORE DB
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+#CORS(app, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+
 config = {
     "apiKey": "AIzaSyA60oTvdLN48Bp5RV2fZHsaivB2h24xspQ",
     "authDomain": "aegisauthenticatebare.firebaseapp.com",
@@ -128,6 +135,82 @@ def get_current_user():
         app.logger.error(f"Error in get_current_user: {str(e)}")
         return jsonify({'error': 'An unexpected error occurred'}), 500
 
+@app.route('/api/get_total_stats', methods=['GET'])
+def get_total_stats():
+    data = request.args  # For GET requests, use request.args instead of request.json
+    print("Received data:", data)
+    user_email = data.get("email")
+
+    if not user_email:
+        return jsonify({"error": "Email is required"}), 400
+
+    db = firestore.client()
+    user_ref = db.collection('users').document(user_email)
+
+    try:
+        doc = user_ref.get()
+        if doc.exists:
+            user_data = doc.to_dict()
+            return jsonify(user_data), 200
+        else:
+            return jsonify({"error": "User not found"}), 404
+    except Exception as e:
+        print(f"Error retrieving user data: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+
+@app.route('/api/update_stats', methods=['POST'])
+def update_stats():
+    data = request.json
+    print("Received data:", data)  # Log the received data
+    user_email = data.get('email')
+    stats = data.get('statistics')
+
+    print(f"Updating stats for user: {user_email}")
+    print("Stats:", stats)
+
+    if not user_email or not stats:
+        print("Error: Missing email or statistics")
+        return jsonify({"success": False, "message": "Email and statistics are required"}), 400
+
+    db = firestore.client()
+    user_ref = db.collection('users').document(user_email)
+
+    try:
+        user_doc = user_ref.get()
+        if user_doc.exists:
+            current_stats = user_doc.to_dict()
+        else:
+            current_stats = {}
+            print(f"Creating new document for user: {user_email}")
+
+        stat_fields = [
+            'total_gun_occurrences',
+            'total_knife_occurrences',
+            'total_seconds_gun_detected',
+            'total_seconds_knife_detected',
+            'total_seconds_nothing_detected'
+        ]
+
+        updates = {}
+        for field in stat_fields:
+            if field not in stats:
+                print(f"Warning: {field} not found in provided statistics")
+            if field not in current_stats:
+                updates[field] = stats.get(field, 0)
+            else:
+                updates[field] = current_stats.get(field, 0) + stats.get(field, 0)
+
+        print("Updating with:", updates)
+        user_ref.set(updates, merge=True)
+
+        return jsonify({'success': True})
+
+    except Exception as e:
+        print(f"Error updating stats: {str(e)}")
+        return jsonify({"success": False, "message": f"An error occurred while updating stats: {str(e)}"}), 500
+
+# Keep the existing /api/current_user route to fetch the user's email
 @app.route("/signup", methods=['POST'])
 def signup():
     print("signup route accessed")
@@ -160,8 +243,23 @@ def signup():
 def logout():
     session.pop('user')
     return redirect('/')
+    
+    
+    
+    
+    
+    
+  
 
 
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+    
+    
+    
+    
+    
+    
+    
+    
