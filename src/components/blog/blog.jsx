@@ -1,8 +1,7 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import { Rocket } from "lucide-react";
 import Logo from "../svg/borderlogo.jsx";
 import Logo1 from "../svg/logo.jsx";
+import { Link } from "react-router-dom";
 
 const Blog = ({ children }) => {
   return (
