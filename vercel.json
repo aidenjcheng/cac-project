@@ -1,12 +1,1 @@
-{
-  "rewrites": [
-    { "source": "/gunsafety", "destination": "/index.html" },
-    { "source": "/knifesafety", "destination": "/index.html" },
-    { "source": "/mission", "destination": "/index.html" },
-    { "source": "/whatyoucando", "destination": "/index.html" },
-    { "source": "/signin", "destination": "/index.html" },
-    { "source": "/upload", "destination": "/index.html" },
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
+{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
