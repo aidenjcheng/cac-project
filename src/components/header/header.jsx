@@ -144,7 +144,7 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "/Mission.html",
+                      "/mission",
                       "Mission",
                       "Why we created Aegis.",
                       <span className="inline-flex align-middle ">
@@ -156,7 +156,7 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "/crisisnumbers.html",
+                      "/crisisnumbers",
                       "Crisis Numbers",
                       "Information on crisis numbers.",
                       <span className="inline-flex align-middle">
@@ -168,7 +168,7 @@ const Header = () => {
                 <li>
                   <HeaderItem>
                     {[
-                      "/whatyoucando.html",
+                      "/whatyoucando",
                       "What You Can Do",
                       "How you can help your community.",
                       <span className="inline-flex align-middle">

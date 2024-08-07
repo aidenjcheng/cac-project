@@ -52,15 +52,6 @@ root.render(
       <Route path="/mission" element={<Mission />} />
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />
       <Route path="/signin" element={<LogIn />} />
-      <Route
-        path="/upload"
-        element={
-          <PrivateRoute>
-            <Upload />
-          </PrivateRoute>
-        }
-      />{" "}
-      {/* Protect this route */}
     </Routes>
   </Router>
 );
