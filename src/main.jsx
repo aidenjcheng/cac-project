@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header.jsx";
 import HeroSection from "./components/hero.jsx";
-import Demo from "./components/demo/demo.jsx";
+import Demo from "./components/demo/features-section-demo-3.tsx";
 import Faq from "./components/faq/faq.jsx";
 import Footer from "./components/footer/footer.jsx";
 import { ThemeProvider } from "./components/themeprovider";
@@ -22,6 +22,7 @@ const App = () => {
         <div>
           <Demo />
         </div>
+
         <Faq />
         <Footer />
       </div>

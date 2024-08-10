@@ -10,7 +10,7 @@ const FAQ = () => {
         <div className="z-10 flex items-center justify-center scale-90">
           <div
             className={cn(
-              "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-white/10 bg-neutral-900 hover:border-white/15"
+              "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-black/10 bg-neutral-900 hover:border-black/15"
             )}
           >
             <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">

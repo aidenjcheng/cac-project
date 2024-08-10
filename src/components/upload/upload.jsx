@@ -110,7 +110,7 @@ const App = () => {
           <AnimatePresence>
             {isUploadVisible && (
               <motion.div
-                className="w-[550px] h-[583px] fixed top-1/2 left-1/2 z-40 bg-[#141518] flex flex-col gap-4 items-center rounded-2xl border-[1px] justify-center border-white/10"
+                className="w-[550px] h-[583px] fixed top-1/2 left-1/2 z-40 bg-[#141518] flex flex-col gap-4 items-center rounded-2xl border-[1px] justify-center border-black/10"
                 style={{
                   transform: "translate(-50%, -50%)",
                 }}
@@ -138,7 +138,7 @@ const App = () => {
                   ease: [0.29, 1.48, 0.47, 0.99],
                 }}
               >
-                <div className="w-[calc(100%-10px)] h-[calc(100%-10px)] mx-auto bg-[#181818] rounded-xl border-[1px] border-solid border-white/5">
+                <div className="w-[calc(100%-10px)] h-[calc(100%-10px)] mx-auto bg-[#181818] rounded-xl border-[1px] border-solid border-black/5">
                   <form
                     onSubmit={handleFormSubmit}
                     className="flex flex-col justify-between w-full h-full pb-2"
@@ -154,7 +154,7 @@ const App = () => {
                       </motion.div>
                       <motion.div
                         onClick={() => handleUploadClick(fileInputRef)}
-                        className="w-[512px] h-[256px] mx-auto flex items-center justify-center flex-col gap-2 rounded-[20px] border-[1px] border-solid border-white/15 bg-[#1c1c1c]"
+                        className="w-[512px] h-[256px] mx-auto flex items-center justify-center flex-col gap-2 rounded-[20px] border-[1px] border-solid border-black/15 bg-[#1c1c1c]"
                       >
                         <input
                           type="file"
@@ -182,7 +182,7 @@ const App = () => {
                       </motion.div>
                       {uploadedFile && (
                         <motion.div
-                          className="mt-4 w-[90%] mx-auto bg-#0f1012 h-[4rem] flex flex-row items-center rounded-xl border-white/20 border border-solid pl-4 gap-2 pr-4 justify-space bg-white/5"
+                          className="mt-4 w-[90%] mx-auto bg-#0f1012 h-[4rem] flex flex-row items-center rounded-xl border-black/20 border border-solid pl-4 gap-2 pr-4 justify-space bg-white/5"
                           initial={{
                             opacity: 0,
                             scale: 0.9,
@@ -202,7 +202,7 @@ const App = () => {
                         >
                           <div className="relative h-10 w-[80%] flex items-center gap-2">
                             {uploadedFile ? (
-                              <div className="relative h-10 w-10 flex items-center justify-center border-white/20 border border-solid rounded-lg">
+                              <div className="relative h-10 w-10 flex items-center justify-center border-black/20 border border-solid rounded-lg">
                                 {fileType === "image" ? (
                                   <svg
                                     width="20"

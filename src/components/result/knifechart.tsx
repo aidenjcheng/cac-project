@@ -35,10 +35,9 @@ const chartConfig = {
 
 export function Component() {
   return (
-    <Card className="flex flex-col w-[17.5%] rounded-[1.5rem]">
+    <Card className="flex flex-col rounded-[20px] h-[360px]">
       <CardHeader className="items-center pb-0">
         <CardTitle className="text-wrap">Number of Blades Detected</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer

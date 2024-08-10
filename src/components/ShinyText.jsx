@@ -8,7 +8,7 @@ const ShinyText = () => {
     <div className="z-10 flex items-center">
       <div
         className={cn(
-          "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-white/10 bg-neutral-900 hover:border-white/15"
+          "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-black/10 bg-neutral-900 hover:border-black/15"
         )}
       >
         <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">
@@ -19,7 +19,7 @@ const ShinyText = () => {
             >
               AI
             </span>
-            Introducing Weapon Detection
+            Introducing the Video Player
           </span>
           <div
             className="flex items-center justify-center p-1 rounded-full ml-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5"

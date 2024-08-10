@@ -15,7 +15,7 @@ export function AnimatedTabs({ activeTab, onTabChange }: AnimatedTabsProps) {
   ];
 
   return (
-    <motion.div className="h-full animate-stagger border border-white/10 border-solid rounded-2xl px-1 py-1 box-border w-[70%] mx-auto bg-white/[0.02]">
+    <motion.div className="h-full animate-stagger border border-black/10 border-solid rounded-2xl px-1 py-1 box-border w-[70%] mx-auto bg-white/[0.02]">
       <motion.div className="relative flex justify-between ">
         <motion.div
           className="absolute bottom-0 left-0 h-[100%] bg-white rounded-xl z-0 w-1/2"

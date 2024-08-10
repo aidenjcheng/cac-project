@@ -9,7 +9,6 @@ import Logo1 from "../svg/logo";
 import Support from "../svg/support";
 import { Link } from "react-router-dom";
 import { Phone } from "lucide-react";
-
 import { Rocket } from "lucide-react";
 
 const Header = () => {
@@ -55,12 +54,9 @@ const Header = () => {
         }}
       >
         <motion.div
-          className="header__section flex flex-row justify-between px-7 py-3 border border-solid items-center backdrop-blur-sm"
+          className="header__section flex flex-row justify-between px-7 py-3 items-center backdrop-blur-sm"
           style={{
-            borderColor: isHovered ? "transparent" : "#202225",
-            backgroundColor: isHovered
-              ? "rgba(12, 12, 12, 1)"
-              : "rgba(9, 9, 9, 0.9)",
+            backgroundColor: isHovered ? "#fff" : "#fff",
             borderRadius: isHovered
               ? "1rem 1rem 0px 0px"
               : "1rem 1rem 1rem 1rem",
@@ -73,14 +69,14 @@ const Header = () => {
               href="index"
             >
               <Logo1 />
-              <span className="text-white sans text-lg">aegis</span>
+              <span className="primary sans text-lg">aegis</span>
             </a>
           </div>
 
           <ul className="header__list text-white flex gap-10">
             <motion.li className="header__item">
               <motion.a
-                initial={{ color: "#aaafb5" }}
+                initial={{ color: "#7b7b7b" }}
                 whileHover={{ color: "#fff" }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 href="about"
@@ -91,7 +87,7 @@ const Header = () => {
             <motion.li className="header__item text-secondary">
               <motion.a
                 href="contact"
-                initial={{ color: "#aaafb5" }}
+                initial={{ color: "#7b7b7b" }}
                 whileHover={{ color: "#fff" }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
@@ -104,7 +100,6 @@ const Header = () => {
                 className="flex flex-row items-center"
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 onHoverStart={() => HandleChevronHover(true)}
-                style={{ color: isHovered ? "#fff" : "#aaafb5" }}
               >
                 Resources
                 <Chevron isHovered={isHovered} />
@@ -116,17 +111,14 @@ const Header = () => {
               How it works
             </Link>
             <Link className="btn" to="/signin">
-              Start now
+              Try Aegis
             </Link>
           </motion.div>
         </motion.div>
         <AnimatePresence onExitComplete={() => setIsAnimating(false)}>
           {isHovered && (
             <motion.div
-              className="flex w-full justify-between py-2 rounded-b-2xl"
-              style={{
-                backgroundColor: isHovered ? "rgb(9, 9, 9)" : "rgb(9, 9, 9)",
-              }}
+              className="flex w-full justify-between py-2 rounded-b-2xl bg-white"
               onAnimationStart={() => setIsAnimating(true)}
               onAnimationComplete={() => setIsAnimating(false)}
               initial={{ opacity: 0, filter: "blur(30px)" }}
@@ -148,7 +140,7 @@ const Header = () => {
                       "Mission",
                       "Why we created Aegis.",
                       <span className="inline-flex align-middle ">
-                        <Rocket className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
+                        <Rocket className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-[#2b2b2b] transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>
@@ -160,7 +152,7 @@ const Header = () => {
                       "Crisis Numbers",
                       "Information on crisis numbers.",
                       <span className="inline-flex align-middle">
-                        <Phone className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
+                        <Phone className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-[#2b2b2b] transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>
@@ -172,7 +164,7 @@ const Header = () => {
                       "What You Can Do",
                       "How you can help your community.",
                       <span className="inline-flex align-middle">
-                        <Support className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-white transition-colors duration-100 ease-in-out" />
+                        <Support className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-[#2b2b2b] transition-colors duration-100 ease-in-out" />
                       </span>,
                     ]}
                   </HeaderItem>

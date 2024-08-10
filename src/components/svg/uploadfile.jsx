@@ -6,7 +6,7 @@ function Icon() {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      className="size-6 p-4 box-content bg-[#0f1012] rounded-xl border-white/10 border-[1px]"
+      className="size-6 p-4 box-content bg-[#0f1012] rounded-xl border-black/10 border-[1px]"
     >
       <path
         stroke="#fff"

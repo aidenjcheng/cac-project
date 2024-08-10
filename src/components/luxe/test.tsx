@@ -32,7 +32,7 @@ export function CardRevealedPointer() {
 					`,
         }}
       />
-      <div className="relative flex flex-col gap-3 rounded-xl border border-white/10 px-4 py-5 h-full">
+      <div className="relative flex flex-col gap-3 rounded-xl border border-black/10 px-4 py-5 h-full">
         <div className="space-y-2">
           <h3 className=" font-semibold text-neutral-200">How it works</h3>
           <p className="text-sm leading-[1.5] text-neutral-400">

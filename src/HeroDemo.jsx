@@ -1,13 +1,12 @@
-import { createRoot } from "react-dom/client";
-import { motion, animate, stagger } from "framer-motion";
-import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import Dashboard from "./components/playercopy.jsx";
 import ArtPlayer from "./components/result/artplayer.jsx";
 
 const HeroDemo = () => {
   return (
     <div
-      className=" w-screen h-[1600px] absolute top-[60%] pointer-events-none"
+      className=" w-screen h-[1600px] absolute top-[45vh] pointer-events-none"
       style={{
         contain: "strict",
         perspective: "4000px",

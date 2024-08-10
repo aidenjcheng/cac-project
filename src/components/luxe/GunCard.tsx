@@ -23,7 +23,7 @@ export function CardRevealedPointer() {
 					`,
         }}
       />
-      <div className="relative flex flex-col gap-3 rounded-xl border border-white/10 px-4 py-5 h-full group">
+      <div className="relative flex flex-col gap-3 rounded-xl border border-black/10 px-4 py-5 h-full group">
         <img
           src="/gun.png"
           alt="knife"

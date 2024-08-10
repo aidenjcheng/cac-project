@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
 import { Calculator, Calendar, Smile } from "lucide-react";
 
@@ -12,7 +12,11 @@ import {
   CommandList,
 } from "../../components/ui/command";
 
-export function CommandDialogDemo() {
+export function CommandDialogDemo({
+  isSidebarOpen,
+}: {
+  isSidebarOpen: boolean;
+}) {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -30,42 +34,85 @@ export function CommandDialogDemo() {
   return (
     <motion.div>
       <div
-        className="group flex gap-2 w-full justify-between p-2 pl-5 bg-[#242424] rounded-xl items-center cursor-pointer"
+        className="flex gap-2 w-full bg-[#242424]  py-2"
         onClick={() => setOpen(true)}
+        style={{ borderRadius: isSidebarOpen ? "0.75rem" : "9999px" }}
       >
-        <div className="flex text-[#545454] items-center gap-3 group-hover:text-white/70 transition-colors duration-300 ease-in-out">
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="size-5 group-hover:stroke-white/35 transition-colors duration-300 ease-in-out stroke-[#454545]"
-          >
-            <path
-              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Search
-        </div>
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="size-4 stroke-white/70 bg-white/10 rounded-md p-1 box-content"
+        <div
+          className="w-[90%] mx-auto flex group h-full items-center cursor-pointer"
+          style={{
+            justifyContent: isSidebarOpen ? "space-between" : "center",
+          }}
         >
-          <path
-            d="M7 22L17 2"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+          <div className="flex text-[#545454] items-center gap-3 group-hover:text-white/70 transition-colors duration-300 ease-in-out">
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-5 group-hover:stroke-white/35 transition-colors duration-300 ease-in-out stroke-[#454545]"
+            >
+              <path
+                d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <AnimatePresence>
+              {isSidebarOpen && (
+                <motion.div
+                  initial={{ opacity: 0, display: "none" }}
+                  animate={{ opacity: 1, display: "block" }}
+                  exit={{ opacity: 0, display: "none" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <span
+                    style={{
+                      opacity: isSidebarOpen ? "100%" : "0%",
+                      display: isSidebarOpen ? "block" : "none",
+                      transition: "all 0.3s ease-in-out",
+                    }}
+                    className="text-secondary"
+                  >
+                    Search
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <AnimatePresence>
+            {isSidebarOpen && (
+              <motion.div
+                initial={{ opacity: 0, display: "none" }}
+                animate={{ opacity: 1, display: "block" }}
+                exit={{ opacity: 0, display: "none" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-4 stroke-white/70 bg-white/10 rounded-md p-1 box-content"
+                  style={{
+                    opacity: isSidebarOpen ? "100%" : "0%",
+                    transition: "opacity 0.3s ease-in-out",
+                  }}
+                >
+                  <path
+                    d="M7 22L17 2"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />

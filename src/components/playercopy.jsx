@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 function App({ children }) {
   return (
     <div className="flex w-full h-full gap-[10px] box-border pt-5 pl-5">
-      <div className="flex flex-col w-[20%] min-w-[250px] max-w-[15vw] gap-5 bg-[#181818] p-2 rounded-3xl justify-between border border-solid border-white/5">
+      <div className="flex flex-col w-[20%] min-w-[250px] max-w-[15vw] gap-5 bg-[#181818] p-2 rounded-3xl justify-between border border-solid border-black/5">
         <motion.div
           className="flex flex-col w-full h-full gap-5 hero-item"
           initial={{
@@ -104,14 +104,14 @@ function App({ children }) {
         </div>
       </div>
       <motion.div
-        className="flex w-[85%] bg-[#1d1d1d] rounded-3xl box-border flex-col gap-5 border border-solid border-white/5 hero-item"
+        className="flex w-[85%] bg-[#1d1d1d] rounded-3xl box-border flex-col gap-5 border border-solid border-black/5 hero-item"
         initial={{
           opacity: 0,
           filter: "blur(10px)",
           transform: "translate3d(50px,0,300px)",
         }}
       >
-        <div className="border-b border-white/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3 text-left">
+        <div className="border-b border-black/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3 text-left">
           <p>Hey, Aiden!</p>
           <p className="text-sm text-secondary">
             {new Date().toLocaleDateString("en-US", {

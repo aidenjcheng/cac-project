@@ -24,7 +24,7 @@ db = firestore.client()
 #END OF INITIALIZING FIRESTORE DB
 app = Flask(__name__)
 #CORS(app, supports_credentials=True)
-CORS(app, resources={r"/": {"origins": ["http://localhost:5173/", "https://cac-project-git-kevinhelp-aidenjcheng12-gmailcoms-projects.vercel.app"]}}, supports_credentials=True) 
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
 
 config = {
     "apiKey": "AIzaSyA60oTvdLN48Bp5RV2fZHsaivB2h24xspQ",
@@ -209,6 +209,23 @@ def signup():
 def logout():
     session.pop('user')
     return redirect('/')
+    
+    
+    
+    
+    
+    
+  
+
+
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+    
+    
+    
+    
+    
+    
+    
+    

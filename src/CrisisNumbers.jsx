@@ -2,7 +2,6 @@ import Blog from "./components/blog/blog.jsx";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import Header from "./components/header/header.jsx";
-import Chart from "./components/blog/chart.tsx";
 import { ThemeProvider } from "./components/themeprovider.tsx";
 import Logo1 from "./components/svg/logowithbg.jsx";
 

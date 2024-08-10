@@ -198,11 +198,11 @@ export function DropdownMenu({
         style={{ width: "100%", height: "100%" }}
       >
         <motion.button
-          className="w-full border-b border-white/10 pb-3"
+          className="w-full border-b border-black/10 pb-3"
           onClick={() => setIsOpen((prevState) => !prevState)}
         >
           <motion.div className="w-full" whileTap={{ scale: 0.97 }}>
-            <div className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-white/10 justify-between">
+            <div className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-black/10 justify-between">
               <div className="flex items-center gap-2">
                 <Pfp />
                 <div className="flex flex-col justify-start">

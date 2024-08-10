@@ -1,4 +1,8 @@
-function Icon() {
+type PfpProps = {
+  isSidebarOpen: boolean;
+};
+
+function Icon({ isSidebarOpen }: PfpProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +10,12 @@ function Icon() {
       height="48"
       fill="none"
       viewBox="0 0 48 48"
-      className="size-10"
+      className="aspect-square"
+      style={{
+        width: isSidebarOpen ? "48px" : "auto",
+        height: isSidebarOpen ? "48px" : "90%",
+        transition: "all 0.3s ease-in-out",
+      }}
     >
       <g filter="url(#filter0_iii_1202_5337)">
         <g clipPath="url(#clip0_1202_5337)">

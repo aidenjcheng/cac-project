@@ -39,7 +39,7 @@ module.exports = {
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "#7b7b7b",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
@@ -50,7 +50,7 @@ module.exports = {
           foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
+          DEFAULT: "#181818",
           foreground: "hsl(var(--card-foreground))",
         },
       },

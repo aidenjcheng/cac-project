@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { Crosshair } from "lucide-react"
+import { Crosshair } from "lucide-react";
 import {
   Label,
   PolarGrid,
   PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
-} from "recharts"
+} from "recharts";
 
 import {
   Card,
@@ -16,11 +16,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card"
-import { ChartConfig, ChartContainer } from "../ui/chart"
+} from "../ui/card";
+import { ChartConfig, ChartContainer } from "../ui/chart";
 const chartData = [
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-]
+];
 
 const chartConfig = {
   visitors: {
@@ -30,14 +30,13 @@ const chartConfig = {
     label: "Safari",
     color: "hsl(var(--chart-2))",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function Component() {
   return (
-    <Card className="flex flex-col w-[17.5%] rounded-[1.5rem]">
+    <Card className="flex flex-col rounded-[20px] h-[360px]">
       <CardHeader className="items-center pb-0">
         <CardTitle>Number of Firearms detected</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -85,7 +84,7 @@ export function Component() {
                           Firearms detected
                         </tspan>
                       </text>
-                    )
+                    );
                   }
                 }}
               />
@@ -95,13 +94,15 @@ export function Component() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="leading-none text-muted-foreground">
-          Showing total firearm detections <span className="inline-flex align-middle">
-            <Crosshair  className="size-4"/>
-          </span>.
+          Showing total firearm detections{" "}
+          <span className="inline-flex align-middle">
+            <Crosshair className="size-4" />
+          </span>
+          .
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }
 
-export default Component
+export default Component;

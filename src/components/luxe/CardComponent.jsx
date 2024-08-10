@@ -23,7 +23,7 @@ export function CardRevealedPointer({ children, className = "" }) {
           `,
         }}
       />
-      <div className="relative flex flex-col gap-3 rounded-xl border border-white/10 px-4 py-5">
+      <div className="relative flex flex-col gap-3 rounded-xl border border-black/10 px-4 py-5">
         {children}
       </div>
     </div>

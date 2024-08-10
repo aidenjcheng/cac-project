@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 
 import Pfp from "../svg/pfp";
-import { motion, stagger, useAnimate } from "framer-motion";
+import { AnimatePresence, motion, stagger, useAnimate } from "framer-motion";
 import {
   UserCircleIcon,
   ChevronRightIcon,
@@ -61,9 +61,11 @@ function useMenuAnimation(isOpen: boolean) {
 type DropdownMenuProps = {
   containerClassName?: string;
   itemClassName?: string;
+  isSidebarOpen: boolean;
 };
 
 export function DropdownMenu({
+  isSidebarOpen,
   containerClassName,
   itemClassName,
 }: DropdownMenuProps) {
@@ -191,26 +193,53 @@ export function DropdownMenu({
         style={{ width: "100%", height: "100%" }}
       >
         <motion.button
-          className="w-full border-b border-white/10 pb-3"
+          className="w-full border-b border-black/10 pb-3"
           onClick={() => setIsOpen((prevState) => !prevState)}
         >
           <motion.div className="w-full" whileTap={{ scale: 0.97 }}>
-            <div className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-white/10 justify-between">
+            <div
+              className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-black/10 ease-in-out transition-colors duration-300"
+              style={{
+                justifyContent: isSidebarOpen ? "space-between" : "center",
+              }}
+            >
               <div className="flex items-center gap-2">
-                <Pfp />
-                <div className="flex flex-col justify-start">
-                  <span className="text-left">{user.displayName}</span>
-                  <span className="text-secondary text-sm">{user.email}</span>
-                </div>
+                <Pfp isSidebarOpen={isSidebarOpen} />
+                <AnimatePresence>
+                  {isSidebarOpen && (
+                    <motion.div
+                      className="flex flex-col justify-start"
+                      initial={{ opacity: 0, display: "none" }}
+                      animate={{ opacity: 1, display: "flex" }}
+                      exit={{ opacity: 0, display: "none" }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <span className="text-left">{user.displayName}</span>
+                      <span className="text-secondary text-sm">
+                        {user.email}
+                      </span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-              <ChevronDownIcon
-                size={28}
-                className="text-white/50"
-                style={{
-                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                  transition: "all 0.5s cubic-bezier(0.29, 1.48, 0.47, 0.99)",
-                }}
-              />
+              {isSidebarOpen && (
+                <motion.div
+                  initial={{ opacity: 0, display: "none" }}
+                  animate={{ opacity: 1, display: "block" }}
+                  exit={{ opacity: 0, display: "none" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <ChevronDownIcon
+                    size={28}
+                    className="text-white/50"
+                    style={{
+                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                      transition:
+                        "all 0.5s cubic-bezier(0.29, 1.48, 0.47, 0.99)",
+                    }}
+                  />
+                </motion.div>
+              )}
             </div>
           </motion.div>
         </motion.button>

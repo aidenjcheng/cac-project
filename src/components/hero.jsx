@@ -1,38 +1,116 @@
-import ShinyText from "./ShinyText";
-import ChevronRight from "./svg/chevronright";
-import { Cpu, ShieldPlus } from "lucide-react";
 import { animate, stagger, motion } from "framer-motion";
-import React, { useEffect } from "react";
-import HeroDemo from "../HeroDemo";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PolaroidPhoto from "./hero/polaroidphoto";
+import Carousel from "./hero/carousel";
 
 const HeroSection = () => {
+  const [activeSpan, setActiveSpan] = useState(-1);
+  const spanColors = ["#22c55e", "#a855f7", "#0275ff"];
+  const spanDurations = [3000, 3000, 3000];
+  const delayBetweenSpans = 500;
+  const startupDelay = 1000; // 1-second startup delay
+
   useEffect(() => {
-    animate(
-      ".hero-item",
-      {
-        opacity: 1,
-        filter: "blur(0px)",
-        transform: "translate3d(0px, 0px, 0px)",
-      },
-      { delay: stagger(0.2) },
-      { ease: "cubic-bezier(0.87, 0, 0.13, 1)", duration: 5 }
-    );
+    let timeoutId;
+    let currentSpan = 0;
+
+    const animateNextSpan = () => {
+      setActiveSpan(currentSpan);
+
+      timeoutId = setTimeout(() => {
+        setActiveSpan(-1);
+        currentSpan = (currentSpan + 1) % 3;
+
+        timeoutId = setTimeout(animateNextSpan, delayBetweenSpans);
+      }, spanDurations[currentSpan]);
+    };
+
+    // Start the animation after the startup delay
+    timeoutId = setTimeout(animateNextSpan, startupDelay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      setActiveSpan(-1);
+    };
+  }, []);
+
+  useEffect(() => {
+    const heroItems = document.querySelectorAll(".hero-item");
+    if (heroItems.length > 0) {
+      animate(
+        heroItems,
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          transform: "translate3d(0px, 0px, 0px)",
+        },
+        { delay: stagger(0.2) },
+        { ease: "cubic-bezier(0.29, 1.28, 0.47, 0.99)", duration: 5 }
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    const heroPhotos = document.querySelectorAll(".hero-photo");
+    if (heroPhotos.length > 0) {
+      animate(
+        heroPhotos,
+        {
+          opacity: 1,
+          scale: 1,
+        },
+        { delay: stagger(0.5) },
+        { ease: "cubic-bezier(0.87, 0, 0.13, 1)", duration: 5 }
+      );
+    }
   }, []);
 
   return (
-    <div
-      className="flex flex-col justify-start px-[12.5%] items-center text-center z-40 h-[calc(136vh+1600px)] bg-[#0F1012]
-"
-    >
-      <div
-        className="absolute top-0 left-0 w-full h-[calc(136vh+1600px)] z-20 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(200deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4822303921568627) 55%, rgba(5, 5, 5, 1) 100%)",
-        }}
-      ></div>
-      <div className="h-[85vh] flex flex-col items-center justify-center gap-7 ">
+    <div className="flex flex-col justify-start pt-[250px] px-[100px] text-center z-40 ">
+      <div>
+        <PolaroidPhoto
+          photo="./heroimages/img1.jpg"
+          className="hero-photo left-[17vw] top-[150px] absolute"
+          animate={{ rotate: "5deg" }}
+        />
+        <PolaroidPhoto
+          photo="./heroimages/img2.jpg"
+          className="hero-photo left-[10vw] top-[325px]"
+          animate={{ rotate: "25deg" }}
+        />
+
+        <PolaroidPhoto
+          photo="./heroimages/img3.jpg"
+          className="hero-photo left-[16vw] top-[500px]"
+          animate={{ rotate: "-8deg" }}
+        />
+
+        <PolaroidPhoto
+          photo="./heroimages/img4.jpg"
+          className="hero-photo right-[17vw] top-[150px]"
+          animate={{ rotate: "-5deg" }}
+        />
+        <PolaroidPhoto
+          photo="./heroimages/img5.jpg"
+          className="hero-photo right-[10vw] top-[325px] "
+          animate={{ rotate: "-25deg" }}
+        />
+
+        <PolaroidPhoto
+          photo="./heroimages/img5.jpg"
+          className="hero-photo right-[16vw] top-[500px] "
+          animate={{ rotate: "8deg" }}
+        />
+
+        <div>
+          <img></img>
+        </div>
+        <div>
+          <img></img>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-7 ">
         <motion.a
           initial={{
             opacity: 0,
@@ -42,7 +120,7 @@ const HeroSection = () => {
           href="index"
           className="cursor-pointer hero-item"
         >
-          <ShinyText />
+          {/* <ShinyText /> */}
         </motion.a>
         <motion.h1
           initial={{
@@ -50,37 +128,47 @@ const HeroSection = () => {
             filter: "blur(10px)",
             transform: "translateY(10px)",
           }}
-          className="med text-white  hero-item"
+          animate={{
+            opacity: 1,
+            filter: "blur(0px)",
+            transform: "translateY(0px)",
+          }}
+          transition={{
+            duration: 0.5,
+          }}
+          className="med hero-item w-[60vw] cursor-pointer text-[#2b2b2b3]"
           style={{
-            fontSize: "5rem",
-            lineHeight: "5.2rem",
+            fontSize: "4.5rem",
+            lineHeight: "1em",
+            letterSpacing: "-0.03em",
           }}
         >
-          Ensure protection <br /> in your community.
-          <br />
+          AI video analysis for <br />
+          <motion.span
+            animate={{ color: activeSpan === 0 ? spanColors[0] : "#2b2b2b" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="med"
+          >
+            guns
+          </motion.span>
+          ,{" "}
+          <motion.span
+            animate={{ color: activeSpan === 1 ? spanColors[1] : "#2b2b2b" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="med"
+          >
+            knives
+          </motion.span>
+          , and <br />
+          <motion.span
+            animate={{ color: activeSpan === 2 ? spanColors[2] : "#2b2b2b" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="med"
+          >
+            threats in security footage
+          </motion.span>
         </motion.h1>
-        <motion.h3
-          initial={{
-            opacity: 0,
-            filter: "blur(10px)",
-            transform: "translateY(10px)",
-          }}
-          className=" text-lg text-secondary w-3/4 hero-item"
-        >
-          Enhance your <strong>security</strong>{" "}
-          <span className="inline-block align-middle">
-            <ShieldPlus className="size-4 stroke-green-400" />
-          </span>{" "}
-          with our cutting-edge
-          <strong> AI-powered object recognition technology</strong>{" "}
-          <span className="inline-block align-middle ">
-            <Cpu color="#ffffff" className="size-4 stroke-blue-400" />
-          </span>
-          . Detect
-          <strong> weapons </strong>
-          in real-time through security camera footage, ensuring a
-          <strong> safer environment for everyone.</strong>
-        </motion.h3>
+
         <div className="flex flex-row gap-2 ">
           <motion.div
             initial={{
@@ -88,26 +176,15 @@ const HeroSection = () => {
               filter: "blur(10px)",
               transform: "translateY(10px)",
             }}
-            className="btn-big hero-item"
+            className="hero-item"
           >
-            <Link to="getstarted">enhance your security now</Link>
-          </motion.div>
-          <motion.div
-            initial={{
-              opacity: 0,
-              filter: "blur(10px)",
-              transform: "translateY(10px)",
-            }}
-            className="group hero-item"
-          >
-            <Link to="/signin" className="btn-secondary-big">
-              How it Works
-              <ChevronRight color="#aaafb5" />
+            <Link to="getstarted" className="btn-big box-content">
+              Start for free
             </Link>
           </motion.div>
         </div>
       </div>
-      <HeroDemo />
+      <Carousel />
     </div>
   );
 };
