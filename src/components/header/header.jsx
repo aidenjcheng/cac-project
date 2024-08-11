@@ -45,7 +45,7 @@ const Header = () => {
         )}
       </AnimatePresence>
       <motion.div
-        className="flex flex-col w-4/5 mx-auto border border-solid m-3 rounded-2xl fixed"
+        className="flex flex-col w-[90%] mx-auto border border-solid m-3 rounded-2xl fixed"
         onMouseEnter={() => isHovered && setIsHovered(true)}
         onMouseLeave={() => isHovered && setIsHovered(false)}
         style={{
@@ -54,7 +54,7 @@ const Header = () => {
         }}
       >
         <motion.div
-          className="header__section flex flex-row justify-between px-7 py-3 items-center backdrop-blur-sm"
+          className="header__section flex flex-row justify-between px-4 py-3 items-center backdrop-blur-sm"
           style={{
             backgroundColor: isHovered ? "#fff" : "#fff",
             borderRadius: isHovered

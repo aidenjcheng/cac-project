@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from "react";
 
-import Pfp from "../svg/pfp";
 import { motion, stagger, useAnimate } from "framer-motion";
 import {
   UserCircleIcon,
@@ -204,7 +203,6 @@ export function DropdownMenu({
           <motion.div className="w-full" whileTap={{ scale: 0.97 }}>
             <div className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-black/10 justify-between">
               <div className="flex items-center gap-2">
-                <Pfp />
                 <div className="flex flex-col justify-start">
                   <span className="text-left">{user.displayName}</span>
                   <span className="text-secondary text-sm">{user.email}</span>

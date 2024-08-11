@@ -1,4 +1,4 @@
-import { animate, stagger, motion } from "framer-motion";
+import { animate, stagger, motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PolaroidPhoto from "./hero/polaroidphoto";
@@ -6,7 +6,7 @@ import Carousel from "./hero/carousel";
 
 const HeroSection = () => {
   const [activeSpan, setActiveSpan] = useState(-1);
-  const spanColors = ["#22c55e", "#a855f7", "#0275ff"];
+  const spanColors = ["#23ffbd", "#8323ff", "#0275ff"];
   const spanDurations = [3000, 3000, 3000];
   const delayBetweenSpans = 500;
   const startupDelay = 1000; // 1-second startup delay
@@ -69,59 +69,182 @@ const HeroSection = () => {
   return (
     <div className="flex flex-col justify-start pt-[250px] px-[100px] text-center z-40 ">
       <div>
-        <PolaroidPhoto
-          photo="./heroimages/img1.jpg"
-          className="hero-photo left-[17vw] top-[150px] absolute"
-          animate={{ rotate: "5deg" }}
-        />
-        <PolaroidPhoto
-          photo="./heroimages/img2.jpg"
-          className="hero-photo left-[10vw] top-[325px]"
-          animate={{ rotate: "25deg" }}
-        />
-
-        <PolaroidPhoto
-          photo="./heroimages/img3.jpg"
-          className="hero-photo left-[16vw] top-[500px]"
-          animate={{ rotate: "-8deg" }}
-        />
-
-        <PolaroidPhoto
-          photo="./heroimages/img4.jpg"
-          className="hero-photo right-[17vw] top-[150px]"
-          animate={{ rotate: "-5deg" }}
-        />
-        <PolaroidPhoto
-          photo="./heroimages/img5.jpg"
-          className="hero-photo right-[10vw] top-[325px] "
-          animate={{ rotate: "-25deg" }}
-        />
-
-        <PolaroidPhoto
-          photo="./heroimages/img5.jpg"
-          className="hero-photo right-[16vw] top-[500px] "
-          animate={{ rotate: "8deg" }}
-        />
-
         <div>
-          <img></img>
+          <PolaroidPhoto
+            photo="./heroimages/img1.jpg"
+            className=" left-[17vw] top-[150px] absolute rotate-[5deg]"
+            tagColor={{ backgroundColor: "#23ffbd" }}
+            activeSpan={activeSpan}
+            spanNumber={0}
+            initial={{ opacity: 0, scale: 0.95, rotate: "5deg" }}
+            name={"GUN"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img1.jpg"
+            className=" left-[17vw] top-[150px] absolute rotate-[5deg]"
+            tagColor={{ backgroundColor: "#8323ff" }}
+            activeSpan={activeSpan}
+            spanNumber={1}
+            initial={{ opacity: 0, scale: 0.95, rotate: "5deg" }}
+            name={"KNIFE"}
+          />
+          <PolaroidPhoto
+            photo="./heroimages/img1.jpg"
+            className=" left-[17vw] top-[150px] absolute rotate-[5deg]"
+            tagColor={{ backgroundColor: "#0275ff" }}
+            activeSpan={activeSpan}
+            spanNumber={2}
+            initial={{ opacity: 0, scale: 0.95, rotate: "5deg" }}
+            name={"THREAT"}
+          />
         </div>
         <div>
-          <img></img>
+          <PolaroidPhoto
+            photo="./heroimages/img2.jpg"
+            className=" left-[10vw] top-[325px] absolute rotate-[5deg]"
+            tagColor={{ backgroundColor: "#23ffbd" }}
+            activeSpan={activeSpan}
+            spanNumber={0}
+            initial={{ opacity: 0, scale: 0.95, rotate: "25deg" }}
+            name={"GUN"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img2.jpg"
+            className=" left-[10vw] top-[325px] absolute rotate-[5deg]"
+            tagColor={{ backgroundColor: "#8323ff" }}
+            activeSpan={activeSpan}
+            spanNumber={1}
+            initial={{ opacity: 0, scale: 0.95, rotate: "25deg" }}
+            name={"KNIFE"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img2.jpg"
+            className=" left-[10vw] top-[325px] absolute rotate-[5deg]"
+            tagColor={{ backgroundColor: "#0275ff" }}
+            activeSpan={activeSpan}
+            spanNumber={2}
+            initial={{ opacity: 0, scale: 0.95, rotate: "25deg" }}
+            name={"THREAT"}
+          />{" "}
+        </div>
+        <div>
+          <PolaroidPhoto
+            photo="./heroimages/img3.jpg"
+            className=" left-[16vw] top-[500px] absolute"
+            tagColor={{ backgroundColor: "#23ffbd" }}
+            activeSpan={activeSpan}
+            spanNumber={0}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-8deg" }}
+            name={"GUN"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img3.jpg"
+            className=" left-[16vw] top-[500px] absolute"
+            tagColor={{ backgroundColor: "#8323ff" }}
+            activeSpan={activeSpan}
+            spanNumber={1}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-8deg" }}
+            name={"KNIFE"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img3.jpg"
+            className=" left-[16vw] top-[500px] absolute"
+            tagColor={{ backgroundColor: "#0275ff" }}
+            activeSpan={activeSpan}
+            spanNumber={2}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-8deg" }}
+            name={"THREAT"}
+          />{" "}
+        </div>
+        <div>
+          <PolaroidPhoto
+            photo="./heroimages/img4.jpg"
+            className="  right-[17vw] top-[150px] absolute"
+            tagColor={{ backgroundColor: "#23ffbd" }}
+            activeSpan={activeSpan}
+            spanNumber={0}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-5deg" }}
+            name={"GUN"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img4.jpg"
+            className="  right-[17vw] top-[150px] absolute"
+            tagColor={{ backgroundColor: "#8323ff" }}
+            activeSpan={activeSpan}
+            spanNumber={1}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-5deg" }}
+            name={"KNIFE"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img4.jpg"
+            className="  right-[17vw] top-[150px] absolute"
+            tagColor={{ backgroundColor: "#0275ff" }}
+            activeSpan={activeSpan}
+            spanNumber={2}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-5deg" }}
+            name={"THREAT"}
+          />{" "}
+        </div>
+        <div>
+          <PolaroidPhoto
+            photo="./heroimages/img5.jpg"
+            className="   right-[10vw] top-[325px] absolute"
+            tagColor={{ backgroundColor: "#23ffbd" }}
+            activeSpan={activeSpan}
+            spanNumber={0}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-25deg" }}
+            name={"GUN"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img5.jpg"
+            className="   right-[10vw] top-[325px] absolute"
+            tagColor={{ backgroundColor: "#8323ff" }}
+            activeSpan={activeSpan}
+            spanNumber={1}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-25deg" }}
+            name={"KNIFE"}
+          />{" "}
+          <PolaroidPhoto
+            photo="./heroimages/img5.jpg"
+            className="   right-[10vw] top-[325px] absolute"
+            tagColor={{ backgroundColor: "#0275ff" }}
+            activeSpan={activeSpan}
+            spanNumber={2}
+            initial={{ opacity: 0, scale: 0.95, rotate: "-25deg" }}
+            name={"THREAT"}
+          />{" "}
+        </div>
+        <div>
+          <PolaroidPhoto
+            photo="./heroimages/img5.jpg"
+            className="    right-[16vw] top-[500px] absolute"
+            tagColor={{ backgroundColor: "#23ffbd" }}
+            activeSpan={activeSpan}
+            spanNumber={0}
+            initial={{ opacity: 0, scale: 0.95, rotate: "8deg" }}
+            name={"GUN"}
+          />
+          <PolaroidPhoto
+            photo="./heroimages/img5.jpg"
+            className="    right-[16vw] top-[500px] absolute"
+            tagColor={{ backgroundColor: "#8323ff" }}
+            activeSpan={activeSpan}
+            spanNumber={1}
+            initial={{ opacity: 0, scale: 0.95, rotate: "8deg" }}
+            name={"KNIFE"}
+          />
+          <PolaroidPhoto
+            photo="./heroimages/img5.jpg"
+            className="    right-[16vw] top-[500px] absolute"
+            tagColor={{ backgroundColor: "#0275ff" }}
+            activeSpan={activeSpan}
+            spanNumber={2}
+            initial={{ opacity: 0, scale: 0.95, rotate: "8deg" }}
+            name={"THREAT"}
+          />
         </div>
       </div>
       <div className="flex flex-col items-center justify-center gap-7 ">
-        <motion.a
-          initial={{
-            opacity: 0,
-            filter: "blur(10px)",
-            transform: "translateY(10px)",
-          }}
-          href="index"
-          className="cursor-pointer hero-item"
-        >
-          {/* <ShinyText /> */}
-        </motion.a>
         <motion.h1
           initial={{
             opacity: 0,
@@ -136,11 +259,11 @@ const HeroSection = () => {
           transition={{
             duration: 0.5,
           }}
-          className="med hero-item w-[60vw] cursor-pointer text-[#2b2b2b3]"
+          className="med hero-item w-[60vw] cursor-pointer text-[#2b2b2b]"
           style={{
             fontSize: "4.5rem",
             lineHeight: "1em",
-            letterSpacing: "-0.03em",
+            letterSpacing: "-2%",
           }}
         >
           AI video analysis for <br />
@@ -184,7 +307,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-      <Carousel />
+      <video src="./herovideos/vid5.mp4"></video>
     </div>
   );
 };
