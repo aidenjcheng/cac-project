@@ -54,7 +54,7 @@ const StatsPage = () => {
 
     try {
       const response = await fetch(
-        "http://http://10.244.92.142:8080/api/update_stats",
+        "https://plankton-app-gl2gf.ondigitalocean.app/api/update_stats",
         {
           method: "POST",
           headers: {

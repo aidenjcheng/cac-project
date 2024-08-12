@@ -77,7 +77,7 @@ export function DropdownMenu({
       try {
         console.log("Fetching user data...");
         const response = await fetch(
-          "http://http://10.244.92.142:8080/api/current_user",
+          "https://plankton-app-gl2gf.ondigitalocean.app/api/current_user",
           {
             credentials: "include", // This is crucial for sending cookies
           }

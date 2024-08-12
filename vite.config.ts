@@ -15,11 +15,11 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/login": "http://10.244.92.142:8080/",
-      "/api": "http://10.244.92.142:8080/",
-      "/signup": "http://10.244.92.142:8080/",
-      "/check_login": "http://10.244.92.142:8080/",
-      "/upload": "http://10.244.92.142:8080/",
+      "/login": "https://plankton-app-gl2gf.ondigitalocean.app/", // Use HTTPS
+      "/api": "https://plankton-app-gl2gf.ondigitalocean.app/", // Use HTTPS
+      "/signup": "https://plankton-app-gl2gf.ondigitalocean.app/", // Use HTTPS
+      "/check_login": "https://plankton-app-gl2gf.ondigitalocean.app/", // Use HTTPS
+      "/upload": "https://plankton-app-gl2gf.ondigitalocean.app/", // Use HTTPS
     },
   },
 });

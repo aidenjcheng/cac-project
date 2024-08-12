@@ -28,17 +28,20 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://http://10.244.92.142:8080/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.get("email"),
-          password: formData.get("password"),
-        }),
-        credentials: "include", // This is crucial for setting the session cookie
-      });
+      const response = await fetch(
+        "https://plankton-app-gl2gf.ondigitalocean.app/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.get("email"),
+            password: formData.get("password"),
+          }),
+          credentials: "include", // This is crucial for setting the session cookie
+        }
+      );
       const data = await response.json();
       if (data.success) {
         window.location.href = data.redirect;
@@ -53,16 +56,19 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://http://10.244.92.142:8080/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.get("email"),
-          password: formData.get("password"),
-        }),
-      });
+      const response = await fetch(
+        "https://plankton-app-gl2gf.ondigitalocean.app/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.get("email"),
+            password: formData.get("password"),
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
