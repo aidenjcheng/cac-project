@@ -6,6 +6,8 @@ const StatsPage = () => {
   const [videoUrl, setVideoUrl] = useState("../../public/blackscreen.mp4");
   const [markers, setMarkers] = useState([]);
   const [userEmail, setUserEmail] = useState(null);
+  const [totalGunDetections, setTotalGunDetections] = useState(0);
+
 
   useEffect(() => {
     console.log("Checking for stored video URL...");
@@ -17,7 +19,18 @@ const StatsPage = () => {
     } else {
       console.log("No stored video URL found");
     }
+
+    const storedTotalGunDetections = localStorage.getItem("totalGunDetections");
+    if (storedTotalGunDetections) {
+      setTotalGunDetections(parseInt(storedTotalGunDetections, 10));
+    }
+
+    const storedEmail = localStorage.getItem('userEmail');
+  if (storedEmail) {
+    setUserEmail(storedEmail);
+  }
   }, []);
+   
 
   const validateJSON = (json) => {
     console.log("Validating JSON:", JSON.stringify(json, null, 2));
@@ -52,13 +65,19 @@ const StatsPage = () => {
       return;
     }
 
+    const currentEmail = userEmail || localStorage.getItem('userEmail');
+    console.log("Attempting to update user stats for email:", currentEmail);
+
+    console.log("Statistics being sent:", JSON.stringify(statistics, null, 2));
+
+
     try {
       const response = await fetch("http://localhost:5000/api/update_stats", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: userEmail, statistics }),
+        body: JSON.stringify({ email: currentEmail, statistics }),
       });
 
       if (response.ok) {
@@ -104,6 +123,14 @@ const StatsPage = () => {
               setMarkers(json.detections || []);
               console.log("Markers set:", json.detections || []);
               updateUserStats(json.statistics);
+              const newTotalGunDetections = json.statistics.total_gun_occurrences;
+              const newTotalKnifeDetections = json.statistics.total_knife_occurrences;
+              setTotalGunDetections(newTotalGunDetections);
+              localStorage.setItem("totalGunDetections", newTotalGunDetections.toString());
+              console.log("gun set localstorage to, ", newTotalGunDetections.toString());
+              localStorage.setItem("totalKnifeDetections", newTotalKnifeDetections.toString());
+              console.log("knife set localstorage to, ", newTotalKnifeDetections.toString());
+              
             } else {
               throw new Error("Invalid JSON structure");
             }

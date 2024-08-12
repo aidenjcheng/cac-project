@@ -19,9 +19,12 @@ import {
 import { ChartConfig, ChartContainer } from "../ui/chart";
 import { Crosshair } from "lucide-react";
 
-const chartData = [
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-];
+
+interface KnifeChartProps {
+  totalDetections: number | undefined;
+  title?:string;
+}
+
 
 const chartConfig = {
   visitors: {
@@ -33,11 +36,16 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function Component() {
+export function Component({ totalDetections, title="Number of Blades Detected"}: KnifeChartProps) {
+  console.log("[KnifeChart] Component function called with props:", { totalDetections, title });
+
+  const chartData = [
+    { browser: "safari", visitors: totalDetections, fill: "var(--color-safari)" },
+  ];
   return (
     <Card className="flex flex-col rounded-[20px] h-[360px]">
       <CardHeader className="items-center pb-0">
-        <CardTitle className="text-wrap">Number of Blades Detected</CardTitle>
+        <CardTitle className="text-wrap">{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -75,7 +83,7 @@ export function Component() {
                           y={viewBox.cy}
                           className="fill-foreground text-4xl font-bold"
                         >
-                          {chartData[0].visitors.toLocaleString()}
+                          {(chartData[0].visitors || 0).toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}

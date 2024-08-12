@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Artplayer from "artplayer";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
@@ -14,6 +14,52 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
   console.log("Received markers:", markers);
 
   const artRef = useRef();
+  const [email, setEmail] = useState(userEmail || localStorage.getItem('userEmail'));
+  const [overallTotalGunOccurrences, setOverallTotalGunOccurrences] = useState(0);
+  const [totalGunDetections, setTotalGunDetections] = useState(() => {
+    const storedValue = localStorage.getItem('totalGunDetections');
+    return storedValue ? parseInt(storedValue, 10) : 0;
+  });
+  const [overallTotalKnifeDetections, setOverallTotalKnifeDetections] = useState(0);
+  const [totalKnifeDetections, setTotalKnifeDetections] = useState(() => {
+    const storedValue = localStorage.getItem('totalKnifeDetections');
+    return storedValue ? parseInt(storedValue, 10) : 0;
+  });
+//I know the detections and occurrences is not consistent btw 
+
+  useEffect(() => {
+    if (userEmail) {
+      setEmail(userEmail);
+    }
+  }, [userEmail]);
+  
+  
+
+  const fetchTotalStats = useCallback(async () => {
+    const currentEmail = email || localStorage.getItem('userEmail');
+    if (!currentEmail) {
+      console.error("User email is not available");
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:5000/api/get_total_stats?email=${encodeURIComponent(currentEmail)}`);
+      console.log("CurrentEmail:", currentEmail)
+      const data = await response.json();
+      if (response.ok) {
+        setOverallTotalGunOccurrences(data.total_gun_occurrences || 0);
+        setOverallTotalKnifeDetections(data.total_knife_occurrences || 0);
+      } else {
+        console.error("Failed to fetch total stats:", data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching total stats:", error);
+    }
+  }, [email]);
+
+  useEffect(() => {
+    fetchTotalStats();
+  }, [fetchTotalStats]);
 
   useEffect(() => {
     if (!videoUrl) {
@@ -90,10 +136,12 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
             className="w-[calc(100%-20px)] h-[calc(100%-20px)]"
           ></div>
         </div>
-        <GunChart />
+        <GunChart totalDetections={overallTotalGunOccurrences} title="Overall Total Gun Detections" />
         <GunKnifeChart />
+        <GunChart totalDetections={totalGunDetections} title="Current Video Gun Detections" />
+        <KnifeChart totalDetections={totalKnifeDetections} title = "Current Video Knife Detections"/>
+        <KnifeChart totalDetections={overallTotalKnifeDetections} title = "Overall Total Knife Detections"/>
 
-        <KnifeChart />
       </div>
     </ThemeProvider>
   );

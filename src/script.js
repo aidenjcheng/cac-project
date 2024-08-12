@@ -1,6 +1,6 @@
 export async function processVideo(videoFile) {
   const apiUrl =
-    "https://d5ac800d40c1a4efc90aacb57138c06b3.clg07azjl.paperspacegradient.com/process_video";
+    "https://d57d43bb4144e42be9d9ed796fedd8b3e.clg07azjl.paperspacegradient.com/process_video";
   const formData = new FormData();
   formData.append("video", videoFile, videoFile.name);
 

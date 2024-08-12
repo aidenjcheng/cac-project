@@ -134,6 +134,34 @@ def get_current_user():
         # Log the error on the server side
         app.logger.error(f"Error in get_current_user: {str(e)}")
         return jsonify({'error': 'An unexpected error occurred'}), 500
+    
+
+@app.route('/api/get_total_stats', methods=['GET'])
+def get_total_stats():
+    print("accessing get total stats route")
+    data = request.args  # For GET requests, use request.args instead of request.json
+    print("Received data:", data)
+    user_email = data.get("email")
+
+    if not user_email:
+        return jsonify({"error": "Email is required"}), 400
+
+    db = firestore.client()
+    user_ref = db.collection('users').document(user_email)
+
+    try:
+        doc = user_ref.get()
+        if doc.exists:
+            user_data = doc.to_dict()
+            return jsonify(user_data), 200
+        else:
+            return jsonify({"error": "User not found"}), 404
+    except Exception as e:
+        print(f"Error retrieving user data: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+
+
 @app.route('/api/update_stats', methods=['POST'])
 def update_stats():
     data = request.json
