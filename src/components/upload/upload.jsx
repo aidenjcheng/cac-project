@@ -19,6 +19,32 @@ const App = () => {
   const [progress, setProgress] = React.useState(13);
   const fileType = uploadedFile ? uploadedFile.type.split("/")[0] : null;
   const [showProgress, setShowProgress] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch("/api/check_login", {
+          credentials: "include",
+        });
+        const data = await response.json();
+        setIsAuthenticated(data.logged_in);
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+        setIsAuthenticated(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  if (isAuthenticated === null) {
+    return <div>Loading...</div>;
+  }
+
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/signin" />;
+  // }
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];

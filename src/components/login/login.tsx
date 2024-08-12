@@ -6,9 +6,11 @@ import { AnimatePresence, motion, animate, stagger } from "framer-motion";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Checkbox } from "../../components/ui/checkbox";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
+  const navigate = useNavigate();
 
   useEffect(() => {
     animate(
@@ -25,11 +27,12 @@ const Login = () => {
       }
     );
   }, []);
+
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,11 +41,12 @@ const Login = () => {
           email: formData.get("email"),
           password: formData.get("password"),
         }),
-        credentials: "include", // This is crucial for setting the session cookie
+        credentials: "include",
       });
       const data = await response.json();
       if (data.success) {
-        window.location.href = data.redirect;
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/upload"); // Use React Router's navigate function
       } else {
         console.error("Login failed:", data.message);
       }
@@ -50,11 +54,12 @@ const Login = () => {
       console.error("Error:", error);
     }
   };
+
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:5000/signup", {
+      const response = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +83,6 @@ const Login = () => {
       console.error("Error:", error);
     }
   };
-
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

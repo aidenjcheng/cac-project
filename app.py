@@ -22,9 +22,9 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 #END OF INITIALIZING FIRESTORE DB
-app = Flask(__name__)
+app = Flask(__name__, static_folder='/dist')
 #CORS(app, supports_credentials=True)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
 
 config = {
     "apiKey": "AIzaSyA60oTvdLN48Bp5RV2fZHsaivB2h24xspQ",
@@ -69,8 +69,8 @@ def check_login():
     else:
         return jsonify({"logged_in": False})
 
-@app.route("/login", methods=['POST'])
-def login():
+@app.route("/api/login", methods=['POST'])
+def api_login():
     print("login route accessed")
     try:
         data = request.json
@@ -79,24 +79,26 @@ def login():
         if not email or not password:
             return jsonify({"success": False, "message": "Email and password are required"}), 400
         user = auth.sign_in_with_email_and_password(email, password)
-        session.permanent=True
+        session.permanent = True
         session['user'] = email
-        session.modified=True
+        session.modified = True
         print("USER LOGGED IN SUCCESS")
         print(f"Session contents: {dict(session)}")
 
         return jsonify({
             "success": True, 
             "message": "Login successful", 
-            "redirect": "/upload",
+            "redirect": "/upload",  # This is now handled by React Router
             "user": {
                 "email": email,
-                "displayName": email.split('@')[0]  # Using part of email as display name
+                "displayName": email.split('@')[0]
             }
         })
     except Exception as e:
         print(f"Error during login: {str(e)}")
         return jsonify({"success": False, "message": "Please check your credentials"}), 401
+
+
 
 @app.route('/api/user')
 def get_user():
@@ -111,7 +113,7 @@ def get_user():
         })
     except:
         return jsonify({'error': 'Invalid token'}), 401
-    
+pass
 
 
 @app.route('/api/current_user')
@@ -204,9 +206,20 @@ def update_stats():
         print(f"Error updating stats: {str(e)}")
         return jsonify({"success": False, "message": "An error occurred while updating stats"}), 500
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path.startswith('api/'):
+        # Let Flask handle API routes
+        return app.view_functions[request.endpoint](**request.view_args)
+    elif path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+
 # Keep the existing /api/current_user route to fetch the user's email
-@app.route("/signup", methods=['POST'])
-def signup():
+@app.route("/api/signup", methods=['POST'])
+def api_signup():
     print("signup route accessed")
     try:
         data = request.json
@@ -231,7 +244,7 @@ def signup():
         import traceback
         traceback.print_exc()
         return jsonify({"success": False, "message": str(e)}), 500
-
+pass
 
 @app.route('/logout')
 def logout():

@@ -1,6 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/header/header.jsx";
 import HeroSection from "./components/hero.jsx";
 import Demo from "./components/demo/features-section-demo-3.tsx";
@@ -11,7 +16,8 @@ import GunSafety from "./GunSafety.jsx";
 import KnifeSafety from "./KnifeSafety.jsx";
 import Mission from "./mission.jsx";
 import WhatYouCanDo from "./wycdth.jsx";
-import LogIn from "./components/login/login.tsx"; // Add this line
+import LogIn from "./components/login/login.tsx";
+import Upload from "./Upload";
 
 const App = () => {
   return (
@@ -22,7 +28,6 @@ const App = () => {
         <div>
           <Demo />
         </div>
-
         <Faq />
         <Footer />
       </div>
@@ -42,6 +47,8 @@ root.render(
       <Route path="/mission" element={<Mission />} />
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />
       <Route path="/signin" element={<LogIn />} />
+      <Route path="/upload" element={<Upload />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </Router>
 );
