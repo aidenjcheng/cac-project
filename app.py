@@ -80,12 +80,12 @@ def contact():
 @app.route('/result')
 def result():
     return render_template('result.html')
-#go to upload page while having login required
+
 @app.route("/upload")
 @login_required
 def upload():
     print(f"Accessing upload route. Session: {dict(session)}")
-    return send_from_directory('.', 'upload.html')
+    return render_template('upload.html')
 
 #check login
 @app.route("/check_login")
