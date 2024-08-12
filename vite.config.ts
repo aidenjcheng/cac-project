@@ -12,11 +12,11 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/login": "http://localhost:5000",
-      "/api": "http://localhost:5000",
-      "/signup": "http://localhost:5000",
-      "/check_login": "http://localhost:5000",
-      "/upload": "http://localhost:5000",
+      "/login": "http://localhost:8080",
+      "/api": "http://localhost:8080",
+      "/signup": "http://localhost:8080",
+      "/check_login": "http://localhost:8080",
+      "/upload": "http://localhost:8080",
     },
   },
 });
