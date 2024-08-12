@@ -65,7 +65,7 @@ def serve(path):
         return render_template(f'{path}.html')
     
     # Check if the file exists in the static folder (your React build)
-    if path != "" and os.path.exists(app.static_folder + '/' + path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
         return send_from_directory(app.static_folder, path)
     
     # If it's not a Flask route and not a static file, let React handle it
