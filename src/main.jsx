@@ -10,6 +10,8 @@ import { ThemeProvider } from "./components/themeprovider";
 import GunSafety from "./GunSafety.jsx";
 import KnifeSafety from "./KnifeSafety.jsx";
 import Mission from "./mission.jsx";
+import Upload from './Upload';  // You'll need to create this component
+
 import WhatYouCanDo from "./wycdth.jsx";
 import LogIn from "./components/login/login.tsx"; // Add this line
 
@@ -42,6 +44,7 @@ root.render(
       <Route path="/mission" element={<Mission />} />
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />
       <Route path="/signin" element={<LogIn />} />
+      <Route path="/upload" element={<Upload />} />
     </Routes>
   </Router>
 );
