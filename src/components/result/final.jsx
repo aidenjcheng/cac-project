@@ -53,7 +53,7 @@ const StatsPage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/update_stats", {
+      const response = await fetch("http://localhost:8080/api/update_stats", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

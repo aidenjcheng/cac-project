@@ -73,7 +73,7 @@ export function DropdownMenu({
     const fetchUser = async () => {
       try {
         console.log("Fetching user data...");
-        const response = await fetch("http://localhost:5000/api/current_user", {
+        const response = await fetch("http://localhost:8080/api/current_user", {
           credentials: "include", // This is crucial for sending cookies
         });
         console.log("Response status:", response.status);
