@@ -76,9 +76,12 @@ export function DropdownMenu({
     const fetchUser = async () => {
       try {
         console.log("Fetching user data...");
-        const response = await fetch("http://localhost:8080/api/current_user", {
-          credentials: "include", // This is crucial for sending cookies
-        });
+        const response = await fetch(
+          "http://http://10.244.92.142:8080/api/current_user",
+          {
+            credentials: "include", // This is crucial for sending cookies
+          }
+        );
         console.log("Response status:", response.status);
         const text = await response.text();
         console.log("Response text:", text);

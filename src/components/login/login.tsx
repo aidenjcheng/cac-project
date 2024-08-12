@@ -28,7 +28,7 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:8080/login", {
+      const response = await fetch("http://http://10.244.92.142:8080/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:8080/signup", {
+      const response = await fetch("http://http://10.244.92.142:8080/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

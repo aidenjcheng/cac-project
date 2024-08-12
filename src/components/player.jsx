@@ -19,7 +19,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
     }
   };
   useEffect(() => {
-    fetch("http://localhost:8080/api/current_user", {
+    fetch("http://http://10.244.92.142:8080/api/current_user", {
       credentials: "include",
     })
       .then((response) => response.json())

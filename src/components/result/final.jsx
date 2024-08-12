@@ -53,13 +53,16 @@ const StatsPage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/update_stats", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: userEmail, statistics }),
-      });
+      const response = await fetch(
+        "http://http://10.244.92.142:8080/api/update_stats",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: userEmail, statistics }),
+        }
+      );
 
       if (response.ok) {
         console.log("User stats updated successfully");
