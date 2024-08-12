@@ -22,19 +22,19 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 #END OF INITIALIZING FIRESTORE DB
-app = Flask(__name__)
+app = Flask(__name__, static_folder='dist', static_url_path='')
 #CORS(app, supports_credentials=True)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://plankton-app-gl2gf.ondigitalocean.app/"]}}, supports_credentials=True)
 
 config = {
-    "apiKey": "AIzaSyA60oTvdLN48Bp5RV2fZHsaivB2h24xspQ",
-    "authDomain": "aegisauthenticatebare.firebaseapp.com",
-    "projectId": "aegisauthenticatebare",
-    "storageBucket": "aegisauthenticatebare.appspot.com",
-    "messagingSenderId": "311041913929",
-    "appId": "1:311041913929:web:866f91c63a63abf562bb98",
-    "measurementId": "G-LKS5W50NHY",
-    "databaseURL":''
+    "apiKey": os.environ.get("FIREBASE_API_KEY"),
+    "authDomain": os.environ.get("FIREBASE_AUTH_DOMAIN"),
+    "projectId": os.environ.get("PROJECT_ID"),
+    "storageBucket": os.environ.get("STORAGE_BUCKET"),
+    "messagingSenderId": os.environ.get("MESSAGING_SENDER_ID"),
+    "appId": os.environ.get("APP_ID"),
+    "measurementId": os.environ.get("MEASUREMENT_ID"),
+    "databaseURL": os.environ.get("DATABASE_URL", '')  # Default to empty string if not set
 }
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
@@ -54,6 +54,32 @@ def login_required(f):
             return jsonify({"success": False, "message": "Please log in to access this page"}), 401
         return f(*args, **kwargs)
     return decorated_function
+# List of routes that should be handled by Flask (your separate HTML files)
+flask_routes = ['upload', 'contact', 'result']
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    # Check if the path is one of the Flask routes
+    if path in flask_routes:
+        return render_template(f'{path}.html')
+    
+    # Check if the file exists in the static folder (your React build)
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    
+    # If it's not a Flask route and not a static file, let React handle it
+    return send_from_directory(app.static_folder, 'index.html')
+
+# Keep your existing routes for the separate HTML files
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/result')
+def result():
+    return render_template('result.html')
 #go to upload page while having login required
 @app.route("/upload")
 @login_required
