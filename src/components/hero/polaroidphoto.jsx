@@ -11,11 +11,6 @@ const PolaroidPhoto = ({
   name,
   initial,
 }) => {
-  // Debugging output
-  console.log(
-    `PolaroidPhoto: activeSpan=${activeSpan}, spanNumber=${spanNumber}`
-  );
-
   return (
     <>
       <AnimatePresence>
