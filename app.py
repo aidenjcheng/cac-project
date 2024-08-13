@@ -22,19 +22,19 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 #END OF INITIALIZING FIRESTORE DB
-app = Flask(__name__, static_folder='/dist')
+app = Flask(__name__, static_folder='dist', static_url_path='')
 #CORS(app, supports_credentials=True)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://plankton-app-gl2gf.ondigitalocean.app/"]}}, supports_credentials=True)
 
 config = {
-    "apiKey": "AIzaSyA60oTvdLN48Bp5RV2fZHsaivB2h24xspQ",
-    "authDomain": "aegisauthenticatebare.firebaseapp.com",
-    "projectId": "aegisauthenticatebare",
-    "storageBucket": "aegisauthenticatebare.appspot.com",
-    "messagingSenderId": "311041913929",
-    "appId": "1:311041913929:web:866f91c63a63abf562bb98",
-    "measurementId": "G-LKS5W50NHY",
-    "databaseURL":''
+    "apiKey": os.environ.get("FIREBASE_API_KEY"),
+    "authDomain": os.environ.get("FIREBASE_AUTH_DOMAIN"),
+    "projectId": os.environ.get("PROJECT_ID"),
+    "storageBucket": os.environ.get("STORAGE_BUCKET"),
+    "messagingSenderId": os.environ.get("MESSAGING_SENDER_ID"),
+    "appId": os.environ.get("APP_ID"),
+    "measurementId": os.environ.get("MEASUREMENT_ID"),
+    "databaseURL": os.environ.get("DATABASE_URL", '')  # Default to empty string if not set
 }
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
@@ -167,10 +167,15 @@ def get_total_stats():
 @app.route('/api/update_stats', methods=['POST'])
 def update_stats():
     data = request.json
+    print("Received data:", data)  # Log the received data
     user_email = data.get('email')
     stats = data.get('statistics')
 
+    print(f"Updating stats for user: {user_email}")
+    print("Stats:", stats)
+
     if not user_email or not stats:
+        print("Error: Missing email or statistics")
         return jsonify({"success": False, "message": "Email and statistics are required"}), 400
 
     db = firestore.client()
@@ -182,6 +187,7 @@ def update_stats():
             current_stats = user_doc.to_dict()
         else:
             current_stats = {}
+            print(f"Creating new document for user: {user_email}")
 
         stat_fields = [
             'total_gun_occurrences',
@@ -193,11 +199,14 @@ def update_stats():
 
         updates = {}
         for field in stat_fields:
+            if field not in stats:
+                print(f"Warning: {field} not found in provided statistics")
             if field not in current_stats:
                 updates[field] = stats.get(field, 0)
             else:
                 updates[field] = current_stats.get(field, 0) + stats.get(field, 0)
 
+        print("Updating with:", updates)
         user_ref.set(updates, merge=True)
 
         return jsonify({'success': True})
@@ -263,12 +272,9 @@ def logout():
   
 
 
-
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
-    
-    
-    
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
     
     
     
