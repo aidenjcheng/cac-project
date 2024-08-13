@@ -17,7 +17,7 @@ import KnifeSafety from "./KnifeSafety.jsx";
 import Mission from "./mission.jsx";
 import WhatYouCanDo from "./wycdth.jsx";
 import LogIn from "./components/login/login.tsx";
-import Upload from "./Upload";
+import UploadPage from "./upload";
 import Final from "./final.jsx";
 
 const App = () => {
@@ -48,7 +48,7 @@ root.render(
       <Route path="/mission" element={<Mission />} />
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />
       <Route path="/signin" element={<LogIn />} />
-      <Route path="/upload" element={<Upload />} />
+      <Route path="/upload" element={<UploadPage />} />
       <Route path="/result" element={<Final />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
