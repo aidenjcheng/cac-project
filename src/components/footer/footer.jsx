@@ -9,7 +9,7 @@ const Footer = () => {
       <header className="h-[calc(100vh-8rem)]  w-full flex flex-col border-b border-b-white/10 border-solid">
         <div className="flex flex-col items-center gap-8 w-full">
           <div className="w-full">
-            <h1 className="text-[4rem] medium text-center med w-[80%] mx-auto">
+            <h1 className="text-[4rem] medium text-center med w-[80%] mx-auto primary">
               Enhance your security with Aegis.
             </h1>
             <p className="text-secondary text-center w-3/5 mx-auto">
@@ -27,7 +27,7 @@ const Footer = () => {
         <div className="h-[calc(100%-20px)] w-full overflow-hidden relative">
           <div className="flex flex-row mx-10 gap-[80px]">
             <div className="flex flex-col gap-5 mt-10">
-              <div className="flex items-center gap-1 sans text-lg">
+              <div className="flex items-center gap-1 sans text-lg primary">
                 <Logo1 />
                 aegis
               </div>
@@ -39,13 +39,13 @@ const Footer = () => {
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Navigation</li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
                   <Link to="/aboutus">About</Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
                   <Link to="/contact">Contact</Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
                   <Link to="/howitworks">How it works</Link>
                 </li>
               </ul>
@@ -53,13 +53,13 @@ const Footer = () => {
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Resources</li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
                   <Link to="/mission">Mission</Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
                   <Link to="/gunsafety">Gun Safety</Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
+                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
                   <Link to="/knifesafety">Knife Safety</Link>
                 </li>
               </ul>
@@ -73,7 +73,7 @@ const Footer = () => {
               <span
                 className="flex items-center justify-center gap-1 sans text-transparent text-[20rem] w-full max-w-[80vw] mx-auto"
                 style={{
-                  WebkitTextStrokeColor: "#27282a",
+                  WebkitTextStrokeColor: "#f2f2f2",
                   WebkitTextStrokeWidth: "1.5px",
                   transform: "translateY(40%)",
                   whiteSpace: "nowrap",

@@ -18,6 +18,7 @@ import Mission from "./mission.jsx";
 import WhatYouCanDo from "./wycdth.jsx";
 import LogIn from "./components/login/login.tsx";
 import Upload from "./Upload";
+import Final from "./final.jsx";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ root.render(
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />
       <Route path="/signin" element={<LogIn />} />
       <Route path="/upload" element={<Upload />} />
+      <Route path="/result" element={<Final />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </Router>

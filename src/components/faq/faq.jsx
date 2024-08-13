@@ -10,14 +10,17 @@ const FAQ = () => {
         <div className="z-10 flex items-center justify-center scale-90">
           <div
             className={cn(
-              "group rounded-full border text-base text-white transition-all ease-in hover:cursor-pointer  border-black/10 bg-neutral-900 hover:border-black/15"
+              "group rounded-full border text-base primary transition-all ease-in hover:cursor-pointer  border-black/10 bg-white hover:border-black/15"
             )}
           >
             <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 hover:text-neutral-400">
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 primary">
                 <span
                   className="font-sans inline-flex items-center rounded-full font-semibold leading-tight tracking-widest h-4 px-1.5 text-[9px]"
-                  style={{ backgroundColor: "#2e2e2e", color: "#8e8d91" }}
+                  style={{
+                    backgroundColor: "rgb(227,227,227)",
+                    color: "#8e8d91",
+                  }}
                 >
                   ?
                 </span>
@@ -26,7 +29,7 @@ const FAQ = () => {
             </AnimatedShinyText>
           </div>
         </div>
-        <h1 className="text-7xl w-full text-wrap bold text-white">
+        <h1 className="text-7xl w-full text-wrap bold text-white primary">
           Have any questions?
         </h1>
       </div>

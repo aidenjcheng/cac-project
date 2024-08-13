@@ -1,5 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const SidebarItem = ({ children, variant = "default", isSidebarOpen }) => {
   const baseClasses =
@@ -18,7 +19,7 @@ const SidebarItem = ({ children, variant = "default", isSidebarOpen }) => {
     active: "text-white",
   };
   return (
-    <motion.a href={children[0]}>
+    <Link to={children[0]}>
       <motion.li
         className={`${baseClasses} ${variantClasses[variant]}`}
         initial={{
@@ -42,7 +43,7 @@ const SidebarItem = ({ children, variant = "default", isSidebarOpen }) => {
           <AnimatePresence>{isSidebarOpen && children[2]}</AnimatePresence>
         </div>
       </motion.li>
-    </motion.a>
+    </Link>
   );
 };
 

@@ -198,7 +198,7 @@ export function DropdownMenu({
         >
           <motion.div className="w-full" whileTap={{ scale: 0.97 }}>
             <div
-              className="flex items-center gap-3 bg-[#1d1d1d] p-2 rounded-2xl cursor-pointer border border-black/10 ease-in-out transition-colors duration-300"
+              className="flex items-center gap-3 bg-[#f5f7f9] p-2 rounded-2xl cursor-pointer border border-black/10 ease-in-out transition-colors duration-300"
               style={{
                 justifyContent: isSidebarOpen ? "space-between" : "center",
               }}
@@ -231,7 +231,7 @@ export function DropdownMenu({
                 >
                   <ChevronDownIcon
                     size={28}
-                    className="text-white/50"
+                    className="stroke-[#999aa3]"
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                       transition:

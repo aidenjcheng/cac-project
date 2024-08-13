@@ -24,7 +24,7 @@ const DemoItem: React.FC<DemoItemProps> = ({
       className={`w-full p-[36px] flex flex-col gap-[16px] h-full relative cursor-pointer`}
     >
       <div className="flex flex-col gap-[8px]">
-        <span className="med">{title}</span>
+        <span className="med primary">{title}</span>
         <span className="text-secondary">{description}</span>
       </div>
       <Link to={linkTo} className="text-[#0275ff] group">

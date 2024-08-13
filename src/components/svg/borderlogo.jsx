@@ -9,7 +9,7 @@ function Icon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="size-[30rem]"
-      stroke="rgba(255, 255, 255, 0.1)"
+      stroke="rgba(0,0,0, 0.05)"
       strokeWidth="0.2"
     >
       <path

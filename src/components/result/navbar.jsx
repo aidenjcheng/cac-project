@@ -16,7 +16,7 @@ const Navbar = () => {
             <ul className="w-full h-full text-[1rem] flex flex-col gap-2 rounded-xl">
               <SidebarItem variant="active">
                 {[
-                  "./result.html",
+                  "./result",
                   <svg
                     width="18"
                     height="18"
@@ -36,7 +36,7 @@ const Navbar = () => {
 
               <SidebarItem variant="default">
                 {[
-                  "./upload.html",
+                  "./upload",
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

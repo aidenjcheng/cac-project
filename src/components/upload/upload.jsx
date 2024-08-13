@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import Upload from "../svg/upload.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import UploadFile from "../svg/uploadfile.jsx";
@@ -16,10 +16,44 @@ import {
 const App = () => {
   const [isUploadVisible, setIsUploadVisible] = useState(false);
   const [uploadedFile, setUploadedFile] = useState(null);
-  const [progress, setProgress] = React.useState(13);
-  const fileType = uploadedFile ? uploadedFile.type.split("/")[0] : null;
+  const [progress, setProgress] = useState(13);
   const [showProgress, setShowProgress] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+  const fileInputRef = useRef(null);
+
+  const handleFileUpload = useCallback((event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setUploadedFile(file);
+    }
+  }, []);
+
+  const handleUploadClick = useCallback(() => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  }, []);
+
+  const handleUploadButtonClick = useCallback((Visibility) => {
+    setIsUploadVisible(Visibility);
+  }, []);
+
+  const handleClickOutside = useCallback((event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setIsUploadVisible(false);
+    }
+  }, []);
+
+  const handleFormSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (uploadedFile && !showProgress) {
+        processVideo(uploadedFile);
+      }
+    },
+    [uploadedFile, showProgress]
+  );
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -38,49 +72,7 @@ const App = () => {
     checkAuth();
   }, []);
 
-  if (isAuthenticated === null) {
-    return <div>Loading...</div>;
-  }
-
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/signin" />;
-  // }
-
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setUploadedFile(file);
-    }
-  };
-
-  function formatFileSize(bytes) {
-    if (bytes < 1024) return bytes + " bytes";
-    else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
-    else if (bytes < 1073741824) return (bytes / 1048576).toFixed(2) + " MB";
-    else return (bytes / 1073741824).toFixed(2) + " GB";
-  }
-
-  const ref = useRef(null);
-
-  const fileInputRef = useRef(null);
-
-  const handleUploadClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
-
-  const handleUploadButtonClick = (Visibility) => {
-    setIsUploadVisible(Visibility);
-  };
-
-  const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      setIsUploadVisible(false);
-    }
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (uploadedFile) {
       const timer1 = setTimeout(() => setProgress(66), 700);
       const timer2 = setTimeout(() => {
@@ -99,14 +91,21 @@ const App = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    if (uploadedFile && !showProgress) {
-      processVideo(uploadedFile);
-    }
-  };
+  const ref = useRef(null);
+  const fileType = uploadedFile ? uploadedFile.type.split("/")[0] : null;
+
+  function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + " bytes";
+    else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
+    else if (bytes < 1073741824) return (bytes / 1048576).toFixed(2) + " MB";
+    else return (bytes / 1073741824).toFixed(2) + " GB";
+  }
+
+  if (isAuthenticated === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

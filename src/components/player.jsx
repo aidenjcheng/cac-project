@@ -36,9 +36,9 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
   };
 
   return (
-    <div className="flex w-full h-full gap-[10px] box-border pt-5">
+    <div className="flex w-full h-full box-border bg-[#f5f7f9]">
       <motion.div
-        className={`flex flex-col max-w-[15vw] gap-5 bg-[#181818] p-2 rounded-3xl justify-between border border-solid border-black/5`}
+        className={`flex flex-col max-w-[15vw] gap-5  p-2 rounded-3xl justify-between border border-solid border-black/5`}
         onMouseEnter={() => HandleSidebarToggle(true)}
         onMouseLeave={() => HandleSidebarToggle(false)}
         animate={{ width: isSidebarOpen ? "20%" : "5%" }}
@@ -57,7 +57,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
                   isSidebarOpen={isSidebarOpen}
                 >
                   {[
-                    "./result",
+                    "/result",
                     <svg
                       width="18"
                       height="18"
@@ -88,7 +88,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
                   isSidebarOpen={isSidebarOpen}
                 >
                   {[
-                    "./upload",
+                    "/upload",
                     <div className="size-6 flex justify-center items-center">
                       <svg
                         width="18"
@@ -209,7 +209,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
         </div>
       </motion.div>
       <div
-        className="flex bg-[#1d1d1d] rounded-3xl box-border flex-col border border-solid border-black/5 overflow-y-scroll"
+        className="flex bg-white rounded-3xl box-border flex-col border border-solid border-black/5 overflow-y-scroll"
         style={{ width: isSidebarOpen ? "85%" : "95%" }}
       >
         <div className="border-b border-black/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3">

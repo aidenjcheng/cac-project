@@ -22,7 +22,7 @@ function App({ children }) {
               <ul className="w-full h-full text-[1rem] flex flex-col gap-2 rounded-xl">
                 <SidebarItem variant={children[0]}>
                   {[
-                    "./result",
+                    "/result",
                     <svg
                       width="18"
                       height="18"
@@ -42,7 +42,7 @@ function App({ children }) {
 
                 <SidebarItem variant={children[1]}>
                   {[
-                    "./upload",
+                    "/upload",
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"

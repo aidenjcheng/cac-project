@@ -12,8 +12,8 @@ function Icon({ isSidebarOpen }: PfpProps) {
       viewBox="0 0 48 48"
       className="aspect-square"
       style={{
-        width: isSidebarOpen ? "48px" : "auto",
-        height: isSidebarOpen ? "48px" : "90%",
+        width: isSidebarOpen ? "38px" : "auto",
+        height: isSidebarOpen ? "38px" : "90%",
         transition: "all 0.3s ease-in-out",
       }}
     >
