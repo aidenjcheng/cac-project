@@ -12,7 +12,6 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -23,7 +22,7 @@ console.log("[GunChart] Module loaded");
 
 interface GunChartProps {
   totalDetections: number | undefined;
-  title?:string;
+  title?: string;
 }
 
 const chartConfig = {
@@ -38,11 +37,21 @@ const chartConfig = {
 
 console.log("[GunChart] chartConfig defined:", chartConfig);
 
-export function Component({ totalDetections, title="Number of firearms detected" }: GunChartProps) {
-  console.log("[GunChart] Component function called with props:", { totalDetections, title });
+export function Component({
+  totalDetections,
+  title = "Number of firearms detected",
+}: GunChartProps) {
+  console.log("[GunChart] Component function called with props:", {
+    totalDetections,
+    title,
+  });
 
   const chartData = [
-    { browser: "safari", visitors: totalDetections, fill: "var(--color-safari)" },
+    {
+      browser: "safari",
+      visitors: totalDetections,
+      fill: "var(--color-safari)",
+    },
   ];
   console.log("[GunChart] chartData created:", chartData);
 
@@ -57,7 +66,6 @@ export function Component({ totalDetections, title="Number of firearms detected"
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
         >
-          
           <RadialBarChart
             data={chartData}
             startAngle={0}
@@ -79,7 +87,10 @@ export function Component({ totalDetections, title="Number of firearms detected"
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
               <Label
                 content={({ viewBox }) => {
-                  console.log("[GunChart] Label content function called with viewBox:", viewBox);
+                  console.log(
+                    "[GunChart] Label content function called with viewBox:",
+                    viewBox
+                  );
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                     console.log("[GunChart] Rendering text in Label");
                     return (
@@ -106,7 +117,9 @@ export function Component({ totalDetections, title="Number of firearms detected"
                       </text>
                     );
                   }
-                  console.log("[GunChart] ViewBox conditions not met, returning null");
+                  console.log(
+                    "[GunChart] ViewBox conditions not met, returning null"
+                  );
                   return null;
                 }}
               />

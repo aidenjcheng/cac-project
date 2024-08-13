@@ -11,7 +11,6 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -19,12 +18,10 @@ import {
 import { ChartConfig, ChartContainer } from "../ui/chart";
 import { Crosshair } from "lucide-react";
 
-
 interface KnifeChartProps {
   totalDetections: number | undefined;
-  title?:string;
+  title?: string;
 }
-
 
 const chartConfig = {
   visitors: {
@@ -36,11 +33,21 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function Component({ totalDetections, title="Number of Blades Detected"}: KnifeChartProps) {
-  console.log("[KnifeChart] Component function called with props:", { totalDetections, title });
+export function Component({
+  totalDetections,
+  title = "Number of Blades Detected",
+}: KnifeChartProps) {
+  console.log("[KnifeChart] Component function called with props:", {
+    totalDetections,
+    title,
+  });
 
   const chartData = [
-    { browser: "safari", visitors: totalDetections, fill: "var(--color-safari)" },
+    {
+      browser: "safari",
+      visitors: totalDetections,
+      fill: "var(--color-safari)",
+    },
   ];
   return (
     <Card className="flex flex-col rounded-[20px] h-[360px]">
