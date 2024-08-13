@@ -19,7 +19,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
     }
   };
   useEffect(() => {
-    fetch("http://localhost:5000/api/current_user", {
+    fetch("https://stingray-app-7i9ac.ondigitalocean.app/current_user", {
       credentials: "include",
     })
       .then((response) => response.json())

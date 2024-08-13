@@ -15,11 +15,11 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/login": "http://localhost:5000",
-      "/api": "http://localhost:5000",
-      "/signup": "http://localhost:5000",
-      "/check_login": "http://localhost:5000",
-      "/upload": "http://localhost:5000",
+      "/login": "https://stingray-app-7i9ac.ondigitalocean.app/",
+      "/api": "https://stingray-app-7i9ac.ondigitalocean.app/",
+      "/signup": "https://stingray-app-7i9ac.ondigitalocean.app/",
+      "/check_login": "https://stingray-app-7i9ac.ondigitalocean.app/",
+      "/upload": "https://stingray-app-7i9ac.ondigitalocean.app/",
     },
   },
 });

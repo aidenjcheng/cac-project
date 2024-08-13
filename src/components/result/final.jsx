@@ -8,7 +8,6 @@ const StatsPage = () => {
   const [userEmail, setUserEmail] = useState(null);
   const [totalGunDetections, setTotalGunDetections] = useState(0);
 
-
   useEffect(() => {
     console.log("Checking for stored video URL...");
     const storedUrl = localStorage.getItem("processedVideoUrl");
@@ -25,12 +24,11 @@ const StatsPage = () => {
       setTotalGunDetections(parseInt(storedTotalGunDetections, 10));
     }
 
-    const storedEmail = localStorage.getItem('userEmail');
-  if (storedEmail) {
-    setUserEmail(storedEmail);
-  }
+    const storedEmail = localStorage.getItem("userEmail");
+    if (storedEmail) {
+      setUserEmail(storedEmail);
+    }
   }, []);
-   
 
   const validateJSON = (json) => {
     console.log("Validating JSON:", JSON.stringify(json, null, 2));
@@ -65,20 +63,22 @@ const StatsPage = () => {
       return;
     }
 
-    const currentEmail = userEmail || localStorage.getItem('userEmail');
+    const currentEmail = userEmail || localStorage.getItem("userEmail");
     console.log("Attempting to update user stats for email:", currentEmail);
 
     console.log("Statistics being sent:", JSON.stringify(statistics, null, 2));
 
-
     try {
-      const response = await fetch("http://localhost:5000/api/update_stats", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: currentEmail, statistics }),
-      });
+      const response = await fetch(
+        "https://stingray-app-7i9ac.ondigitalocean.app/update_stats",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: currentEmail, statistics }),
+        }
+      );
 
       if (response.ok) {
         console.log("User stats updated successfully");
@@ -123,14 +123,27 @@ const StatsPage = () => {
               setMarkers(json.detections || []);
               console.log("Markers set:", json.detections || []);
               updateUserStats(json.statistics);
-              const newTotalGunDetections = json.statistics.total_gun_occurrences;
-              const newTotalKnifeDetections = json.statistics.total_knife_occurrences;
+              const newTotalGunDetections =
+                json.statistics.total_gun_occurrences;
+              const newTotalKnifeDetections =
+                json.statistics.total_knife_occurrences;
               setTotalGunDetections(newTotalGunDetections);
-              localStorage.setItem("totalGunDetections", newTotalGunDetections.toString());
-              console.log("gun set localstorage to, ", newTotalGunDetections.toString());
-              localStorage.setItem("totalKnifeDetections", newTotalKnifeDetections.toString());
-              console.log("knife set localstorage to, ", newTotalKnifeDetections.toString());
-              
+              localStorage.setItem(
+                "totalGunDetections",
+                newTotalGunDetections.toString()
+              );
+              console.log(
+                "gun set localstorage to, ",
+                newTotalGunDetections.toString()
+              );
+              localStorage.setItem(
+                "totalKnifeDetections",
+                newTotalKnifeDetections.toString()
+              );
+              console.log(
+                "knife set localstorage to, ",
+                newTotalKnifeDetections.toString()
+              );
             } else {
               throw new Error("Invalid JSON structure");
             }

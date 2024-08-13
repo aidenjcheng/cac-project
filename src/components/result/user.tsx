@@ -76,9 +76,12 @@ export function DropdownMenu({
     const fetchUser = async () => {
       try {
         console.log("Fetching user data...");
-        const response = await fetch("http://localhost:5000/api/current_user", {
-          credentials: "include", // This is crucial for sending cookies
-        });
+        const response = await fetch(
+          "https://stingray-app-7i9ac.ondigitalocean.app/current_user",
+          {
+            credentials: "include", // This is crucial for sending cookies
+          }
+        );
         console.log("Response status:", response.status);
         const text = await response.text();
         console.log("Response text:", text);

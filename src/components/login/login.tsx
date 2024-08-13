@@ -59,16 +59,19 @@ const Login = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     try {
-      const response = await fetch("http://localhost:5000/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.get("email"),
-          password: formData.get("password"),
-        }),
-      });
+      const response = await fetch(
+        "https://stingray-app-7i9ac.ondigitalocean.app/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.get("email"),
+            password: formData.get("password"),
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
