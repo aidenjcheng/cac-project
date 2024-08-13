@@ -39,6 +39,7 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
 
   const fetchTotalStats = useCallback(async () => {
     const currentEmail = email || localStorage.getItem("userEmail");
+    console.log("Artplayer line 42, Current user email is ", currentEmail);
     if (!currentEmail) {
       console.error("User email is not available");
       return;
@@ -50,9 +51,10 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
           currentEmail
         )}`
       );
-      console.log("CurrentEmail:", currentEmail);
+      console.log("Artplayer line 54, CurrentEmail:", currentEmail);
       const data = await response.json();
       if (response.ok) {
+        console.log("Set overall total gun occurrences and knife detections");
         setOverallTotalGunOccurrences(data.total_gun_occurrences || 0);
         setOverallTotalKnifeDetections(data.total_knife_occurrences || 0);
       } else {

@@ -19,7 +19,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
     }
   };
   useEffect(() => {
-    fetch("https://stingray-app-7i9ac.ondigitalocean.app/current_user", {
+    fetch("https://stingray-app-7i9ac.ondigitalocean.app/api/current_user", {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -38,7 +38,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
   return (
     <div className="flex w-full h-full box-border bg-[#f5f7f9]">
       <motion.div
-        className={`flex flex-col max-w-[15vw] gap-5  p-2 rounded-3xl justify-between border border-solid border-black/5`}
+        className={`flex flex-col max-w-[15vw] gap-5  p-2 rounded-3xl justify-between`}
         onMouseEnter={() => HandleSidebarToggle(true)}
         onMouseLeave={() => HandleSidebarToggle(false)}
         animate={{ width: isSidebarOpen ? "20%" : "5%" }}

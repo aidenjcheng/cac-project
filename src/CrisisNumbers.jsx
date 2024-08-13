@@ -169,6 +169,4 @@ const Mission = () => {
   );
 };
 
-const crisisNumbersRootElement = document.getElementById("crisisnumbers");
-const crisisNumbersRoot = createRoot(crisisNumbersRootElement);
-crisisNumbersRoot.render(<Mission />);
+export default Mission;

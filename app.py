@@ -62,7 +62,7 @@ def upload():
     return send_from_directory('.', 'upload.html')
 
 #check login
-@app.route("/check_login")
+@app.route("/api/check_login")
 def check_login():
     if 'user' in session:
         return jsonify({"logged_in": True})

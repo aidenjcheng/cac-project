@@ -77,7 +77,7 @@ export function DropdownMenu({
       try {
         console.log("Fetching user data...");
         const response = await fetch(
-          "https://stingray-app-7i9ac.ondigitalocean.app/current_user",
+          "https://stingray-app-7i9ac.ondigitalocean.app/api/current_user",
           {
             credentials: "include", // This is crucial for sending cookies
           }
@@ -217,7 +217,9 @@ export function DropdownMenu({
                       exit={{ opacity: 0, display: "none" }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <span className="text-left">{user.displayName}</span>
+                      <span className="text-left primary">
+                        {user.displayName}
+                      </span>
                       <span className="text-secondary text-sm">
                         {user.email}
                       </span>
