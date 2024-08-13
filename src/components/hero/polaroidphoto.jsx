@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "../../lib/utils";
-import { animate, AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const PolaroidPhoto = ({
   photo,
@@ -29,7 +29,7 @@ const PolaroidPhoto = ({
             />
             <div
               className={
-                "absolute bottom-3 left-3 text-[0.5rem] p-[5px] rounded-[5px]"
+                "absolute bottom-3 left-3 text-[0.5rem] p-[5px] rounded-[5px] text-white"
               }
               style={tagColor}
             >
