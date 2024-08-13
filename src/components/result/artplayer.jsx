@@ -47,7 +47,7 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
 
     try {
       const response = await fetch(
-        `https://stingray-app-7i9ac.ondigitalocean.app/get_total_stats?email=${encodeURIComponent(
+        `https://stingray-app-7i9ac.ondigitalocean.app/api/get_total_stats?email=${encodeURIComponent(
           currentEmail
         )}`
       );
