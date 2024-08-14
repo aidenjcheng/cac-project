@@ -1,7 +1,7 @@
-import Blog from "./components/blog/blog.jsx";
+import Blog from "./blog.jsx";
 import React from "react";
-import Header from "./components/header/header.jsx";
-import Chart from "./components/blog/chart.tsx";
+import Header from "../header/header.jsx";
+import Chart from "./chart.tsx";
 
 const Mission = () => {
   return (

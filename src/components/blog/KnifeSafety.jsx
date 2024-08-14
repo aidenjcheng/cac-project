@@ -1,8 +1,8 @@
-import Blog from "./components/blog/blog.jsx";
+import Blog from "./blog.jsx";
 import React from "react";
-import Header from "./components/header/header.jsx";
-import NumberTicker from "./components/magicui/number-ticker.tsx";
-import Logo1 from "./components/svg/logowithbg.jsx";
+import Header from "../header/header.jsx";
+import NumberTicker from "../magicui/number-ticker.tsx";
+import Logo1 from "../svg/logowithbg.jsx";
 
 const Mission = () => {
   return (

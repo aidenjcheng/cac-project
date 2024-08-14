@@ -2,7 +2,7 @@ import * as React from "react";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../../components/ui/dialog";
 
@@ -13,7 +13,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "flex h-full w-full flex-col overflow-hidden rounded-md bg-[#0f1012] text-popover-foreground",
+      "flex h-full w-full flex-col overflow-hidden rounded-md bg-white text-popover-foreground",
       className
     )}
     {...props}
@@ -111,27 +111,31 @@ CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
->(({ className, ...props }, ref) => (
-  <CommandPrimitive.Item
-    ref={ref}
-    className={cn(
-      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-white/10 aria-selected:text-white",
-      className
-    )}
-    onSelect={(event) => {
-      props.onSelect?.(event);
-      if (props.value) {
-        window.location.href = props.value;
-      }
-    }}
-    onClick={() => {
-      if (props.value) {
-        window.location.href = props.value;
-      }
-    }}
-    {...props}
-  />
-));
+>(({ className, ...props }, ref) => {
+  const navigate = useNavigate();
+
+  return (
+    <CommandPrimitive.Item
+      ref={ref}
+      className={cn(
+        "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-black/10 aria-selected:primary",
+        className
+      )}
+      onSelect={(event) => {
+        props.onSelect?.(event);
+        if (props.value) {
+          navigate(props.value);
+        }
+      }}
+      onClick={() => {
+        if (props.value) {
+          navigate(props.value);
+        }
+      }}
+      {...props}
+    />
+  );
+});
 
 CommandItem.displayName = CommandPrimitive.Item.displayName;
 

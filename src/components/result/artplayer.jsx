@@ -84,19 +84,17 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
         "--art-border-radius": "50px",
       },
       icons: {
-        state:
-          "<img width='60px' height='60px' src='../../public/pause.svg' />",
-        fullscreenWebOn:
-          "<img width='25px' height='25px' src='../../public/d.svg' />",
+        state: "<img width='60px' height='60px' src='/pause.svg' />",
+        fullscreenWebOn: "<img width='25px' height='25px' src='/d.svg' />",
         fullscreenWebOff:
-          "<img width='25px' height='25px' src='../../public/fullscreen.svg' />",
+          "<img width='25px' height='25px' src='/fullscreen.svg' />",
       },
       fullscreenWeb: true,
       controls: [
         {
           position: "right",
           index: 1,
-          html: "<img width='25px' height='25px' src='../../public/speedup.svg' />",
+          html: "<img width='25px' height='25px' src='/speedup.svg' />",
           click: function () {
             currentSpeedIndex = (currentSpeedIndex + 1) % speeds.length;
             const newSpeed = speeds[currentSpeedIndex];
@@ -136,7 +134,7 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
   console.log("Rendering ArtPlayerComponent JSX");
   return (
     <div className="h-full w-full flex flex-wrap gap-3">
-      <div className="rounded-[20px] overflow-hidden w-[calc(700px*0.9)] h-[calc(400px*0.9)] flex items-center justify-center bg-[#181818] border-black/10 border-solid border">
+      <div className="rounded-[20px] overflow-hidden w-[calc(700px*0.9)] h-[calc(400px*0.9)] flex items-center justify-center bg-[#f5f7f9] border-black/10 border-solid border">
         <div
           ref={artRef}
           className="w-[calc(100%-20px)] h-[calc(100%-20px)]"

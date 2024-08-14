@@ -7,8 +7,9 @@ const SidebarItem = ({ children, variant = "default", isSidebarOpen }) => {
     "flex items-center gap-3 rounded-xl cursor-pointer transition-colors duration-300 ease-in-out group w-[100%] mx-auto";
 
   const variantClasses = {
-    default: "hover:bg-white/5 hover:box-shadow",
-    active: "bg-white/5 text-white",
+    default:
+      "hover:bg-white hover:border-[#e4e6e8] border border-solid border-transparent",
+    active: "bg-white border-[#e4e6e8] border border-solid",
   };
 
   const baseClassesInner =

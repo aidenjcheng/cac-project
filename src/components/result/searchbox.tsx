@@ -1,7 +1,15 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
-import { Calculator, Calendar, Smile } from "lucide-react";
+import {
+  Calculator,
+  CircleAlert,
+  Contact,
+  Hash,
+  HelpCircle,
+  Home,
+  Rocket,
+} from "lucide-react";
 
 import {
   CommandDialog,
@@ -11,6 +19,7 @@ import {
   CommandItem,
   CommandList,
 } from "../../components/ui/command";
+import { IconQuestionMark } from "@tabler/icons-react";
 
 export function CommandDialogDemo({
   isSidebarOpen,
@@ -107,17 +116,37 @@ export function CommandDialogDemo({
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
-            <CommandItem value="/emoji">
-              <Calendar className="mr-2 h-4 w-4" />
-              <span className="text-white">Calendar</span>
+            <CommandItem value="/about">
+              <IconQuestionMark className="mr-2 h-4 w-4" />
+              <span>About</span>
             </CommandItem>
-            <CommandItem value="/emoji">
-              <Smile className="mr-2 h-4 w-4" />
-              <span>Search Emoji</span>
+            <CommandItem value="/contact">
+              <Contact className="mr-2 h-4 w-4" />
+              <span>Contact</span>
             </CommandItem>
-            <CommandItem value="/emoji">
-              <Calculator className="mr-2 h-4 w-4" />
-              <span>Calculator</span>
+            <CommandItem value="/crisisnumbers">
+              <Hash className="mr-2 h-4 w-4" />
+              <span>Crisis Numbers</span>
+            </CommandItem>
+            <CommandItem value="/gunsafety">
+              <CircleAlert className="mr-2 h-4 w-4" />
+              <span>Gun Safety</span>
+            </CommandItem>
+            <CommandItem value="/">
+              <Home className="mr-2 h-4 w-4" />
+              <span>Home</span>
+            </CommandItem>
+            <CommandItem value="/knifesafety">
+              <CircleAlert className="mr-2 h-4 w-4" />
+              <span>Knife Safety</span>
+            </CommandItem>
+            <CommandItem value="/mission">
+              <Rocket className="mr-2 h-4 w-4" />
+              <span>Mission</span>
+            </CommandItem>
+            <CommandItem value="/whatyoucando">
+              <HelpCircle className="mr-2 h-4 w-4" />
+              <span>What You Can Do</span>
             </CommandItem>
           </CommandGroup>
         </CommandList>

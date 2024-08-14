@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <header className="h-[calc(100vh-8rem)]  w-full flex flex-col border-b border-b-white/10 border-solid">
+      <header className="h-[calc(100vh-8rem)]  w-full flex flex-col border-b border-b-white/10 border-solid mt-[25vh]">
         <div className="flex flex-col items-center gap-8 w-full">
           <div className="w-full">
             <h1 className="text-[4rem] medium text-center med w-[80%] mx-auto primary">

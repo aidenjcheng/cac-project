@@ -1,7 +1,7 @@
-import Blog from "./components/blog/blog.jsx";
+import Blog from "./blog.jsx";
 import React from "react";
-import Header from "./components/header/header.jsx";
-import Logo1 from "./components/svg/logowithbg.jsx";
+import Header from "../header/header.jsx";
+import Logo1 from "../svg/logowithbg.jsx";
 
 const Mission = () => {
   return (
@@ -107,7 +107,4 @@ const Mission = () => {
   );
 };
 
-// const wycdthRootElement = document.getElementById("wycdth");
-// const wycdthRoot = createRoot(wycdthRootElement);
-// wycdthRoot.render(<Mission />);
 export default Mission;

@@ -11,13 +11,14 @@ import HeroSection from "./components/hero.jsx";
 import Demo from "./components/demo/demo.tsx";
 import Faq from "./components/faq/faq.jsx";
 import Footer from "./components/footer/footer.jsx";
-import GunSafety from "./GunSafety.jsx";
-import KnifeSafety from "./KnifeSafety.jsx";
-import Mission from "./mission.jsx";
-import WhatYouCanDo from "./wycdth.jsx";
+import GunSafety from "./components/blog/GunSafety.jsx";
+import KnifeSafety from "./components/blog/KnifeSafety.jsx";
+import Mission from "./components/blog/mission.jsx";
+import WhatYouCanDo from "./components/blog/wycdth.jsx";
 import LogIn from "./components/login/login.tsx";
 import UploadPage from "./upload";
 import Final from "./final.jsx";
+import Contact from "./components/blog/contact.jsx";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/index" element={<App />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/gunsafety" element={<GunSafety />} />
       <Route path="/knifesafety" element={<KnifeSafety />} />
       <Route path="/mission" element={<Mission />} />

@@ -129,11 +129,17 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
             </div>
           </div>
         </motion.div>
-        <div>
+        <div
+          className={`w-full transition-colors duration-300 ease-in-out border-transparent rounded-xl ${
+            isSidebarOpen
+              ? "bg-white border-[#e4e6e8] border border-solid"
+              : "hover:border-[#e4e6e8] hover:bg-white  border border-solid "
+          }`}
+        >
           <div
             onClick={() => setIsSidebarOpen((prevState) => !prevState)}
-            className={`upload-container w-[80%] mx-auto flex items-center gap-3 cursor-pointer group  py-2 ${
-              isSidebarOpen ? "justify-left" : "justify-center"
+            className={`upload-container w-[80%] mx-auto flex items-center gap-3 cursor-pointer group  py-2 rounded-xl ${
+              isSidebarOpen ? "justify-left " : "justify-center "
             }`}
           >
             <svg
