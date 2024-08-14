@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils.ts";
 import createGlobe from "cobe";
 import { motion, useInView } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import DemoItem from "./demoitem.tsx";
 import DemoVideo from "./demovideo.tsx";
+import { Link } from "react-router-dom";
 
 export default function FeaturesSectionDemo() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -108,6 +109,8 @@ export default function FeaturesSectionDemo() {
       title: "Track issues effectively",
       description:
         "Track and manage your project issues with ease using our intuitive interface.",
+      link: "/signin",
+      linkText: "Learn More",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 lg:col-span-4 border-b lg:border-r border-black/10",
@@ -116,6 +119,8 @@ export default function FeaturesSectionDemo() {
       title: "Capture pictures with AI",
       description:
         "Capture stunning photos effortlessly using our advanced AI technology.",
+      link: "/signin",
+      linkText: "Learn More",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 lg:col-span-2 ",
     },
@@ -123,6 +128,8 @@ export default function FeaturesSectionDemo() {
       title: "Watch our AI on YouTube",
       description:
         "Whether its you or Tyler Durden, you can get to know about our product on YouTube",
+      link: "/signin",
+      linkText: "Learn More",
       skeleton: <SkeletonThree />,
       className: "col-span-1 lg:col-span-3 lg:border-r border-black/10",
     },
@@ -130,6 +137,8 @@ export default function FeaturesSectionDemo() {
       title: "Deploy in seconds",
       description:
         "With our blazing fast, state of the art, cutting edge, we are so back cloud servies (read AWS) - you can deploy your model in seconds.",
+      link: "/signin",
+      linkText: "Learn More",
       skeleton: <SkeletonFour />,
       className:
         "col-span-1 lg:col-span-3 border-b lg:border-none border-black/10",
@@ -156,6 +165,30 @@ export default function FeaturesSectionDemo() {
               <FeatureCard key={feature.title} className={feature.className}>
                 <FeatureTitle>{feature.title}</FeatureTitle>
                 <FeatureDescription>{feature.description}</FeatureDescription>
+                <Link
+                  to={feature.link}
+                  className="text-[#0275ff] group flex gap-1 items-center"
+                >
+                  {feature.linkText}
+                  <span className="inline-flex align-middle group-hover:translate-x-[3px] transition-transform duration-300 ease-in-out">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="12"
+                      fill="none"
+                      viewBox="0 0 14 12"
+                      className="size-[10px]"
+                    >
+                      <path
+                        stroke="#0275ff"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.7"
+                        d="M1 6h12m0 0L8 1m5 5l-5 5"
+                      ></path>
+                    </svg>
+                  </span>
+                </Link>
                 <div className=" h-full w-full">{feature.skeleton}</div>
               </FeatureCard>
             ))}
@@ -167,7 +200,7 @@ export default function FeaturesSectionDemo() {
         style={{ padding: "124px 60px 48px" }}
         ref={containerRef}
       >
-        <div className="w-full h-[calc(80%+7px)] flex border-black/10 border-solid border box-border rounded-3xl overflow-hidden">
+        <div className="w-full h-[calc(80%)] flex border-black/10 border-solid border box-border rounded-3xl overflow-hidden">
           <div className="flex flex-col w-1/2 h-full border-r border-black/10 border-solid">
             {demoItems.map((item, index) => (
               <motion.div
@@ -175,6 +208,7 @@ export default function FeaturesSectionDemo() {
                 animate={{
                   opacity: index === activeIndex ? 1 : 0.5,
                 }}
+                className="h-1/3"
                 transition={{ duration: 0.3 }}
                 onClick={() => handleItemClick(index)}
               >
@@ -186,17 +220,6 @@ export default function FeaturesSectionDemo() {
                   index={index}
                   activeIndex={activeIndex}
                 />
-                {index === activeIndex && (
-                  <motion.div
-                    className="h-[1px] w-full bg-red-600 absolute bottom-0 left-0 hidden"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{
-                      duration: item.duration / 1000,
-                      ease: "linear",
-                    }}
-                  />
-                )}
               </motion.div>
             ))}
           </div>

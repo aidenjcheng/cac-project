@@ -301,7 +301,7 @@ const HeroSection = () => {
             }}
             className="hero-item"
           >
-            <Link to="getstarted" className="btn-big box-content">
+            <Link to="/signin" className="btn-big box-content">
               Start for free
             </Link>
           </motion.div>

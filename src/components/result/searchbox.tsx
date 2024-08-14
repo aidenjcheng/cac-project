@@ -62,17 +62,11 @@ export function CommandDialogDemo({
             </svg>
             <AnimatePresence>
               {isSidebarOpen && (
-                <motion.div
-                  initial={{ opacity: 0, display: "none" }}
-                  animate={{ opacity: 1, display: "block" }}
-                  exit={{ opacity: 0, display: "none" }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
+                <motion.div>
                   <span
                     style={{
                       opacity: isSidebarOpen ? "100%" : "0%",
                       display: isSidebarOpen ? "block" : "none",
-                      transition: "all 0.3s ease-in-out",
                     }}
                     className="text-secondary"
                   >
@@ -84,12 +78,7 @@ export function CommandDialogDemo({
           </div>
           <AnimatePresence>
             {isSidebarOpen && (
-              <motion.div
-                initial={{ opacity: 0, display: "none" }}
-                animate={{ opacity: 1, display: "block" }}
-                exit={{ opacity: 0, display: "none" }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
+              <motion.div>
                 <svg
                   width="100%"
                   height="100%"
@@ -99,7 +88,6 @@ export function CommandDialogDemo({
                   className="size-4 stroke-[#686979] bg-white rounded-md p-1 box-content"
                   style={{
                     opacity: isSidebarOpen ? "100%" : "0%",
-                    transition: "opacity 0.3s ease-in-out",
                   }}
                 >
                   <path

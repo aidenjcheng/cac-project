@@ -6,7 +6,6 @@ import { initializeApp } from "firebase/app";
 import GunChart from "./gunchart";
 import KnifeChart from "./knifechart";
 import GunKnifeChart from "./gun&knifechart";
-import { ThemeProvider } from "../themeprovider.tsx";
 
 const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
   console.log("ArtPlayerComponent rendering...");
@@ -136,33 +135,31 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
 
   console.log("Rendering ArtPlayerComponent JSX");
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="h-full w-full flex flex-wrap gap-3">
-        <div className="rounded-[20px] overflow-hidden w-[calc(700px*0.9)] h-[calc(400px*0.9)] flex items-center justify-center bg-[#181818] border-black/10 border-solid border">
-          <div
-            ref={artRef}
-            className="w-[calc(100%-20px)] h-[calc(100%-20px)]"
-          ></div>
-        </div>
-        <GunChart
-          totalDetections={overallTotalGunOccurrences}
-          title="Overall Total Gun Detections"
-        />
-        <GunKnifeChart />
-        <GunChart
-          totalDetections={totalGunDetections}
-          title="Current Video Gun Detections"
-        />
-        <KnifeChart
-          totalDetections={totalKnifeDetections}
-          title="Current Video Knife Detections"
-        />
-        <KnifeChart
-          totalDetections={overallTotalKnifeDetections}
-          title="Overall Total Knife Detections"
-        />
+    <div className="h-full w-full flex flex-wrap gap-3">
+      <div className="rounded-[20px] overflow-hidden w-[calc(700px*0.9)] h-[calc(400px*0.9)] flex items-center justify-center bg-[#181818] border-black/10 border-solid border">
+        <div
+          ref={artRef}
+          className="w-[calc(100%-20px)] h-[calc(100%-20px)]"
+        ></div>
       </div>
-    </ThemeProvider>
+      <GunChart
+        totalDetections={overallTotalGunOccurrences}
+        title="Overall Total Gun Detections"
+      />
+      <GunKnifeChart />
+      <GunChart
+        totalDetections={totalGunDetections}
+        title="Current Video Gun Detections"
+      />
+      <KnifeChart
+        totalDetections={totalKnifeDetections}
+        title="Current Video Knife Detections"
+      />
+      <KnifeChart
+        totalDetections={overallTotalKnifeDetections}
+        title="Overall Total Knife Detections"
+      />
+    </div>
   );
 };
 

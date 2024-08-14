@@ -19,7 +19,7 @@ const SidebarItem = ({ children, variant = "default", isSidebarOpen }) => {
     active: "text-white",
   };
   return (
-    <Link to={children[0]}>
+    <Link to={children[0]} className="group">
       <motion.li
         className={`${baseClasses} ${variantClasses[variant]}`}
         initial={{
