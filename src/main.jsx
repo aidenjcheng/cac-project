@@ -9,7 +9,7 @@ import {
 import Header from "./components/header/header.jsx";
 import HeroSection from "./components/hero.jsx";
 import Demo from "./components/demo/demo.tsx";
-import Faq from "./components/faq/faq.jsx";
+import Faq from "./components/faq/faqdemo.jsx";
 import Footer from "./components/footer/footer.jsx";
 import GunSafety from "./components/blog/GunSafety.jsx";
 import KnifeSafety from "./components/blog/KnifeSafety.jsx";
@@ -19,18 +19,24 @@ import LogIn from "./components/login/login.tsx";
 import UploadPage from "./upload";
 import Final from "./final.jsx";
 import Contact from "./components/blog/contact.jsx";
+import CrisisNumbers from "./components/blog/crisisnumbers.jsx";
+import HowItWorks from "./components/blog/howitworks.jsx";
+import AboutUs from "./components/blog/aboutus.jsx";
+import { ReactLenis } from "lenis/react";
 
 const App = () => {
   return (
-    <div className="flex flex-col items-center">
-      <Header />
-      <HeroSection />
-      <div>
-        <Demo />
+    <ReactLenis root>
+      <div className="flex flex-col items-center">
+        <Header />
+        <HeroSection />
+        <div>
+          <Demo />
+        </div>
+        <Faq />
+        <Footer />
       </div>
-      <Faq />
-      <Footer />
-    </div>
+    </ReactLenis>
   );
 };
 
@@ -43,6 +49,9 @@ root.render(
       <Route path="/index" element={<App />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/gunsafety" element={<GunSafety />} />
+      <Route path="/crisisnumbers" element={<CrisisNumbers />} />
+      <Route path="/howitworks" element={<HowItWorks />} />
+      <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/knifesafety" element={<KnifeSafety />} />
       <Route path="/mission" element={<Mission />} />
       <Route path="/whatyoucando" element={<WhatYouCanDo />} />

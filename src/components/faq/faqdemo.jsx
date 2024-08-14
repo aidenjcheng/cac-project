@@ -2,10 +2,11 @@ import React from "react";
 import Accordion from "./accordion";
 import AnimatedShinyText from "../magicui/animated-shiny-text";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const FAQ = () => {
   return (
-    <div className="flex flex-row items-center justify-center w-2/3 mx-auto gap-10 h-screen">
+    <div className="flex flex-row justify-center w-2/3 mx-auto gap-10 mt-[40vh] mb-[40vh]">
       <div className="h-min w-1/2 flex flex-col items-start gap-4 ">
         <div className="z-10 flex items-center justify-center scale-90">
           <div

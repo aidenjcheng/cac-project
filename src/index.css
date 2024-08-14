@@ -257,20 +257,14 @@ strong {
   color: var(--color-text-primary);
 }
 
-.btn-secondary:hover {
-  background-color: #2c2c2c;
-}
-
-.btn-secondary-big:hover {
-  background-color: #2c2c2c;
-}
-
 .btn:hover {
   background-color: #1c4ed8;
+  color: white !important;
 }
 
 .btn-big:hover {
   background-color: #1c4ed8;
+  color: white !important;
 }
 
 .boxshadow {

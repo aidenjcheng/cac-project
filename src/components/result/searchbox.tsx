@@ -116,7 +116,7 @@ export function CommandDialogDemo({
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
-            <CommandItem value="/about">
+            <CommandItem value="/aboutus">
               <IconQuestionMark className="mr-2 h-4 w-4" />
               <span>About</span>
             </CommandItem>

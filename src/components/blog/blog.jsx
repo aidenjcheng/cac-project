@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../svg/borderlogo.jsx";
 import Logo1 from "../svg/logo.jsx";
 import { Link } from "react-router-dom";
+import "./blog.css";
 
 const Blog = ({ children }) => {
   return (
@@ -17,19 +18,13 @@ const Blog = ({ children }) => {
             letterSpacing: "0.3em",
             textTransform: "uppercase",
             marginBottom: "24px",
-            background:
-              "linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%) text",
-            webkitBoxdecorationBreak: "clone",
-            webkitTextfillColor: "transparent",
-            color: "transparent",
-            backgroundClip: "text",
-            backgroundSize: "cover",
+            color: "#0275ff",
           }}
         >
           {children[1]}
         </h3>
         <h1 className="bold text-[36px] w-3/5 text-center">{children[2]}</h1>
-        <p className="text-[#e3e4e6] w-3/4 text-center text-lg">
+        <p className="text-secondary w-3/4 text-center text-lg">
           {children[3]}
         </p>
       </div>
@@ -52,28 +47,58 @@ const Blog = ({ children }) => {
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Navigation</li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <Link to="/aboutus">About</Link>
+                <li>
+                  <Link
+                    to="/aboutus"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    About
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <Link to="/contact">Contact</Link>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Contact
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <Link to="/howitworks">How it works</Link>
+                <li>
+                  <Link
+                    to="/howitworks"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    How it works
+                  </Link>
                 </li>
               </ul>
             </div>
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Resources</li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <Link to="/mission">Mission</Link>
+                <li>
+                  <Link
+                    to="/mission"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Mission
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <Link to="/gunsafety">Gun Safety</Link>
+                <li>
+                  <Link
+                    to="/gunsafety"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Gun Safety
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-white ease-in-out duration-300 transition-colors">
-                  <Link to="/knifesafety">Knife Safety</Link>
+                <li>
+                  <Link
+                    to="/knifesafety"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Knife Safety
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -86,7 +111,7 @@ const Blog = ({ children }) => {
               <span
                 className="flex items-center justify-center gap-1 sans text-transparent text-[20rem] w-full max-w-[80vw] mx-auto"
                 style={{
-                  WebkitTextStrokeColor: "#202123",
+                  WebkitTextStrokeColor: "#f2f2f2",
                   WebkitTextStrokeWidth: "1.5px",
                   transform: "translateY(40%)",
                   whiteSpace: "nowrap",
@@ -104,13 +129,16 @@ const Blog = ({ children }) => {
             Made by{" "}
             <a
               href="mailto:aidenjcheng12@gmail.com"
-              className="hover:underline"
+              className="hover:underline text-secondary"
             >
               {" "}
               Aiden
             </a>{" "}
             and{" "}
-            <a href="mailto:kevinx8017@gmail.com" className="hover:underline">
+            <a
+              href="mailto:kevinx8017@gmail.com"
+              className="hover:underline text-secondary"
+            >
               Kevin{" "}
             </a>
           </p>

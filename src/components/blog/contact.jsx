@@ -17,7 +17,7 @@ const AboutUs = () => {
         name="Kevin"
         email="kevinx8017@gmail.com"
         role="back-end development"
-        githubUrl="https://github.com/aidenjcheng"
+        githubUrl="https://github.com/ephemeralwx"
       />
     </section>
   );

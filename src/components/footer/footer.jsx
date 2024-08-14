@@ -27,7 +27,7 @@ const Footer = () => {
         <div className="h-[calc(100%-20px)] w-full overflow-hidden relative">
           <div className="flex flex-row mx-10 gap-[80px]">
             <div className="flex flex-col gap-5 mt-10">
-              <div className="flex items-center gap-1 sans text-lg primary">
+              <div className="flex items-center gap-1 sans text-lg">
                 <Logo1 />
                 aegis
               </div>
@@ -39,28 +39,58 @@ const Footer = () => {
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Navigation</li>
-                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
-                  <Link to="/aboutus">About</Link>
+                <li>
+                  <Link
+                    to="/aboutus"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    About
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
-                  <Link to="/contact">Contact</Link>
+                <li>
+                  <Link
+                    to="/contact"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Contact
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
-                  <Link to="/howitworks">How it works</Link>
+                <li>
+                  <Link
+                    to="/howitworks"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    How it works
+                  </Link>
                 </li>
               </ul>
             </div>
             <div className=" mt-10">
               <ul className="flex-col flex gap-5">
                 <li className="text-white med">Resources</li>
-                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
-                  <Link to="/mission">Mission</Link>
+                <li>
+                  <Link
+                    to="/mission"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Mission
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
-                  <Link to="/gunsafety">Gun Safety</Link>
+                <li>
+                  <Link
+                    to="/gunsafety"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Gun Safety
+                  </Link>
                 </li>
-                <li className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors">
-                  <Link to="/knifesafety">Knife Safety</Link>
+                <li>
+                  <Link
+                    to="/knifesafety"
+                    className="text-secondary hover:text-[#2b2b2b] ease-in-out duration-300 transition-colors"
+                  >
+                    Knife Safety
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -91,13 +121,16 @@ const Footer = () => {
             Made by{" "}
             <a
               href="mailto:aidenjcheng12@gmail.com"
-              className="hover:underline"
+              className="hover:underline text-secondary"
             >
               {" "}
               Aiden
             </a>{" "}
             and{" "}
-            <a href="mailto:kevinx8017@gmail.com" className="hover:underline">
+            <a
+              href="mailto:kevinx8017@gmail.com"
+              className="hover:underline text-secondary"
+            >
               Kevin{" "}
             </a>
           </p>

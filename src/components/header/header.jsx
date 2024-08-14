@@ -45,7 +45,7 @@ const Header = () => {
         )}
       </AnimatePresence>
       <motion.div
-        className="flex flex-col w-[90%] mx-auto border border-solid m-3 rounded-2xl fixed"
+        className="flex flex-col w-[90%] mx-auto m-3 rounded-2xl fixed"
         onMouseEnter={() => isHovered && setIsHovered(true)}
         onMouseLeave={() => isHovered && setIsHovered(false)}
         style={{
@@ -75,31 +75,28 @@ const Header = () => {
 
           <ul className="header__list text-white flex gap-10">
             <motion.li className="header__item">
-              <motion.a
-                initial={{ color: "#7b7b7b" }}
-                whileHover={{ color: "#fff" }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-                href="about"
+              <Link
+                to="/aboutus"
+                className=" hover:text-[#2b2b2b] text-[#7b7b7b] duration-300 transition-colors ease-in-out"
               >
                 About
-              </motion.a>
+              </Link>
             </motion.li>
             <motion.li className="header__item text-secondary">
-              <motion.a
-                href="contact"
-                initial={{ color: "#7b7b7b" }}
-                whileHover={{ color: "#fff" }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
+              <Link
+                to="/contact"
+                className="hover:text-[#2b2b2b] text-[#7b7b7b] duration-300 transition-colors ease-in-out"
               >
                 Contact
-              </motion.a>
+              </Link>
             </motion.li>
             <motion.li className="header__item text-secondary">
               <motion.a
-                href="resources"
-                className="flex flex-row items-center"
+                className="flex flex-row items-center cursor-pointer"
+                initial={{ color: "#7b7b7b" }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 onHoverStart={() => HandleChevronHover(true)}
+                whileHover={{ color: "#2b2b2b" }}
               >
                 Resources
                 <Chevron isHovered={isHovered} />

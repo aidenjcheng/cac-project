@@ -17,7 +17,7 @@ const Mission = () => {
           "The Impact of Knives in Schools",
           "An examination of knife-related incidents in U.S. secondary schools, including statistical data, regional trends, and current prevention strategies. ",
           <div className="w-full">
-            <p className="pt-10 text-[rgb(190,190,190)]">
+            <p className="pt-10 text-secondary">
               <br />
               <br />
               <strong className="med">
@@ -31,9 +31,9 @@ const Mission = () => {
               situation that continues to affect students, educators, and
               communities. A mass stabbing at Franklin Regional High School in
               Murrysville, Pennsylvania, in 2014 left{" "}
-              <strong className="text-white med">20</strong> students between 14
+              <strong className="primary med">20</strong> students between 14
               and 17 years of age injured.{" "}
-              <strong className="text-white med">
+              <strong className="primary med">
                 Four of the students were critically injured, with many others
                 receiving serious stab and slash wounds as they tried to run
                 from the attacker near the school gates​
@@ -90,7 +90,7 @@ const Mission = () => {
               The number of knife stabbings varies in high schools, depending on
               the state law. However, some states have shown more by state law
               compared to others. In fact, in New York City alone, the{" "}
-              <strong class="text-white med">
+              <strong class="primary med">
                 NYPD has recovered <NumberTicker value="1088" /> knives and{" "}
                 <NumberTicker value="260" delay="5" /> box cutters in 2022{" "}
               </strong>
@@ -114,7 +114,7 @@ const Mission = () => {
                 KnifesInfo
               </a>
               )​. In yet another separate event,{" "}
-              <strong className="med text-white">
+              <strong className="med primary">
                 a massive 20 people were injured in a Pennsylvania high school
                 by a knife attack
               </strong>
@@ -138,7 +138,7 @@ const Mission = () => {
               <br />
               <br />A 2020 report by the National Center for Education
               Statistics revealed that
-              <strong class="text-white med">
+              <strong class="primary med">
                 {" "}
                 6% of students in grades 9-12 reported being threatened or
                 injured with a weapon on school property during the previous

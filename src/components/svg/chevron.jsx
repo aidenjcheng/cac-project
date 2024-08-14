@@ -17,8 +17,10 @@ function Icon({ isHovered }) {
       }}
     >
       <path
-        style={{ transition: "fill 0.2s ease-in-out" }}
-        fill="#7b7b7b"
+        style={{
+          transition: "fill 0.2s ease-in-out",
+          fill: isHovered ? "#2b2b2b" : "#7b7b7b",
+        }}
         fillRule="evenodd"
         d="M9.97 6.47a.75.75 0 011.06 0l4.25 4.25a.75.75 0 11-1.06 1.06L10.5 8.06l-3.72 3.72a.75.75 0 01-1.06-1.06l4.25-4.25z"
         clipRule="evenodd"

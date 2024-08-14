@@ -18,7 +18,7 @@ const Mission = () => {
           "The Impact of Guns in Schools ",
           "Examining the devastating effects of firearms in educational settings, including rising incidents, psychological trauma, and the broader societal impact.",
           <div className="w-full">
-            <p className="pt-10 text-[rgb(190,190,190)]">
+            <p className="pt-10 text-secondary">
               The availability and presence of guns in schools have created both
               deep and devastating effects on students, teachers, and
               communities. This impact is double-edged, occurring on the
@@ -33,7 +33,7 @@ const Mission = () => {
               <br />
               School shootings in the United States have become alarmingly
               frequent.{" "}
-              <strong className="text-white med">
+              <strong className="primary med">
                 In 2021, for example, there were <NumberTicker value="250" />{" "}
                 incidents with a gun on school property.
               </strong>{" "}

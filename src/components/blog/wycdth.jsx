@@ -16,7 +16,7 @@ const Mission = () => {
           "How You Can Help Prevent Gun and Knife Violence in Schools",
           "Gun and knife violence in schools is a critical problem that requires, if anything, a multi-dimensional approach to policy level, community and school-based interventions.",
           <div className="w-full">
-            <p className="pt-10 text-[rgb(190,190,190)]">
+            <p className="pt-10 text-secondary">
               <br />
               <br />
               <strong className="med">Encourage Safe Gun Storage.</strong>
@@ -28,6 +28,8 @@ const Mission = () => {
               ensuring guns are stored unloaded in locked safes and out of
               reach. Parents can make a big difference since so many shooters
               under 18 have parents in their orbit also.
+              <br />
+              <br />
               <strong>Child-Access Prevention Laws</strong>
               <br />
               <br />
