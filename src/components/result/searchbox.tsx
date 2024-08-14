@@ -2,7 +2,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
 import {
-  Calculator,
   CircleAlert,
   Contact,
   Hash,
