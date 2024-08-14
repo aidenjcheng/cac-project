@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../header/header.jsx";
 import Logo1 from "../svg/logowithbg.jsx";
 
-const Mission = () => {
+const CrisisNumbers = () => {
   return (
     <div className="w-screen">
       <div className="fixed w-full flex justify-center">
@@ -164,4 +164,4 @@ const Mission = () => {
   );
 };
 
-export default Mission;
+export default CrisisNumbers;
