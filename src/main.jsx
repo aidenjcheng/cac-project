@@ -19,7 +19,7 @@ import LogIn from "./components/login/login.tsx";
 import UploadPage from "./upload";
 import Final from "./final.jsx";
 import Contact from "./components/blog/contact.jsx";
-import CrisisNumbers from "./components/blog/crisisnumbers.jsx";
+import CrisisNumbers from "./components/blog/CrisisNumbers.jsx";
 import HowItWorks from "./components/blog/howitworks.jsx";
 import AboutUs from "./components/blog/aboutus.jsx";
 import { ReactLenis } from "lenis/react";
