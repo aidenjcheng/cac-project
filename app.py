@@ -219,17 +219,13 @@ def update_stats():
 @app.route('/<path:path>')
 def serve(path):
     if path.startswith('api/'):
-        # For API routes, find the appropriate view function
-        view_function = app.view_functions.get(f'api_{path.split("/")[1]}')
-        if view_function:
-            return view_function(**request.view_args)
-        else:
-            return jsonify({"error": "API endpoint not found"}), 404
+        # For API routes, let Flask handle it
+        return app.view_functions[request.endpoint](**request.view_args)
     elif path != "" and os.path.exists(os.path.join(app.static_folder, path)):
         return send_from_directory(app.static_folder, path)
     else:
         return send_from_directory(app.static_folder, 'index.html')
-    
+        
 # Keep the existing /api/current_user route to fetch the user's email
 @app.route("/api/signup", methods=['POST'])
 def api_signup():

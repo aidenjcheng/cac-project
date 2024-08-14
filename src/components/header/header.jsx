@@ -64,13 +64,13 @@ const Header = () => {
           }}
         >
           <div>
-            <a
+            <Link
               className="flex flex-row justify-center gap-1 items-center"
-              href="index"
+              to="/"
             >
               <Logo1 />
               <span className="primary sans text-lg">aegis</span>
-            </a>
+            </Link>
           </div>
 
           <ul className="header__list text-white flex gap-10">
