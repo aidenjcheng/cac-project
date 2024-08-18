@@ -24,7 +24,7 @@ db = firestore.client()
 #END OF INITIALIZING FIRESTORE DB
 app = Flask(__name__, static_folder='dist', static_url_path='')
 #CORS(app, supports_credentials=True)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://stingray-app-7i9ac.ondigitalocean.app/"]}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://cac-project-l5nu9.ondigitalocean.app/"]}}, supports_credentials=True)
 
 config = {
     "apiKey": os.environ.get("FIREBASE_API_KEY"),

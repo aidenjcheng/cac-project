@@ -48,7 +48,7 @@ const DemoItem: React.FC<DemoItemProps> = ({
           </svg>
         </span>
       </Link>
-      <div className="h-[1px] w-full bg-white/10 absolute bottom-0 left-0">
+      <div className="h-[1px] w-full bg-black/10 absolute bottom-0 left-0">
         <motion.div
           className="h-full w-full bg-[#0275ff]"
           style={{

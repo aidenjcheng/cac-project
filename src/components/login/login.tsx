@@ -59,7 +59,7 @@ const Login = () => {
     const formData = new FormData(e.currentTarget);
     try {
       const response = await fetch(
-        "https://stingray-app-7i9ac.ondigitalocean.app/api/signup",
+        "https://cac-project-l5nu9.ondigitalocean.app/api/signup",
         {
           method: "POST",
           headers: {

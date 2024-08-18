@@ -70,7 +70,7 @@ const StatsPage = () => {
 
     try {
       const response = await fetch(
-        "https://stingray-app-7i9ac.ondigitalocean.app/update_stats",
+        "https://cac-project-l5nu9.ondigitalocean.app/update_stats",
         {
           method: "POST",
           headers: {

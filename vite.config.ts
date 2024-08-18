@@ -15,11 +15,11 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/login": "https://stingray-app-7i9ac.ondigitalocean.app/",
-      "/api": "https://stingray-app-7i9ac.ondigitalocean.app/",
-      "/signup": "https://stingray-app-7i9ac.ondigitalocean.app/",
-      "/check_login": "https://stingray-app-7i9ac.ondigitalocean.app/",
-      "/upload": "https://stingray-app-7i9ac.ondigitalocean.app/",
+      "/login": "https://cac-project-l5nu9.ondigitalocean.app/",
+      "/api": "https://cac-project-l5nu9.ondigitalocean.app/",
+      "/signup": "https://cac-project-l5nu9.ondigitalocean.app/",
+      "/check_login": "https://cac-project-l5nu9.ondigitalocean.app/",
+      "/upload": "https://cac-project-l5nu9.ondigitalocean.app/",
     },
   },
 });

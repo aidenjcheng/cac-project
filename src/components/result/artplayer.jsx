@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Artplayer from "artplayer";
-import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
-import { initializeApp } from "firebase/app";
 import GunChart from "./gunchart";
 import KnifeChart from "./knifechart";
 import GunKnifeChart from "./gun&knifechart";
+import Card from "./card";
 
 const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
   console.log("ArtPlayerComponent rendering...");
@@ -46,7 +44,7 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
 
     try {
       const response = await fetch(
-        `https://stingray-app-7i9ac.ondigitalocean.app/api/get_total_stats?email=${encodeURIComponent(
+        `https://cac-project-l5nu9.ondigitalocean.app/api/get_total_stats?email=${encodeURIComponent(
           currentEmail
         )}`
       );
@@ -156,6 +154,10 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
       <KnifeChart
         totalDetections={overallTotalKnifeDetections}
         title="Overall Total Knife Detections"
+      />
+      <Card
+        totalDetections={overallTotalGunOccurrences}
+        title="Overall Total knife Detections"
       />
     </div>
   );

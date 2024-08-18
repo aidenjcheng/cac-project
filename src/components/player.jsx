@@ -20,7 +20,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
     }
   };
   useEffect(() => {
-    fetch("https://stingray-app-7i9ac.ondigitalocean.app/api/current_user", {
+    fetch("https://cac-project-l5nu9.ondigitalocean.app/api/current_user", {
       credentials: "include",
     })
       .then((response) => response.json())

@@ -77,7 +77,7 @@ export function DropdownMenu({
       try {
         console.log("Fetching user data...");
         const response = await fetch(
-          "https://stingray-app-7i9ac.ondigitalocean.app/api/current_user",
+          "https://cac-project-l5nu9.ondigitalocean.app/api/current_user",
           {
             credentials: "include",
           }
