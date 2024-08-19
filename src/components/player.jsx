@@ -32,9 +32,38 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
       .catch((error) => console.error("Error fetching user data:", error));
   }, []);
 
-  const HandleSidebarToggle = (visible) => {
-    setIsSidebarOpen(visible);
-  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        console.log("Fetching user data...");
+        const response = await fetch(
+          "https://cac-project-l5nu9.ondigitalocean.app/api/current_user",
+          {
+            credentials: "include",
+          }
+        );
+        console.log("Response status:", response.status);
+        const text = await response.text();
+        console.log("Response text:", text);
+
+        if (response.ok) {
+          try {
+            const userData = JSON.parse(text);
+            console.log("User data received:", userData);
+            setUser(userData);
+          } catch (e) {
+            console.error("Error parsing JSON:", e);
+          }
+        } else {
+          console.log("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   return (
     <div className="flex w-full h-full box-border bg-[#f5f7f9]">
@@ -166,18 +195,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
         className="flex bg-white rounded-3xl box-border flex-col border border-solid border-black/15 overflow-y-scroll w-full"
         style={{ marginLeft: isSidebarOpen ? "15%" : "5%" }}
       >
-        <div className="border-b border-black/10 w-full pl-[20px] pt-[20px] mx-auto flex flex-col h-fit pb-3">
-          <p>Hey, Aiden!</p>
-          <p className="text-sm text-secondary">
-            {new Date().toLocaleDateString("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-        </div>
-        <div className="w-full h-full p-5 box-border">{children[3]}</div>
+        <div className="w-full h-screen p-5 box-border ">{children[3]}</div>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const AccordionDemo = () => {
         <AccordionItem value="item-1" className="border-black/10">
           <AccordionTrigger>How do I use this tool?</AccordionTrigger>
           <AccordionContent>
-            <p className="pt-2 primary">
+            <p className="pt-2 text-secondary">
               {" "}
               First, make an account. Upload your desired video to the ‘Detect’
               tab in the sidebar. Wait, then download the files on popup. Then,
@@ -30,7 +30,7 @@ const AccordionDemo = () => {
         <AccordionItem value="item-2" className="border-black/10">
           <AccordionTrigger>Who made this tool?</AccordionTrigger>
           <AccordionContent>
-            <p className="pt-2 primary">
+            <p className="pt-2 text-secondary">
               {" "}
               Kevin Xia engineered the backend features (ie authentication, the
               actual machine learning models) and Aiden Cheng designed and made
@@ -41,7 +41,7 @@ const AccordionDemo = () => {
         <AccordionItem value="item-3" className="border-black/10">
           <AccordionTrigger>What code stack do you use?</AccordionTrigger>
           <AccordionContent>
-            <span className="pt-2 primary">
+            <span className="pt-2 text-secondary">
               Python Flask, Firebase in the backend. React JS, Tailwind CSS,
               Vite, HTML. For info about our Machine Learning backend, please
               see{" "}
@@ -78,13 +78,13 @@ const AccordionDemo = () => {
             What hosting service are you using?
           </AccordionTrigger>
           <AccordionContent>
-            <p className="pt-2 primary"> Digitalocean</p>
+            <p className="pt-2 text-secondary"> Digitalocean</p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-5" className="border-black/10">
           <AccordionTrigger>What is the purpose of this tool?</AccordionTrigger>
           <AccordionContent>
-            <p className="pt-2 primary">
+            <p className="pt-2 text-secondary">
               {" "}
               Given our personal experiences of school danger (Walt Whitman bomb
               threats, hearing from friends about Montgomery Blair knife
@@ -98,7 +98,7 @@ const AccordionDemo = () => {
             How did we incorporate AI into this tool?
           </AccordionTrigger>
           <AccordionContent>
-            <p className="pt-2 primary">
+            <p className="pt-2 text-secondary">
               {" "}
               We trained a custom YOLOv8 (YOLO: You only look once) model for
               gun and knife object detection. We also used a Depth Anything
@@ -112,7 +112,7 @@ const AccordionDemo = () => {
             How is this supposed to work in real life?
           </AccordionTrigger>
           <AccordionContent>
-            <p className="pt-2 primary">
+            <p className="pt-2 text-secondary">
               {" "}
               We understand and are currently working on bringing LIVE real-time
               detection to our application. Please watch the video in Real World

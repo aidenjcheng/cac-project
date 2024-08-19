@@ -10,20 +10,25 @@ import {
 } from "../../components/ui/card";
 import { Progress } from "../../components/ui/progress";
 
-export default function Component({ totalDetections, title }) {
+export default function Component({
+  totalDetections,
+  title,
+  progress,
+  percentIncrease,
+}) {
   return (
-    <Card>
+    <Card className="h-min">
       <CardHeader className="pb-2">
         <CardDescription>{title}</CardDescription>
         <CardTitle className="text-4xl">{totalDetections}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="text-xs text-muted-foreground">
-          +10% from last month
+          {percentIncrease}% of the total detections
         </div>
       </CardContent>
       <CardFooter>
-        <Progress value={12} aria-label="12% increase" />
+        <Progress value={progress} />
       </CardFooter>
     </Card>
   );

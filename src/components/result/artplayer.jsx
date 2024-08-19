@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Artplayer from "artplayer";
-import GunChart from "./gunchart";
-import KnifeChart from "./knifechart";
-import GunKnifeChart from "./gun&knifechart";
 import Card from "./card";
+import StartCard from "./startcard";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import { X } from "lucide-react";
 
 const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
   console.log("ArtPlayerComponent rendering...");
@@ -11,6 +16,7 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
   console.log("Received markers:", markers);
 
   const artRef = useRef();
+  const [isWelcomeVisible, setIsWelcomeVisible] = useState(true);
   const [email, setEmail] = useState(
     userEmail || localStorage.getItem("userEmail")
   );
@@ -26,14 +32,15 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
     const storedValue = localStorage.getItem("totalKnifeDetections");
     return storedValue ? parseInt(storedValue, 10) : 0;
   });
-  //I know the detections and occurrences is not consistent btw
 
   useEffect(() => {
     if (userEmail) {
       setEmail(userEmail);
     }
   }, [userEmail]);
-
+  const handleXClick = () => {
+    setIsWelcomeVisible(false);
+  };
   const fetchTotalStats = useCallback(async () => {
     const currentEmail = email || localStorage.getItem("userEmail");
     console.log("Artplayer line 42, Current user email is ", currentEmail);
@@ -129,36 +136,95 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
     };
   }, [videoUrl, markers]);
 
-  console.log("Rendering ArtPlayerComponent JSX");
+  // Calculation
+  const gunDetectionRatio = overallTotalGunOccurrences
+    ? (overallTotalGunOccurrences - totalGunDetections) /
+      overallTotalGunOccurrences
+    : 0;
+  const knifeDetectionRatio = overallTotalKnifeDetections
+    ? (overallTotalKnifeDetections - totalKnifeDetections) /
+      overallTotalKnifeDetections
+    : 0;
+
   return (
-    <div className="h-full w-full flex flex-wrap gap-3">
-      <div className="rounded-[20px] overflow-hidden w-[calc(700px*0.9)] h-[calc(400px*0.9)] flex items-center justify-center bg-[#f5f7f9] border-black/10 border-solid border">
-        <div
-          ref={artRef}
-          className="w-[calc(100%-20px)] h-[calc(100%-20px)]"
-        ></div>
+    <div className="h-full w-full flex flex-wrap gap-3 flex-col">
+      {isWelcomeVisible && (
+        <div className="flex flex-col gap-3 w-full border-b border-[#e5e5e5] pb-5">
+          <div className=" flex justify-between w-full">
+            <h2>
+              <strong
+                className="text-[1.5rem]"
+                style={{ lineHeight: "2rem", letterSpacing: "-0.025em" }}
+              >
+                Welcome
+              </strong>
+            </h2>
+            <X
+              className="hover:stroke-[#f03d3d] duration-300 ease-in-out transition-colors cursor-pointer"
+              onClick={() => handleXClick()}
+            />
+          </div>
+          <div className="flex gap-4 w-full">
+            <StartCard
+              imgSrc={"./svgs/1.svg"}
+              title={"Click on Detect and upload a video"}
+              description={"On the side bar."}
+            />
+            <StartCard
+              imgSrc={"./svgs/2.svg"}
+              title={"Download the processed video"}
+              description={"Will come in a .zip file"}
+            />
+            <StartCard
+              imgSrc={"./svgs/3.svg"}
+              title={"Upload the video by clicking the +"}
+              description={"Optionally upload the JSON file too."}
+            />
+            <StartCard
+              imgSrc={"./svgs/4.svg"}
+              title={"Watch the video"}
+              description={"By clicking on the video in the dashboard."}
+            />
+          </div>
+        </div>
+      )}
+
+      <div className=" flex w-full flex-wrap gap-3 pt-5">
+        <div className="rounded-[10px] overflow-hidden w-[calc(700px*0.9)] h-[calc(400px*0.9)] flex items-center justify-center bg-white border-black/10 border-solid border">
+          <div
+            ref={artRef}
+            className="w-[calc(100%-20px)] h-[calc(100%-20px)]"
+          ></div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Card
+            totalDetections={overallTotalGunOccurrences}
+            title="Overall Total Gun Detections"
+            progress={"100"}
+            percentIncrease={"100"}
+          />
+          <Card
+            totalDetections={totalGunDetections}
+            title="Current Video Gun Detections"
+            progress={gunDetectionRatio * 100}
+            percentIncrease={gunDetectionRatio}
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Card
+            totalDetections={overallTotalKnifeDetections}
+            title="Overall Total knife Detections"
+            progress={"100"}
+            percentIncrease={"100"}
+          />
+          <Card
+            totalDetections={totalKnifeDetections}
+            title="Current Video Knife Detections"
+            progress={knifeDetectionRatio * 100}
+            percentIncrease={knifeDetectionRatio}
+          />
+        </div>
       </div>
-      <GunChart
-        totalDetections={overallTotalGunOccurrences}
-        title="Overall Total Gun Detections"
-      />
-      <GunKnifeChart />
-      <GunChart
-        totalDetections={totalGunDetections}
-        title="Current Video Gun Detections"
-      />
-      <KnifeChart
-        totalDetections={totalKnifeDetections}
-        title="Current Video Knife Detections"
-      />
-      <KnifeChart
-        totalDetections={overallTotalKnifeDetections}
-        title="Overall Total Knife Detections"
-      />
-      <Card
-        totalDetections={overallTotalGunOccurrences}
-        title="Overall Total knife Detections"
-      />
     </div>
   );
 };
