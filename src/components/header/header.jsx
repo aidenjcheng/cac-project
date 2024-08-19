@@ -159,7 +159,7 @@ const Header = () => {
                     {[
                       "/whatyoucando",
                       "What You Can Do",
-                      "How you can help your community.",
+                      "How you can help.",
                       <span className="inline-flex align-middle">
                         <Support className="size-4 stroke-[rgb(180,180,180)] group-hover:stroke-[#2b2b2b] transition-colors duration-100 ease-in-out" />
                       </span>,

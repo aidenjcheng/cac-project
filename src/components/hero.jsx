@@ -1,4 +1,4 @@
-import { animate, stagger, motion, AnimatePresence } from "framer-motion";
+import { animate, stagger, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PolaroidPhoto from "./hero/polaroidphoto";
@@ -46,7 +46,7 @@ const HeroSection = () => {
           transform: "translate3d(0px, 0px, 0px)",
         },
         { delay: stagger(0.2) },
-        { ease: "cubic-bezier(0.29, 1.28, 0.47, 0.99)", duration: 5 }
+        { ease: "cubic-bezier(0.29, 1.28, 0.47, 0.99)", duration: 5 },
       );
     }
   }, []);
@@ -61,7 +61,7 @@ const HeroSection = () => {
           scale: 1,
         },
         { delay: stagger(0.5) },
-        { ease: "cubic-bezier(0.87, 0, 0.13, 1)", duration: 5 }
+        { ease: "cubic-bezier(0.87, 0, 0.13, 1)", duration: 5 },
       );
     }
   }, []);
@@ -259,10 +259,10 @@ const HeroSection = () => {
           transition={{
             duration: 0.5,
           }}
-          className="med hero-item w-[60vw] cursor-pointer text-[#2b2b2b]"
+          className="bold hero-item w-[60vw] cursor-pointer text-[#2b2b2b]"
           style={{
             fontSize: "4.5rem",
-            lineHeight: "1em",
+            lineHeight: "0.9em",
             letterSpacing: "-2%",
           }}
         >
@@ -270,7 +270,12 @@ const HeroSection = () => {
           <motion.span
             animate={{ color: activeSpan === 0 ? spanColors[0] : "#2b2b2b" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="med"
+            className="bold"
+            style={{
+              fontSize: "4.5rem",
+              lineHeight: "0.9em",
+              letterSpacing: "-2%",
+            }}
           >
             guns
           </motion.span>
@@ -278,7 +283,12 @@ const HeroSection = () => {
           <motion.span
             animate={{ color: activeSpan === 1 ? spanColors[1] : "#2b2b2b" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="med"
+            className="bold"
+            style={{
+              fontSize: "4.5rem",
+              lineHeight: "0.9em",
+              letterSpacing: "-2%",
+            }}
           >
             knives
           </motion.span>
@@ -286,7 +296,12 @@ const HeroSection = () => {
           <motion.span
             animate={{ color: activeSpan === 2 ? spanColors[2] : "#2b2b2b" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="med"
+            className="bold"
+            style={{
+              fontSize: "4.5rem",
+              lineHeight: "0.9em",
+              letterSpacing: "-2%",
+            }}
           >
             threats in security footage
           </motion.span>
