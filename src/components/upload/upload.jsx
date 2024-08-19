@@ -76,7 +76,7 @@ const App = () => {
       const timer1 = setTimeout(() => setProgress(66), 700);
       const timer2 = setTimeout(() => {
         setProgress(100);
-        setTimeout(() => setShowProgress(false), 800);
+        setTimeout(() => setShowProgress(false), 200);
       }, 1000);
       return () => {
         clearTimeout(timer1);

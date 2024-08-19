@@ -1,3 +1,5 @@
+import JSZip from "jszip";
+
 export async function processVideo(videoFile) {
   const apiUrl =
     "https://d57d43bb4144e42be9d9ed796fedd8b3e.clg07azjl.paperspacegradient.com/process_video";
@@ -21,6 +23,8 @@ export async function processVideo(videoFile) {
         const blob = await response.blob();
         const parts = await splitMultipart(blob, contentType);
 
+        const zip = new JSZip();
+
         for (const part of parts) {
           const filename = getFilenameFromContentDisposition(
             part.headers["content-disposition"]
@@ -28,23 +32,21 @@ export async function processVideo(videoFile) {
           if (filename) {
             console.log("Processing file:", filename);
             if (filename.endsWith(".mp4")) {
-              const videoBlob = new Blob([part.content], { type: "video/mp4" });
-              await saveFile(videoBlob, filename);
+              zip.file(filename, part.content);
             } else if (filename === "spotted_occurrences.json") {
               const jsonContent = await part.content.text();
               console.log("JSON content:", jsonContent);
-              // You can process the JSON data here if needed
-              await saveFile(
-                new Blob([jsonContent], { type: "application/json" }),
-                filename
-              );
+              zip.file(filename, jsonContent);
             }
           }
         }
 
-        console.log("Processing complete. Results saved as separate files.");
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        await saveFile(zipBlob, "processed_results.zip");
+
+        console.log("Processing complete. Results saved as a ZIP file.");
         alert(
-          "Processing complete. Check your downloads folder for the results."
+          "Processing complete. Check your downloads folder for the ZIP file containing the results."
         );
       } else {
         console.log("Unexpected response format. Saving as single file.");
@@ -153,8 +155,8 @@ async function saveFile(content, filename) {
         suggestedName: filename,
         types: [
           {
-            description: "File",
-            accept: { "*/*": [".mp4", ".json"] },
+            description: "ZIP File",
+            accept: { "application/zip": [".zip"] },
           },
         ],
       });
