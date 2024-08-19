@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils.ts";
 import createGlobe from "cobe";
 import { motion, useInView } from "framer-motion";
 import DemoItem from "./demoitem.tsx";
-import DemoVideo from "./demovidneo.tsx";
+import DemoVideo from "./demovideo.tsx";
 import { Link } from "react-router-dom";
 
 export default function FeaturesSectionDemo() {
