@@ -9,6 +9,7 @@ interface DemoItemProps {
   linkText: string;
   index: number;
   activeIndex: number;
+  duration: number;
 }
 
 const DemoItem: React.FC<DemoItemProps> = ({
@@ -18,7 +19,10 @@ const DemoItem: React.FC<DemoItemProps> = ({
   linkText,
   index,
   activeIndex,
+  duration,
 }) => {
+  const durationInSeconds = duration / 1000; // Convert duration to seconds
+
   return (
     <div
       className={`w-full p-[36px] flex flex-col gap-[16px] h-full relative cursor-pointer`}
@@ -56,7 +60,7 @@ const DemoItem: React.FC<DemoItemProps> = ({
           }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: index === activeIndex ? 1 : 0 }}
-          transition={{ duration: 10, ease: "linear" }}
+          transition={{ duration: durationInSeconds, ease: "linear" }}
         ></motion.div>
       </div>
     </div>

@@ -178,12 +178,19 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
             <StartCard
               imgSrc={"./svgs/3.svg"}
               title={"Upload the video by clicking the +"}
-              description={"Optionally upload the JSON file too."}
+              description={"Optionally upload the JSON file."}
             />
             <StartCard
               imgSrc={"./svgs/4.svg"}
               title={"Watch the video"}
               description={"By clicking on the video in the dashboard."}
+            />
+            <StartCard
+              imgSrc={"./svgs/1.svg"}
+              title={"Note*"}
+              description={
+                "To view current video detections, you might have to navigate to the homepage and log back into dashboard."
+              }
             />
           </div>
         </div>

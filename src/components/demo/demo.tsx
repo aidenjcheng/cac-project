@@ -14,39 +14,39 @@ export default function FeaturesSectionDemo() {
 
   const demoItems = [
     {
-      title: "First Demo",
-      description: "This is the first demo item",
-      linkTo: "/demo1",
-      linkText: "Learn More about Demo 1",
-      duration: 10000,
+      title: "Upload files",
+      description: "Click on the upload page on the sidebar",
+      linkTo: "/howitworks",
+      linkText: "Learn More about Uploading",
+      duration: 15200,
     },
     {
-      title: "Second Demo",
-      description: "This is the second demo item",
-      linkTo: "/demo2",
-      linkText: "Learn More about Demo 2",
-      duration: 10000,
+      title: "Download files",
+      description: "Be sure to download the file(s) when prompted.",
+      linkTo: "/howitworks",
+      linkText: "Learn More about Downloading",
+      duration: 13110,
     },
     {
-      title: "Third Demo",
-      description: "This is the third demo item",
-      linkTo: "/demo3",
-      linkText: "Learn More about Demo 3",
-      duration: 10000,
+      title: "Watch videos",
+      description: "Feel free to watch the video in the player",
+      linkTo: "/howitworks",
+      linkText: "Learn More about watching your uploaded video",
+      duration: 18230,
     },
   ];
   const demoVideos = [
     {
-      src: "../../../public/vid.mp4",
-      duration: 10000,
+      src: "/herovideos/video.mov",
+      duration: 15200,
     },
     {
-      src: "../../../public/vid2.mp4",
-      duration: 10000,
+      src: "/herovideos/video2.mov",
+      duration: 13110,
     },
     {
-      src: "../../../public/vid3.mov",
-      duration: 10000,
+      src: "/herovideos/video3.mov",
+      duration: 18230,
     },
   ];
 
@@ -216,6 +216,7 @@ export default function FeaturesSectionDemo() {
                   linkText={item.linkText}
                   index={index}
                   activeIndex={activeIndex}
+                  duration={item.duration}
                 />
               </motion.div>
             ))}

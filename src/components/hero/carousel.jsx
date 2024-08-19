@@ -33,9 +33,9 @@ const ScrollCarousel = ({ scrollRange = 1000 }) => {
     { id: 2, src: "./herovideos/vid2.mp4" },
     { id: 3, src: "./herovideos/vid.mp4" },
     { id: 4, src: "./herovideos/vid2.mp4" },
-    { id: 5, src: "./herovideos/vid3.mov" },
+    { id: 5, src: "./herovideos/vid.mp4" },
     { id: 6, src: "./herovideos/vid.mp4" },
-    { id: 7, src: "./herovideos/vid3.mov" },
+    { id: 7, src: "./herovideos/vid2.mov" },
   ];
 
   return (
