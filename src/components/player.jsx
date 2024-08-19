@@ -68,7 +68,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
   return (
     <div className="flex w-full h-full box-border bg-[#f5f7f9]">
       <motion.div
-        className={`flex flex-col gap-5 p-2 rounded-3xl justify-between fixed h-screen bg-[#f5f7f9]`}
+        className={`flex flex-col gap-5 p-2 rounded-3xl justify-between fixed  bg-[#f5f7f9]`}
         style={{
           width: isSidebarOpen ? "15%" : "5%",
         }}
