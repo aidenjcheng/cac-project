@@ -29,7 +29,7 @@ const ScrollCarousel = ({ scrollRange = 1000 }) => {
   const x = useTransform(smoothInput, [0, 100], ["0%", "-50%"]);
 
   const items = [
-    { id: 1, src: "./vid.mp4" },
+    { id: 1, src: "./herovideos/vid.mp4" },
     { id: 2, src: "./herovideos/vid2.mp4" },
     { id: 3, src: "./herovideos/vid.mp4" },
     { id: 4, src: "./herovideos/vid2.mp4" },
