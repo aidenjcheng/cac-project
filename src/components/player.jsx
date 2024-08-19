@@ -195,7 +195,7 @@ function Dashboard({ children, handleFileUpload, setUserEmail }) {
         className="flex bg-white rounded-3xl box-border flex-col border border-solid border-black/15 overflow-y-scroll w-full"
         style={{ marginLeft: isSidebarOpen ? "15%" : "5%" }}
       >
-        <div className="w-full h-screen p-5 box-border ">{children[3]}</div>
+        <div className="w-full p-5 box-border ">{children[3]}</div>
       </div>
     </div>
   );
