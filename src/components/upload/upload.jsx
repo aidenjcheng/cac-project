@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import Dialoge from "./dialogue.jsx";
 
 const App = () => {
   const [isUploadVisible, setIsUploadVisible] = useState(false);
@@ -108,6 +109,7 @@ const App = () => {
 
   return (
     <div className=" h-screen">
+      <Dialoge />
       <div>
         {isUploadVisible && (
           <motion.div

@@ -18,7 +18,6 @@ import {
   CommandItem,
   CommandList,
 } from "../../components/ui/command";
-import { IconQuestionMark } from "@tabler/icons-react";
 
 export function CommandDialogDemo({
   isSidebarOpen,
@@ -116,7 +115,7 @@ export function CommandDialogDemo({
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
             <CommandItem value="/aboutus">
-              <IconQuestionMark className="mr-2 h-4 w-4" />
+              <HelpCircle className="mr-2 h-4 w-4" />
               <span>About</span>
             </CommandItem>
             <CommandItem value="/contact">
