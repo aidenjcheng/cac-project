@@ -3,7 +3,7 @@ import Dashboard from "../player.jsx";
 import ArtPlayerComponent from "../result/artplayer";
 
 const StatsPage = () => {
-  const [videoUrl, setVideoUrl] = useState("../../public/blackscreen.mp4");
+  const [videoUrl, setVideoUrl] = useState("/blackscreen.mp4");
   const [markers, setMarkers] = useState([]);
   const [userEmail, setUserEmail] = useState(null);
   const [totalGunDetections, setTotalGunDetections] = useState(0);

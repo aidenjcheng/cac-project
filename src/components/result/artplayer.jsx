@@ -2,12 +2,6 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import Artplayer from "artplayer";
 import Card from "./card";
 import StartCard from "./startcard";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
 import { X } from "lucide-react";
 
 const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
@@ -186,7 +180,7 @@ const ArtPlayerComponent = ({ userEmail, videoUrl, markers }) => {
               description={"By clicking on the video in the dashboard."}
             />
             <StartCard
-              imgSrc={"./svgs/1.svg"}
+              imgSrc={"./svgs/5.svg"}
               title={"Note*"}
               description={
                 "To view current video detections, you might have to navigate to the homepage and log back into dashboard."
