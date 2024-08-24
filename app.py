@@ -5,6 +5,7 @@ from functools import wraps
 from google.cloud.exceptions import NotFound
 from datetime import timedelta
 import os
+import json
 from flask import jsonify
 from flask import send_from_directory
 import firebase_admin
@@ -14,9 +15,19 @@ from flask import make_response
 from firebase_admin import firestore
 from google.cloud.firestore_v1.base_query import FieldFilter
 #START INITIALIZE FIRESTORE DB
-current_dir = os.path.dirname(os.path.abspath(__file__))
-service_account_path = os.path.join(current_dir, 'serviceAccKey.json')
-cred = credentials.Certificate(service_account_path)
+
+
+
+
+# Get the JSON string from the environment variable
+cred_json = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS_JSON')
+
+# Parse the JSON string
+cred_dict = json.loads(cred_json)
+
+
+
+cred = credentials.Certificate(cred_dict)
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
