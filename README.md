@@ -23,4 +23,5 @@ Aiden - aidenjcheng12@gmail.com
 
 Bio:
 Kevin - Incoming 10th grader at WWHS. Was the backend dude for this project. Knows Python Flask, Nodejs w Expressjs. Check out our slideshow for the tech stack we used. Trained a custom YOLOv8 model for this project and integrated Depth Anything V2. 
+
 Aiden - Incoming 10th grader at WWHS too. Frontend dude for this project. Mainly uses React JS with tailwind css. Enjoys design and finding cool css libraries. 
