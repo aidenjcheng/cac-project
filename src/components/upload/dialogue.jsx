@@ -22,12 +22,21 @@ export function AlertDialogDemo() {
         <AlertDialogHeader>
           <AlertDialogTitle>Attention!</AlertDialogTitle>
           <AlertDialogDescription>
-            Due to budget restraints, we are unable to keep the API on 24/7. If
-            you would like to see our API in action please watch our demo video.
+            Due to , we are unable to keep the API on 24/7. If you would like to
+            see our API live, please email us at{" "}
             <a
               href="https://youtu.be/uNfa967-aRo"
               target="_blank"
-              className="text-[#0275ff] group inline-flex items-center mt-2"
+              className="text-[#0275ff]"
+            >
+              kevinx8017@gmail.com
+            </a>
+            <br />
+            Alternatively you can watch our demo video:
+            <a
+              href="mailto:kevinx8017@gmail.com"
+              target="_blank"
+              className="text-[#0275ff] group inline-flex items-center"
             >
               Link to our Demo Video
               <span className="inline-flex align-middle group-hover:translate-x-[3px] transition-transform duration-300 ease-in-out ml-1">
