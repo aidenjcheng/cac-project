@@ -2,7 +2,7 @@ READ ME
 CREATORS: KEVIN X, AIDEN C
 
 Slideshow presentation: https://docs.google.com/presentation/d/1rtrg6qfZIpdFEVYc58orDBPIE5OBfNNoxAHStnx0f1w/edit?usp=sharing
-Video walkthrough of slideshow + Project Demo In Action: https://youtu.be/uNfa967-aRo
+Video walkthrough of slideshow + Project Demo In Action: [[https://youtu.be/uNfa967-aRo](https://youtu.be/iLhWfBh2cLk)](https://youtu.be/iLhWfBh2cLk)
 
 Aegis is an advanced AI-powered website that analyzes security camera feeds to identify weapons and depth charts, improving public safety and streamlining threat detection for schools and communities.
 
