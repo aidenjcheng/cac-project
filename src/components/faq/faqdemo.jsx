@@ -2,7 +2,6 @@ import React from "react";
 import Accordion from "./accordion";
 import AnimatedShinyText from "../magicui/animated-shiny-text";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
 
 const FAQ = () => {
   return (

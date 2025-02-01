@@ -23,7 +23,7 @@ const ScrollCarousel = ({ scrollRange = 1000 }) => {
   const input = useTransform(
     scrollY,
     [startScrollY, startScrollY + scrollRange],
-    [0, 100]
+    [0, 100],
   );
   const smoothInput = useSpring(input, { stiffness: 300, damping: 30 });
   const x = useTransform(smoothInput, [0, 100], ["0%", "-50%"]);
@@ -88,7 +88,7 @@ const ScrollCarousel = ({ scrollRange = 1000 }) => {
         }}
       ></div>
 
-      <motion.div className="flex space-x-4 gap-[24px]" style={{ x }}>
+      <motion.div className="flex space-x-4 gap-[24px]">
         {items.map((item) => (
           <div className={`w-[472px] h-[500px]`}>
             <HeroVideo
